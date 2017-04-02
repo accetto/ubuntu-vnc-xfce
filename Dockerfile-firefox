@@ -1,0 +1,20 @@
+# docker build -f Dockerfile-firefox -t accetto/ubuntu-vnc-xfce-firefox .
+
+FROM accetto/ubuntu-vnc-xfce
+
+MAINTAINER accetto
+ENV REFRESHED_AT 2017-04-02
+
+LABEL any.accetto.tags="ubuntu, vnc, xfce, firefox"
+
+WORKDIR $HOME
+  
+### Install Firefox browser
+COPY ./src/firefox/install/ $INST_SCRIPTS/
+COPY ./src/firefox/Desktop/firefox.desktop $HOME/Desktop/
+RUN find $INST_SCRIPTS -name '*.sh' -exec chmod a+x {} + \
+  && $INST_SCRIPTS/firefox.sh \
+  && chmod +x $HOME/Desktop/firefox.desktop \
+  && mkdir $HOME/Downloads \
+  && mkdir $HOME/.mozilla \
+  && rm $INST_SCRIPTS/*

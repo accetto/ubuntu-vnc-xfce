@@ -27,8 +27,8 @@ RUN $INST_SCRIPTS/firefox.sh \
     && rm $INST_SCRIPTS/*
     
 COPY ./src/ubuntu/install/create_user_and_fix_permissions.sh $INST_SCRIPTS/
-RUN find $INST_SCRIPTS -name '*.sh' -exec chmod a+x {} + \
-    && $INST_SCRIPTS/create_user_and_fix_permissions.sh $STARTUPDIR $HOME \
+RUN find $INST_SCRIPTS -name '*.sh' -exec chmod a+x {} + 
+RUN $INST_SCRIPTS/create_user_and_fix_permissions.sh $STARTUPDIR $HOME \
     && rm $INST_SCRIPTS/* 
 
 ### switch to the non-root user

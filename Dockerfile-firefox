@@ -19,8 +19,8 @@ USER 0
 ### Install Firefox browser
 COPY ./src/firefox/install/ $INST_SCRIPTS/
 COPY ./src/firefox/Desktop/firefox.desktop $HOME/Desktop/
-RUN find $INST_SCRIPTS -name '*.sh' -exec chmod a+x {} + \
-    && $INST_SCRIPTS/firefox.sh \
+RUN find $INST_SCRIPTS -name '*.sh' -exec chmod a+x {} + 
+RUN $INST_SCRIPTS/firefox.sh \
     && chmod +x $HOME/Desktop/firefox.desktop \
     && mkdir $HOME/Downloads \
     && mkdir $HOME/.mozilla \

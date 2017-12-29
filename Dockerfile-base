@@ -3,13 +3,13 @@
 FROM ubuntu:16.04
 
 MAINTAINER accetto
-ENV REFRESHED_AT 2017-04-02
+ENV REFRESHED_AT 2017-12-29
 
 LABEL vendor="accetto" \
-  any.accetto.description="Headless VNC Container with Xfce window manager" \
-  any.accetto.display-name="Headless VNC Container based on Ubuntu" \
-  any.accetto.expose-services="6901:http,5901:xvnc" \
-  any.accetto.tags="ubuntu, vnc, xfce"
+    any.accetto.description="Headless VNC Container with Xfce window manager" \
+    any.accetto.display-name="Headless VNC Container based on Ubuntu" \
+    any.accetto.expose-services="6901:http,5901:xvnc" \
+    any.accetto.tags="ubuntu, vnc, xfce"
 
 ### Arguments can be provided during build
 ARG HOME=/headless
@@ -17,19 +17,23 @@ ARG VNC_PW=headless
 
 ### Environment config
 ENV \
-  DEBIAN_FRONTEND=noninteractive \
-  DISPLAY=:1 \
-  HOME=$HOME \
-  INST_SCRIPTS=$HOME/install \
-  NO_VNC_HOME=$HOME/noVNCdim \
-  NO_VNC_PORT="6901" \
-  STARTUPDIR=/dockerstartup \
-  VNC_COL_DEPTH=24 \
-  VNC_PORT="5901" \
-  VNC_RESOLUTION="1024x768" \
-  VNC_PW=$VNC_PW
+    DEBIAN_FRONTEND=noninteractive \
+    DISPLAY=:1 \
+    HOME=$HOME \
+    INST_SCRIPTS=$HOME/install \
+    NO_VNC_HOME=$HOME/noVNCdim \
+    NO_VNC_PORT="6901" \
+    STARTUPDIR=/dockerstartup \
+    VNC_COL_DEPTH=24 \
+    VNC_PORT="5901" \
+    VNC_RESOLUTION="1360x768" \
+    VNC_PW=$VNC_PW \
+    VNC_VIEW_ONLY=false
   
 WORKDIR $HOME
+
+### be sure to use the root user
+USER 0
 
 ### Copy install scripts and Xfce stuff
 COPY ./src/ubuntu/install/ $INST_SCRIPTS/
@@ -37,21 +41,21 @@ COPY ./src/xfce/ $HOME/
   
 ### Install common tools, VNC, Xfce and create some common folders
 RUN find $INST_SCRIPTS -name '*.sh' -exec chmod a+x {} + \
-  && $INST_SCRIPTS/tools.sh \
-  && $INST_SCRIPTS/tigervnc.sh \
-  && $INST_SCRIPTS/no_vnc.sh \
-  && $INST_SCRIPTS/xfce_ui.sh \
-  && mkdir $HOME/Documents 
+    && $INST_SCRIPTS/tools.sh \
+    && $INST_SCRIPTS/tigervnc.sh \
+    && $INST_SCRIPTS/no_vnc.sh \
+    && $INST_SCRIPTS/xfce_ui.sh \
+    && mkdir $HOME/Documents
 
 ### Configure startup and clean up scripts
 COPY ./src/ubuntu/startup $STARTUPDIR
 RUN $INST_SCRIPTS/libnss_wrapper.sh \
-  && $INST_SCRIPTS/set_user_permission.sh $STARTUPDIR $HOME \
-  && rm $INST_SCRIPTS/*
-
-## Connection ports for controlling the UI:
-# VNC port:5901
-# noVNC webport, connect via http://IP:6901/?password=vncpassword
+    && $INST_SCRIPTS/create_user_and_fix_permissions.sh $STARTUPDIR $HOME \
+    && rm $INST_SCRIPTS/*
+  
+### Connection ports for controlling the UI:
+### VNC port:5901
+### noVNC webport, connect via http://IP:6901/?password=headless
 EXPOSE $VNC_PORT $NO_VNC_PORT
 
 ENTRYPOINT ["/dockerstartup/vnc_startup.sh"]

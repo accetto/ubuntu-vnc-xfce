@@ -4,5 +4,8 @@ set -e
 
 echo "Install some common tools for further installation"
 apt-get update 
-apt-get install -y vim wget net-tools language-pack-en
+apt-get install -y wget net-tools locales
 apt-get clean -y
+
+echo "generate locales for en_US.UTF-8"
+locale-gen en_US.UTF-8

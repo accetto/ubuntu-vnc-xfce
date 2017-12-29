@@ -1,9 +1,6 @@
-# docker build -f Dockerfile-firefox-profile -t accetto/ubuntu-vnc-xfce-firefox-profile .
+# docker build -f Dockerfile-firefox-profile -t my/ubuntu-vnc-xfce-firefox-profile .
 
 FROM accetto/ubuntu-vnc-xfce-firefox
-
-MAINTAINER accetto
-ENV REFRESHED_AT 2017-04-02
 
 WORKDIR $HOME
 

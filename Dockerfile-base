@@ -41,17 +41,17 @@ COPY ./src/xfce/ $HOME/
   
 ### Install common tools, VNC, Xfce and create some common folders
 RUN find $INST_SCRIPTS -name '*.sh' -exec chmod a+x {} +
-RUN $INST_SCRIPTS/tools.sh
-RUN $INST_SCRIPTS/tigervnc.sh 
-RUN $INST_SCRIPTS/no_vnc.sh 
-RUN $INST_SCRIPTS/xfce_ui.sh 
-RUN mkdir $HOME/Documents
+RUN $INST_SCRIPTS/tools.sh \
+    && $INST_SCRIPTS/tigervnc.sh \
+    && $INST_SCRIPTS/no_vnc.sh \
+    && $INST_SCRIPTS/xfce_ui.sh \
+    && mkdir $HOME/Documents
 
 ### Configure startup and clean up scripts
 COPY ./src/ubuntu/startup $STARTUPDIR
-RUN $INST_SCRIPTS/libnss_wrapper.sh
-RUN $INST_SCRIPTS/create_user_and_fix_permissions.sh $STARTUPDIR $HOME
-RUN rm $INST_SCRIPTS/*
+RUN $INST_SCRIPTS/libnss_wrapper.sh \
+    && $INST_SCRIPTS/create_user_and_fix_permissions.sh $STARTUPDIR $HOME \
+    && rm $INST_SCRIPTS/*
   
 ### Connection ports for controlling the UI:
 ### VNC port:5901

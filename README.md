@@ -13,7 +13,7 @@ All images are based on the official [`ubuntu:16.04`](https://hub.docker.com/_/u
 * Desktop environment [**Xfce4**](http://www.xfce.org)
 * [**TigerVNC**](http://tigervnc.org) VNC-Server (default VNC port **5901**)
 * [**noVNC**](https://github.com/kanaka/noVNC) HTML5 VNC client (default http port **6901**)
-* [**leafpad**](tarot.freeshell.org/leafpad/) graphical editor
+* [**leafpad**](http://tarot.freeshell.org/leafpad/) graphical editor
 
 Images with Firefox have the following additional components installed:
 

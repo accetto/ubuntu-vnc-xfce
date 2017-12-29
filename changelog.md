@@ -18,7 +18,7 @@
 * image with Firefox
 	* introduces a new build argument **VNC\_USER** with default value **headless:headless**
 	* runs under a new non-root **VNC\_USER** by default
-	* includes the current Firefox version (currently **Firefox Quantum v57.0.1 (64-bit)**)
+	* includes the current Firefox version (currently **Firefox Quantum v57.0.3 (64-bit)**)
 
 ### Version 1.0.0
 

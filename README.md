@@ -17,7 +17,7 @@ All images are based on the official [`ubuntu:16.04`](https://hub.docker.com/_/u
 
 Images with Firefox have the following additional components installed:
 
-* [**Firefox**](https://www.mozilla.org) browser (currently **Firefox Quantum v57.0.1 (64-bit)**)
+* [**Firefox**](https://www.mozilla.org) browser (currently **Firefox Quantum v57.0.3 (64-bit)**)
 * optionally also a pre-configured Firefox profile (see below)
 
 

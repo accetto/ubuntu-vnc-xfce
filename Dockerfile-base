@@ -1,6 +1,6 @@
-# docker build -f Dockerfile-base -t accetto/ubuntu-vnc-xfce .
+# docker build -f Dockerfile-base -t accetto/ubuntu-vnc-xfce:latest .
 
-FROM ubuntu:16.04
+FROM ubuntu:latest
 
 MAINTAINER accetto
 ENV REFRESHED_AT 2017-12-30
@@ -9,7 +9,7 @@ LABEL vendor="accetto" \
     any.accetto.description="Headless VNC Container with Xfce window manager" \
     any.accetto.display-name="Headless VNC Container based on Ubuntu" \
     any.accetto.expose-services="6901:http,5901:xvnc" \
-    any.accetto.tags="ubuntu, vnc, xfce"
+    any.accetto.tags="ubuntu, xfce, vnc, novnc"
 
 ### Arguments can be provided during build
 ARG HOME=/headless

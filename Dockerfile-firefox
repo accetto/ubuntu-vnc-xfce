@@ -1,12 +1,12 @@
-# docker build -f Dockerfile-firefox -t accetto/ubuntu-vnc-xfce-firefox .
+# docker build -f Dockerfile-firefox -t accetto/ubuntu-vnc-xfce-firefox:latest .
 # docker build -f Dockerfile-firefox --build-arg VNC_USER=joe:devs -t accetto/ubuntu-vnc-xfce-firefox:joe .
 
-FROM accetto/ubuntu-vnc-xfce
+FROM accetto/ubuntu-vnc-xfce:latest
 
 MAINTAINER accetto
 ENV REFRESHED_AT 2017-12-30
 
-LABEL any.accetto.tags="ubuntu, vnc, xfce, firefox"
+LABEL any.accetto.tags="ubuntu, xfce, vnc, novnc, firefox"
 
 ### Arguments can be provided during build
 ARG VNC_USER=headless:headless

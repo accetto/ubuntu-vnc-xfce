@@ -1,4 +1,4 @@
-# Docker Ubuntu/Xfce4 images with VNC/noVNC and Firefox
+# Docker Ubuntu/Xfce images with VNC/noVNC and Firefox
 
 The repository contains Docker images based on **Ubuntu**, with **Xfce** desktop and headless **VNC**/**noVNC** environments.
 
@@ -8,16 +8,16 @@ The project was originally inspired by [`consol/ubuntu-xfce-vnc`](https://hub.do
 
 Comparing to the images from [`ConSol`](https://hub.docker.com/u/consol/), these are significantly smaller because of excluded features. Particularly they are not intended for multimedia. They are best suited for fast creation of small light-weight containers used for testing or as throw-away web browsers. 
 
-All images are based on the official [`ubuntu:16.04`](https://hub.docker.com/_/ubuntu/) (current LTS version) image and have the following common components installed:
+The images are based on the official [`ubuntu:latest`](https://hub.docker.com/_/ubuntu/) image (always the current LTS version) and have the following common components installed:
 
-* Desktop environment [**Xfce4**](http://www.xfce.org)
+* Desktop environment [**Xfce**](http://www.xfce.org)
 * [**TigerVNC**](http://tigervnc.org) VNC-Server (default VNC port **5901**)
 * [**noVNC**](https://github.com/kanaka/noVNC) HTML5 VNC client (default http port **6901**)
 * [**leafpad**](http://tarot.freeshell.org/leafpad/) graphical editor
 
 Images with Firefox have the following additional components installed:
 
-* [**Firefox**](https://www.mozilla.org) browser (currently **Firefox Quantum v57.0.3 (64-bit)**)
+* current [**Firefox**](https://www.mozilla.org) browser
 * optionally also a pre-configured Firefox profile (see below)
 
 

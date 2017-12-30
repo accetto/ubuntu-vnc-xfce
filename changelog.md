@@ -4,12 +4,12 @@
 
 (December 2017)
 
-* still based on **ubuntu:16.04** image (current LTS version)
+* based on **ubuntu:latest** image (always the current LTS version, currently **16.04**)
 * **TigerVNC** updated to version **1.8.0** (was 1.7.0)
 * **noVNC** updated to version **0.6.2** (was 0.6.1)
 * default **VNC\_RESOLUTION** changed to **1360x768** (was 1024x768)
 * **vim** editor has been removed
-* **leafpad** editor has been added as part of **Xfce4** layer
+* **leafpad** editor has been added as part of **Xfce** layer
 * base image runs under the **root** user by default
 * following changes has been accepted from the newer version **1.2.3** of [`ConSol/docker-headless-vnc-container`](https://github.com/ConSol/docker-headless-vnc-container)
 	* using older version **0.6.1** (was 0.8.0) of **websockify** to prevent hanging connections on offline containers (see on [ConSol](https://github.com/ConSol/docker-headless-vnc-container/issues/50))

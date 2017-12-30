@@ -5,6 +5,7 @@
 (December 2017)
 
 * more tagged versions added, all based on the official **ubuntu** images
+* README got badges from [MicroBadger](https://microbadger.com/)
 
 ### Version 1.1.0
 

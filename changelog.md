@@ -6,7 +6,6 @@
 
 * more tagged versions added, all based on the official **ubuntu** images
 
-
 ### Version 1.1.0
 
 (December 2017)

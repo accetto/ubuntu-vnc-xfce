@@ -1,4 +1,11 @@
-## Changelog of `accetto/ubuntu-vnc-xfce` image stack
+## Changelog of `accetto/ubuntu-vnc-xfce` repository
+
+### Version 1.1.1
+
+(December 2017)
+
+* more tagged versions added, all based on the official **ubuntu** images
+
 
 ### Version 1.1.0
 

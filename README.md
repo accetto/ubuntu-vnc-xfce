@@ -8,7 +8,7 @@ The project was originally inspired by [`consol/ubuntu-xfce-vnc`](https://hub.do
 
 Comparing to the images from [`ConSol`](https://hub.docker.com/u/consol/), these are significantly smaller because of excluded features. Particularly they are not intended for multimedia. They are best suited for fast creation of small light-weight containers used for testing or as throw-away web browsers. 
 
-The images are based on the official [`ubuntu:latest`](https://hub.docker.com/_/ubuntu/) image (always the current LTS version) and have the following common components installed:
+The images are based on the official [`ubuntu`](https://hub.docker.com/_/ubuntu/) images and have the following common components installed:
 
 * Desktop environment [**Xfce**](http://www.xfce.org)
 * [**TigerVNC**](http://tigervnc.org) VNC-Server (default VNC port **5901**)
@@ -17,7 +17,7 @@ The images are based on the official [`ubuntu:latest`](https://hub.docker.com/_/
 
 Images with Firefox have the following additional components installed:
 
-* current [**Firefox**](https://www.mozilla.org) browser
+* [**Firefox**](https://www.mozilla.org) web browser
 * optionally also a pre-configured Firefox profile (see below)
 
 

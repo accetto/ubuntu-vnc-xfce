@@ -1,6 +1,6 @@
-# docker build -f Dockerfile-base -t accetto/ubuntu-vnc-xfce:latest .
+# docker build -f Dockerfile-base -t accetto/ubuntu-vnc-xfce .
 
-FROM ubuntu:latest
+FROM ubuntu
 
 MAINTAINER accetto
 ENV REFRESHED_AT 2017-12-30

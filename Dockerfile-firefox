@@ -1,7 +1,7 @@
-# docker build -f Dockerfile-firefox -t accetto/ubuntu-vnc-xfce-firefox:latest .
+# docker build -f Dockerfile-firefox -t accetto/ubuntu-vnc-xfce-firefox .
 # docker build -f Dockerfile-firefox --build-arg VNC_USER=joe:devs -t accetto/ubuntu-vnc-xfce-firefox:joe .
 
-FROM accetto/ubuntu-vnc-xfce:latest
+FROM accetto/ubuntu-vnc-xfce
 
 MAINTAINER accetto
 ENV REFRESHED_AT 2017-12-30

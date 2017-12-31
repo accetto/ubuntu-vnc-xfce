@@ -43,7 +43,7 @@ This optional image is based on the one above and it adds a **pre-configured Fir
 
 All images expose the following **tcp** ports:
 
-* **5901** is used for access via a **VNC** viewer (e.g. [**TightVNC Viewer**](http://www.tightvnc.com))
+* **5901** is used for access via a **VNC** viewer (e.g. [**TigerVNC**](http://tigervnc.org/) or [**TightVNC**](http://www.tightvnc.com))
 * **6901** is used for access via a web browser with **HTML5** support (**noVNC**)
 
 The default VNC password is **headless**.

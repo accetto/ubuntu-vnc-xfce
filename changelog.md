@@ -6,6 +6,7 @@
 
 * more tagged versions added, all based on the official [`ubuntu`](https://hub.docker.com/_/ubuntu/) images
 * README got badges from [MicroBadger](https://microbadger.com/) (still Beta)
+* added **lsb-release** package
 
 ### Version 1.1.0
 

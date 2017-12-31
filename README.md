@@ -26,7 +26,7 @@ Images with Firefox have the following additional components installed:
 [![](https://images.microbadger.com/badges/version/accetto/ubuntu-vnc-xfce.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/image/accetto/ubuntu-vnc-xfce.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/version/accetto/ubuntu-vnc-xfce:rolling.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce:rolling "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/image/accetto/ubuntu-vnc-xfce:rolling.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce:rolling "Get your own image badge on microbadger.com")
 
 This is the base **Ubuntu** image with **Xfce** desktop and **VNC/nonVNC** headless environments.
-It's already usable via a **VNC Viewer** (e.g. [**TightVNC Viewer**](http://www.tightvnc.com)) or directly from a web browser with HTML5 support via **noVNC**. It runs under the **root** user by default and it includes no web browser. However, the graphical editor **leafpad** is already installed.
+It's already usable via a **VNC Viewer** (e.g. [**TigerVNC**](http://tigervnc.org/) or [**TightVNC**](http://www.tightvnc.com)) or directly from a web browser with HTML5 support via **noVNC**. It runs under the **root** user by default and it includes no web browser. However, the graphical editor **leafpad** is already installed.
 
 #### [`accetto/ubuntu-vnc-xfce-firefox`](https://hub.docker.com/r/accetto/ubuntu-vnc-xfce-firefox/)
 
@@ -43,7 +43,7 @@ This optional image is based on the one above and it adds a **pre-configured Fir
 
 All images expose the following **tcp** ports:
 
-* **5901** is used for access via a **VNC** viewer (e.g. [**TigerVNC**](http://tigervnc.org/) or [**TightVNC**](http://www.tightvnc.com))
+* **5901** is used for access via a **VNC** viewer
 * **6901** is used for access via a web browser with **HTML5** support (**noVNC**)
 
 The default VNC password is **headless**.

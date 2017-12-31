@@ -6,7 +6,11 @@ FROM accetto/ubuntu-vnc-xfce
 MAINTAINER accetto
 ENV REFRESHED_AT 2017-12-31
 
-LABEL any.accetto.tags="ubuntu, xfce, vnc, novnc, firefox"
+LABEL vendor="accetto" \
+    any.accetto.description="Headless Ubuntu VNC/noVNC container with Xfce desktop and Firefox" \
+    any.accetto.display-name="Headless Ubuntu/Xfce VNC/noVNC container with Firefox" \
+    any.accetto.expose-services="6901:http,5901:xvnc" \
+    any.accetto.tags="ubuntu, xfce, vnc, novnc, firefox"
 
 ### Arguments can be provided during build
 ARG VNC_USER=headless:headless

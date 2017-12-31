@@ -6,8 +6,8 @@ MAINTAINER accetto
 ENV REFRESHED_AT 2017-12-31
 
 LABEL vendor="accetto" \
-    any.accetto.description="Headless VNC Container with Xfce window manager" \
-    any.accetto.display-name="Headless VNC Container based on Ubuntu" \
+    any.accetto.description="Headless Ubuntu VNC/noVNC container with Xfce desktop" \
+    any.accetto.display-name="Headless Ubuntu/Xfce VNC/noVNC container" \
     any.accetto.expose-services="6901:http,5901:xvnc" \
     any.accetto.tags="ubuntu, xfce, vnc, novnc"
 

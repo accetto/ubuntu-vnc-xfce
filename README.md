@@ -2,8 +2,6 @@
 
 The repository contains Docker images based on **Ubuntu**, with **Xfce** desktop and headless **VNC**/**noVNC** environments.
 
-The images are tested also with [**Container Station**](http://qnap-dev.github.io/container-station-api/index.html) on NAS devices from [**QNAP**](https://www.qnap.com/en/index.php).
-
 The project was originally inspired by [`consol/ubuntu-xfce-vnc`](https://hub.docker.com/r/consol/ubuntu-xfce-vnc/) image and derived from [`ConSol/docker-headless-vnc-container`](https://github.com/ConSol/docker-headless-vnc-container) project. 
 
 Comparing to the images from [`ConSol`](https://hub.docker.com/u/consol/), these are significantly smaller because of excluded features. Particularly they are not intended for multimedia. They are best suited for fast creation of small light-weight containers used for testing or as throw-away web browsers. 
@@ -142,6 +140,6 @@ For example, the provided [Dockerfile-firefox-profile](https://github.com/accett
 
 Using the provided [Dockerfile-firefox-profile](https://github.com/accetto/ubuntu-vnc-xfce.git) you can build the new image like this:
 
-    docker build -f Dockerfile-firefox-profile -t my/ubuntu-vnc-xfce-firefox-profile .
+    docker build -f Dockerfile-firefox-profile -t accetto/ubuntu-vnc-xfce-firefox-profile .
 
-The image `my/ubuntu-vnc-xfce-firefox-profile` now includes your very own Firefox configuration and makes it even easier to create light-weight and pre-configured web browser containers.
+The image `accetto/ubuntu-vnc-xfce-firefox-profile` now includes your very own Firefox configuration and makes it even easier to create light-weight and pre-configured web browser containers.

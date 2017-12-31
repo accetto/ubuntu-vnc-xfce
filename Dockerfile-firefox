@@ -4,7 +4,7 @@
 FROM accetto/ubuntu-vnc-xfce
 
 MAINTAINER accetto
-ENV REFRESHED_AT 2017-12-30
+ENV REFRESHED_AT 2017-12-31
 
 LABEL any.accetto.tags="ubuntu, xfce, vnc, novnc, firefox"
 

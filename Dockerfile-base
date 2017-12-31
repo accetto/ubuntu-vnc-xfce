@@ -3,7 +3,7 @@
 FROM ubuntu
 
 MAINTAINER accetto
-ENV REFRESHED_AT 2017-12-30
+ENV REFRESHED_AT 2017-12-31
 
 LABEL vendor="accetto" \
     any.accetto.description="Headless VNC Container with Xfce window manager" \

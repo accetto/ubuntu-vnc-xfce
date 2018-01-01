@@ -1,5 +1,11 @@
 ## Changelog of `accetto/ubuntu-vnc-xfce` repository
 
+### Version 1.1.2
+
+(January 2018)
+
+* fixed: Arrow keys not working correctly in Terminal (only Firefox containers) 
+
 ### Version 1.1.1
 
 (December 2017)

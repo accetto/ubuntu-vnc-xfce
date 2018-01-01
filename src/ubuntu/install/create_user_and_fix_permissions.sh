@@ -23,7 +23,7 @@ if [[ -n "${VNC_USER}" ]] ; then
         echo "Creating non-root user $VNC_USER"
         groupadd $UGROUP
         echo "User goup $UGROUP created"
-        useradd --no-log-init --gid $UGROUP --home-dir $HOME --password $VNC_PW $UNAME
+        useradd --no-log-init --gid $UGROUP --home-dir $HOME --shell /bin/bash --password $VNC_PW $UNAME
         echo "User $UNAME created"
     else
         echo "Will not create root user $VNC_USER"

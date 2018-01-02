@@ -4,7 +4,8 @@
 
 (January 2018)
 
-* fixed: Arrow keys not working correctly in Terminal (only Firefox containers) 
+* fixed: Arrow keys not working correctly in Terminal (only Firefox containers)
+* purged `pavucontrol` and `pulseaudio` to shrink the base image a little bit
 
 ### Version 1.1.1
 

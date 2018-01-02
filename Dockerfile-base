@@ -3,7 +3,7 @@
 FROM ubuntu
 
 MAINTAINER accetto
-ENV REFRESHED_AT 2017-12-31
+ENV REFRESHED_AT 2018-01-02
 
 LABEL vendor="accetto" \
     any.accetto.description="Headless Ubuntu VNC/noVNC container with Xfce desktop" \
@@ -39,13 +39,15 @@ USER 0
 COPY ./src/ubuntu/install/ $INST_SCRIPTS/
 COPY ./src/xfce/ $HOME/
   
-### Install common tools, VNC, Xfce and create some common folders
+### Install common tools, VNC, Xfce, create common folders and remove some stuff
 RUN find $INST_SCRIPTS -name '*.sh' -exec chmod a+x {} +
 RUN $INST_SCRIPTS/tools.sh \
     && $INST_SCRIPTS/tigervnc.sh \
     && $INST_SCRIPTS/no_vnc.sh \
     && $INST_SCRIPTS/xfce_ui.sh \
-    && mkdir $HOME/Documents
+    && mkdir $HOME/Documents \
+    && apt-get purge -y pavucontrol pulseaudio \
+    && apt autoremove -y
 
 ### Configure startup and clean up scripts
 COPY ./src/ubuntu/startup $STARTUPDIR

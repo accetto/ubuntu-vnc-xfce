@@ -28,8 +28,6 @@ It's already usable via a **VNC Viewer** (e.g. [**TigerVNC**](http://tigervnc.or
 
 #### [`accetto/ubuntu-vnc-xfce-firefox`](https://hub.docker.com/r/accetto/ubuntu-vnc-xfce-firefox/)
 
-
-
 This image is based on the one above and it adds **Firefox** web browser. It runs under a non-root user **headless:headless** by default.
 
 #### `accetto/ubuntu-vnc-xfce-firefox-profile`

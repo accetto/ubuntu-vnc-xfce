@@ -48,8 +48,8 @@ This optional image is based on the one above and it adds a **pre-configured Fir
 
 #### [`accetto/ubuntu-vnc-xfce-firefox`](https://hub.docker.com/r/accetto/ubuntu-vnc-xfce-firefox/)
 
-* `latest` based on `accetto/ubuntu-vnc-xfce:latest` ([Dockerfile](https://github.com/accetto/ubuntu-vnc-xfce/blob/master/Dockerfile-firefox))
-* `rolling` based on `accetto/ubuntu-vnc-xfce:rolling` ([Dockerfile](https://github.com/accetto/ubuntu-vnc-xfce/blob/rolling/Dockerfile-firefox))
+* `latest` based on `accetto/ubuntu-vnc-xfce:latest` ([`Dockerfile`](https://github.com/accetto/ubuntu-vnc-xfce/blob/master/Dockerfile-firefox))
+* `rolling` based on `accetto/ubuntu-vnc-xfce:rolling` ([`Dockerfile`](https://github.com/accetto/ubuntu-vnc-xfce/blob/rolling/Dockerfile-firefox))
 
 [![](https://images.microbadger.com/badges/version/accetto/ubuntu-vnc-xfce-firefox.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce-firefox "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/image/accetto/ubuntu-vnc-xfce-firefox.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce-firefox "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/version/accetto/ubuntu-vnc-xfce-firefox:rolling.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce-firefox:rolling "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/image/accetto/ubuntu-vnc-xfce-firefox:rolling.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce-firefox:rolling "Get your own image badge on microbadger.com")
 

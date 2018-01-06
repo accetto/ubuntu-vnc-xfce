@@ -1,7 +1,6 @@
-# docker build -f Dockerfile-firefox -t accetto/ubuntu-vnc-xfce-firefox .
-# docker build -f Dockerfile-firefox --build-arg VNC_USER=joe:devs -t accetto/ubuntu-vnc-xfce-firefox:joe .
+# docker build -f Dockerfile-firefox_rolling -t accetto/ubuntu-vnc-xfce-firefox:rolling .
 
-FROM accetto/ubuntu-vnc-xfce
+FROM accetto/ubuntu-vnc-xfce:rolling
 
 MAINTAINER accetto
 ENV REFRESHED_AT 2018-01-06

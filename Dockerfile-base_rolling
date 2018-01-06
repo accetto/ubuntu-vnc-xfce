@@ -1,6 +1,6 @@
-# docker build -f Dockerfile-base -t accetto/ubuntu-vnc-xfce .
+# docker build -f Dockerfile-base_rolling -t accetto/ubuntu-vnc-xfce:rolling .
 
-FROM ubuntu
+FROM ubuntu:rolling
 
 MAINTAINER accetto
 ENV REFRESHED_AT 2018-01-06

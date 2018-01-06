@@ -1,6 +1,6 @@
 # Docker Ubuntu/Xfce images with VNC/noVNC and Firefox
 
-The repository contains Docker images based on **Ubuntu**, with **Xfce** desktop and headless **VNC**/**noVNC** environments.
+The repository contains resources for building Docker images based on **Ubuntu**, with **Xfce** desktop and headless **VNC**/**noVNC** environments.
 
 The project was originally inspired by [`consol/ubuntu-xfce-vnc`](https://hub.docker.com/r/consol/ubuntu-xfce-vnc/) image and derived from [`ConSol/docker-headless-vnc-container`](https://github.com/ConSol/docker-headless-vnc-container) project. 
 
@@ -21,35 +21,34 @@ Images with Firefox have the following additional components installed:
 
 ### Image set
 
-#### [`accetto/ubuntu-vnc-xfce`](https://hub.docker.com/r/accetto/ubuntu-vnc-xfce/)
+* [`accetto/ubuntu-vnc-xfce`](https://hub.docker.com/r/accetto/ubuntu-vnc-xfce/)
 
-This is the base **Ubuntu** image with **Xfce** desktop and **VNC/nonVNC** headless environments.
-It's already usable via a **VNC Viewer** (e.g. [**TigerVNC**](http://tigervnc.org/) or [**TightVNC**](http://www.tightvnc.com)) or directly from a web browser with HTML5 support via **noVNC**. It runs under the **root** user by default and it includes no web browser. However, the graphical editor **leafpad** is already installed.
+    This is the base **Ubuntu** image with **Xfce** desktop and **VNC/nonVNC** headless environments. It's already usable via a **VNC Viewer** (e.g. [**TigerVNC**](http://tigervnc.org/) or [**TightVNC**](http://www.tightvnc.com)) or directly from a web browser with HTML5 support via **noVNC**. It runs under the **root** user by default and it includes no web browser. However, the graphical editor **leafpad** is already installed.
 
-#### [`accetto/ubuntu-vnc-xfce-firefox`](https://hub.docker.com/r/accetto/ubuntu-vnc-xfce-firefox/)
+* [`accetto/ubuntu-vnc-xfce-firefox`](https://hub.docker.com/r/accetto/ubuntu-vnc-xfce-firefox/)
 
-This image is based on the one above and it adds **Firefox** web browser. It runs under a non-root user **headless:headless** by default.
+    This image is based on the one above and it adds **Firefox** web browser. It runs under a non-root user **headless:headless** by default.
 
-#### `accetto/ubuntu-vnc-xfce-firefox-profile`
+* `accetto/ubuntu-vnc-xfce-firefox-profile`
 
-This optional image is based on the one above and it adds a **pre-configured Firefox profile**. It's not actually contained in the repository, but it can be easily built using the provided [Dockerfile-firefox-profile](https://github.com/accetto/ubuntu-vnc-xfce.git) (see the hints below).
+    This optional image is based on the one above and it adds a **pre-configured Firefox profile**. It's not actually contained in the repository, but it can be easily built using the provided [Dockerfile-firefox-profile](https://github.com/accetto/ubuntu-vnc-xfce/blob/master/Dockerfile-firefox-profile) (see the hints below).
 
 
 ### Supported tags and respective `Dockerfile` links
 
-#### [`accetto/ubuntu-vnc-xfce`](https://hub.docker.com/r/accetto/ubuntu-vnc-xfce/)
+* [`accetto/ubuntu-vnc-xfce`](https://hub.docker.com/r/accetto/ubuntu-vnc-xfce/)
 
-* `latest` based on `ubuntu:latest` ([`Dockerfile`](https://github.com/accetto/ubuntu-vnc-xfce/blob/master/Dockerfile-base))
-* `rolling` based on `ubuntu:rolling` ([`Dockerfile`](https://github.com/accetto/ubuntu-vnc-xfce/blob/rolling/Dockerfile-base))
+    * `latest` based on `ubuntu:latest` ([`Dockerfile`](https://github.com/accetto/ubuntu-vnc-xfce/blob/master/Dockerfile-base))
+    * `rolling` based on `ubuntu:rolling` ([`Dockerfile`](https://github.com/accetto/ubuntu-vnc-xfce/blob/master/Dockerfile-base_rolling))
 
-[![](https://images.microbadger.com/badges/version/accetto/ubuntu-vnc-xfce.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/image/accetto/ubuntu-vnc-xfce.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/version/accetto/ubuntu-vnc-xfce:rolling.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce:rolling "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/image/accetto/ubuntu-vnc-xfce:rolling.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce:rolling "Get your own image badge on microbadger.com")
+    [![](https://images.microbadger.com/badges/version/accetto/ubuntu-vnc-xfce.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/image/accetto/ubuntu-vnc-xfce.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/version/accetto/ubuntu-vnc-xfce:rolling.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce:rolling "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/image/accetto/ubuntu-vnc-xfce:rolling.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce:rolling "Get your own image badge on microbadger.com")
 
-#### [`accetto/ubuntu-vnc-xfce-firefox`](https://hub.docker.com/r/accetto/ubuntu-vnc-xfce-firefox/)
+* [`accetto/ubuntu-vnc-xfce-firefox`](https://hub.docker.com/r/accetto/ubuntu-vnc-xfce-firefox/)
 
-* `latest` based on `accetto/ubuntu-vnc-xfce:latest` ([`Dockerfile`](https://github.com/accetto/ubuntu-vnc-xfce/blob/master/Dockerfile-firefox))
-* `rolling` based on `accetto/ubuntu-vnc-xfce:rolling` ([`Dockerfile`](https://github.com/accetto/ubuntu-vnc-xfce/blob/rolling/Dockerfile-firefox))
+    * `latest` based on `accetto/ubuntu-vnc-xfce:latest` ([`Dockerfile`](https://github.com/accetto/ubuntu-vnc-xfce/blob/master/Dockerfile-firefox))
+    * `rolling` based on `accetto/ubuntu-vnc-xfce:rolling` ([`Dockerfile`](https://github.com/accetto/ubuntu-vnc-xfce/blob/master/Dockerfile-firefox_rolling))
 
-[![](https://images.microbadger.com/badges/version/accetto/ubuntu-vnc-xfce-firefox.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce-firefox "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/image/accetto/ubuntu-vnc-xfce-firefox.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce-firefox "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/version/accetto/ubuntu-vnc-xfce-firefox:rolling.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce-firefox:rolling "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/image/accetto/ubuntu-vnc-xfce-firefox:rolling.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce-firefox:rolling "Get your own image badge on microbadger.com")
+    [![](https://images.microbadger.com/badges/version/accetto/ubuntu-vnc-xfce-firefox.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce-firefox "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/image/accetto/ubuntu-vnc-xfce-firefox.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce-firefox "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/version/accetto/ubuntu-vnc-xfce-firefox:rolling.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce-firefox:rolling "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/image/accetto/ubuntu-vnc-xfce-firefox:rolling.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce-firefox:rolling "Get your own image badge on microbadger.com")
 
 ### Ports
 

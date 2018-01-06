@@ -3,7 +3,7 @@
 FROM accetto/ubuntu-vnc-xfce-firefox
 
 MAINTAINER accetto
-ENV REFRESHED_AT 2017-12-31
+ENV REFRESHED_AT 2018-01-06
 
 LABEL vendor="accetto" \
     any.accetto.description="Headless Ubuntu VNC/noVNC container with Xfce desktop and Firefox with profile" \

@@ -114,9 +114,9 @@ The **root** user can be specified numerically or by its name (as **0**, **0:0**
 
     docker run -d -p 25901:5901 -p 26901:6901 --user root accetto/ubuntu-vnc-xfce-firefox
 
-### Override VNC blacklisting parameters
+### Override VNC blacklist parameters
 
-The VNC parameters **BlacklistTimeout** and **BlacklistThreshold** are configurable through the build parameters and environment variables **BLACKLIST_TIMEOUT** and **BLACKLIST_THRESHOLD**. Since version **1.1.3** have these parameters default values **0** and **20**, which electively switches the built-in blacklisting off. To set them to their previous default values use:
+The VNC parameters **BlacklistTimeout** and **BlacklistThreshold** are configurable through the build arguments and environment variables **BLACKLIST_TIMEOUT** and **BLACKLIST_THRESHOLD**. These parameters are set to **0** and **20** (since version **1.1.3**), effectively switching the built-in blacklisting off. They can be set to their previous default values using the following command:
 
     docker run -d -p 25901:5901 -p 26901:6901 -e BLACKLIST_TIMEOUT=10 -e BLACKLIST_THRESHOLD=5 --user root accetto/ubuntu-vnc-xfce-firefox
 

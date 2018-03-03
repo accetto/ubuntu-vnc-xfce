@@ -2,6 +2,8 @@
 
 This repository contains resources for building Docker images based on **Ubuntu**, with **Xfce** desktop and headless **VNC**/**noVNC** environments.
 
+The images have been tested also with [Container Station](https://www.qnap.com/solution/container_station/en/) on [QNAP](https://www.qnap.com/en/) NAS devices.
+
 The project was originally inspired by [`consol/ubuntu-xfce-vnc`](https://hub.docker.com/r/consol/ubuntu-xfce-vnc/) image and derived from [`ConSol/docker-headless-vnc-container`](https://github.com/ConSol/docker-headless-vnc-container) project.
 
 Comparing to the images from [`ConSol`](https://hub.docker.com/u/consol/), these are significantly smaller because of excluded features. Particularly they are not intended for multimedia. They are best suited for fast creation of small light-weight containers used for testing or as throw-away web browsers.

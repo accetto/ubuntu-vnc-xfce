@@ -1,4 +1,18 @@
-## Changelog of `accetto/ubuntu-vnc-xfce` repository
+# Changelog 
+
+## `accetto/ubuntu-vnc-xfce`
+
+### Version 1.1.3
+
+(March 2018)
+
+* base image
+  * fix: occasional VNC Viewer connection problem ("Too many security failures")
+    * VNC parameter **BlacklistTimetout** set to **0**
+    * VNC parameter **BlacklistThreshold** set to **20**
+    * both VNC parameters configurable by new build arguments and environment variables **BLACKLIST_TIMEOUT** and **BLACKLIST_THRESHOLD**
+* image with Firefox
+  * new environment variable **VNC_USER** (configurable by already existing build argument **VNC_USER**)
 
 ### Version 1.1.2
 
@@ -27,13 +41,13 @@
 * **leafpad** editor has been added as part of **Xfce** layer
 * base image runs under the **root** user by default
 * following changes has been accepted from the newer version **1.2.3** of [`ConSol/docker-headless-vnc-container`](https://github.com/ConSol/docker-headless-vnc-container)
-	* using older version **0.6.1** (was 0.8.0) of **websockify** to prevent hanging connections on offline containers (see on [ConSol](https://github.com/ConSol/docker-headless-vnc-container/issues/50))
-	* environment variable **VNC\_VIEW\_ONLY** with default value **false** (see on [ConSol](https://github.com/ConSol/docker-headless-vnc-container))
-	* VNC startup script has been updated accordingly
+  * using older version **0.6.1** (was 0.8.0) of **websockify** to prevent hanging connections on offline containers (see on [ConSol](https://github.com/ConSol/docker-headless-vnc-container/issues/50))
+  * environment variable **VNC\_VIEW\_ONLY** with default value **false** (see on [ConSol](https://github.com/ConSol/docker-headless-vnc-container))
+  * VNC startup script has been updated accordingly
 * image with Firefox
-	* introduces a new build argument **VNC\_USER** with default value **headless:headless**
-	* runs under a new non-root **VNC\_USER** by default
-	* includes the current Firefox version (currently **Firefox Quantum v57.0.3 (64-bit)**)
+  * introduces a new build argument **VNC\_USER** with default value **headless:headless**
+  * runs under a new non-root **VNC\_USER** by default
+  * includes the current Firefox version (currently **Firefox Quantum v57.0.3 (64-bit)**)
 
 ### Version 1.0.0
 
@@ -58,4 +72,3 @@ Created the following set of images:
 * `accetto/ubuntu-vnc-xfce` is the base Ubuntu/Xfce image with VNC/nonVNC
 * `accetto/ubuntu-vnc-xfce-firefox` adds Firefox
 * optional `accetto/ubuntu-vnc-xfce-firefox-profile` adds a pre-configured Firefox profile
-

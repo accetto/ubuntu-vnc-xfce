@@ -1,10 +1,10 @@
 # Docker Ubuntu/Xfce images with VNC/noVNC and Firefox
 
-The repository contains resources for building Docker images based on **Ubuntu**, with **Xfce** desktop and headless **VNC**/**noVNC** environments.
+This repository contains resources for building Docker images based on **Ubuntu**, with **Xfce** desktop and headless **VNC**/**noVNC** environments.
 
-The project was originally inspired by [`consol/ubuntu-xfce-vnc`](https://hub.docker.com/r/consol/ubuntu-xfce-vnc/) image and derived from [`ConSol/docker-headless-vnc-container`](https://github.com/ConSol/docker-headless-vnc-container) project. 
+The project was originally inspired by [`consol/ubuntu-xfce-vnc`](https://hub.docker.com/r/consol/ubuntu-xfce-vnc/) image and derived from [`ConSol/docker-headless-vnc-container`](https://github.com/ConSol/docker-headless-vnc-container) project.
 
-Comparing to the images from [`ConSol`](https://hub.docker.com/u/consol/), these are significantly smaller because of excluded features. Particularly they are not intended for multimedia. They are best suited for fast creation of small light-weight containers used for testing or as throw-away web browsers. 
+Comparing to the images from [`ConSol`](https://hub.docker.com/u/consol/), these are significantly smaller because of excluded features. Particularly they are not intended for multimedia. They are best suited for fast creation of small light-weight containers used for testing or as throw-away web browsers.
 
 The images are based on the official [`ubuntu`](https://hub.docker.com/_/ubuntu/) images and have the following common components installed:
 
@@ -18,8 +18,7 @@ Images with Firefox have the following additional components installed:
 * [**Firefox**](https://www.mozilla.org) web browser
 * optionally also a pre-configured Firefox profile (see below)
 
-
-### Image set
+## Image set
 
 * [`accetto/ubuntu-vnc-xfce`](https://hub.docker.com/r/accetto/ubuntu-vnc-xfce/)
 
@@ -33,22 +32,21 @@ Images with Firefox have the following additional components installed:
 
     This optional image is based on the one above and it adds a **pre-configured Firefox profile**. It's not actually contained in the repository, but it can be easily built using the provided [Dockerfile-firefox-profile](https://github.com/accetto/ubuntu-vnc-xfce/blob/master/Dockerfile-firefox-profile) (see the hints below).
 
-
-### Supported tags and respective `Dockerfile` links
+## Supported tags and respective `Dockerfile` links
 
 * [`accetto/ubuntu-vnc-xfce`](https://hub.docker.com/r/accetto/ubuntu-vnc-xfce/)
 
-    * `latest` based on `ubuntu:latest` ([`Dockerfile`](https://github.com/accetto/ubuntu-vnc-xfce/blob/master/Dockerfile-base))
-    * `rolling` based on `ubuntu:rolling` ([`Dockerfile`](https://github.com/accetto/ubuntu-vnc-xfce/blob/master/Dockerfile-base_rolling))
+  * `latest` based on `ubuntu:latest` ([`Dockerfile`](https://github.com/accetto/ubuntu-vnc-xfce/blob/master/Dockerfile-base))
+  * `rolling` based on `ubuntu:rolling` ([`Dockerfile`](https://github.com/accetto/ubuntu-vnc-xfce/blob/master/Dockerfile-base_rolling))
 
-    [![](https://images.microbadger.com/badges/version/accetto/ubuntu-vnc-xfce.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/image/accetto/ubuntu-vnc-xfce.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/version/accetto/ubuntu-vnc-xfce:rolling.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce:rolling "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/image/accetto/ubuntu-vnc-xfce:rolling.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce:rolling "Get your own image badge on microbadger.com")
+    [![version badge](https://images.microbadger.com/badges/version/accetto/ubuntu-vnc-xfce.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce "Get your own version badge on microbadger.com") [![size badge](https://images.microbadger.com/badges/image/accetto/ubuntu-vnc-xfce.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce "Get your own image badge on microbadger.com") [![version badge](https://images.microbadger.com/badges/version/accetto/ubuntu-vnc-xfce:rolling.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce:rolling "Get your own version badge on microbadger.com") [![size badge](https://images.microbadger.com/badges/image/accetto/ubuntu-vnc-xfce:rolling.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce:rolling "Get your own image badge on microbadger.com")
 
 * [`accetto/ubuntu-vnc-xfce-firefox`](https://hub.docker.com/r/accetto/ubuntu-vnc-xfce-firefox/)
 
     * `latest` based on `accetto/ubuntu-vnc-xfce:latest` ([`Dockerfile`](https://github.com/accetto/ubuntu-vnc-xfce/blob/master/Dockerfile-firefox))
     * `rolling` based on `accetto/ubuntu-vnc-xfce:rolling` ([`Dockerfile`](https://github.com/accetto/ubuntu-vnc-xfce/blob/master/Dockerfile-firefox_rolling))
 
-    [![](https://images.microbadger.com/badges/version/accetto/ubuntu-vnc-xfce-firefox.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce-firefox "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/image/accetto/ubuntu-vnc-xfce-firefox.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce-firefox "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/version/accetto/ubuntu-vnc-xfce-firefox:rolling.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce-firefox:rolling "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/image/accetto/ubuntu-vnc-xfce-firefox:rolling.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce-firefox:rolling "Get your own image badge on microbadger.com")
+    [![version badge](https://images.microbadger.com/badges/version/accetto/ubuntu-vnc-xfce-firefox.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce-firefox "Get your own version badge on microbadger.com") [![size badge](https://images.microbadger.com/badges/image/accetto/ubuntu-vnc-xfce-firefox.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce-firefox "Get your own image badge on microbadger.com") [![version badge](https://images.microbadger.com/badges/version/accetto/ubuntu-vnc-xfce-firefox:rolling.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce-firefox:rolling "Get your own version badge on microbadger.com") [![size badge](https://images.microbadger.com/badges/image/accetto/ubuntu-vnc-xfce-firefox:rolling.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce-firefox:rolling "Get your own image badge on microbadger.com")
 
 ### Ports
 
@@ -58,7 +56,6 @@ All images expose the following **tcp** ports:
 * **6901** is used for access via a web browser with **HTML5** support (**noVNC**)
 
 The default VNC password is **headless**.
-
 
 ### Volumes
 
@@ -73,7 +70,6 @@ The image with Firefox adds two more mounting points:
 
 A volume mounted to the latter mounting point can be optionally pre-loaded with a pre-configured Firefox profile.
 
-
 ## Usage
 
 The base image can be used for creating headless **Ubuntu** containers with **Xfce** desktop, that are accessible via **VNC** or **noVNC**. Be aware that such containers run under the privileged **root** user by default.
@@ -82,7 +78,7 @@ The following container will not use any external volumes and it will listen on 
 
     docker run -d -p 25901:5901 -p 26901:6901 accetto/ubuntu-vnc-xfce
 
-Containers created from the image with Firefox run under the non-root user **headles:headless** by default. 
+Containers created from the image with Firefox run under the non-root user **headles:headless** by default.
 
 The following container wil create or re-use the local named volume **my\_Documents** mounted as `/headless/Documents` and the local named volume **my\_Downloads** mounted as `/headless/Downloads`. Its Firefox profile will be created or re-used on the local named volume **my_Profile** mounted as `/headless/.mozilla`. The container will be accessible via the same **tcp** ports as the one above:
 
@@ -96,17 +92,20 @@ Be aware that the folder **/share/homes/joe/download** will be created if it has
 
 ## Hints
 
-### Override  VNC password
+### Override VNC password
+
 Simply provide a value for the environment variable **VNC_PW**:
 
     docker run -d -p 25901:5901 -p 26901:6901 -e "VNC_PW=newpassword" accetto/ubuntu-vnc-xfce-firefox
-    
-### Override  VNC resolution
+
+### Override VNC resolution
+
 Simply provide a value for the environment variable **VNC\_RESOLUTION**:
 
     docker run -it -p 25901:5901 -p 26901:6901 -e VNC_RESOLUTION=800x600 accetto/ubuntu-vnc-xfce-firefox
 
-### Override  VNC user
+### Override VNC user
+
 For running a container under some new non-root user **2017:2000** use the `user` parameter of the docker `run` command. There will be some minor limitations because of the simplified configuration of such a user. Note that in this case the user must be specified numerically (as **uid** or **uid:gid**):
 
     docker run -d -p 25901:5901 -p 26901:6901 --user 2017:2000 accetto/ubuntu-vnc-xfce-firefox
@@ -115,11 +114,17 @@ The **root** user can be specified numerically or by its name (as **0**, **0:0**
 
     docker run -d -p 25901:5901 -p 26901:6901 --user root accetto/ubuntu-vnc-xfce-firefox
 
+### Override VNC blacklisting parameters
+
+The VNC parameters **BlacklistTimeout** and **BlacklistThreshold** are configurable through the build parameters and environment variables **BLACKLIST_TIMEOUT** and **BLACKLIST_THRESHOLD**. Since version **1.1.3** have these parameters default values **0** and **20**, which electively switches the built-in blacklisting off. To set them to their previous default values use:
+
+    docker run -d -p 25901:5901 -p 26901:6901 -e BLACKLIST_TIMEOUT=10 -e BLACKLIST_THRESHOLD=5 --user root accetto/ubuntu-vnc-xfce-firefox
+
 ### Use pre-configured Firefox profile
 
-Containers based on the image with Firefox can make use of the additional mounting point `/headless/.mozilla` and mount some externally accessible folder on it. It can be a local named volume (e.g. **my_Profile**) or a shared folder (e.g. **/share/homes/joe/fxprofile**). 
+Containers based on the image with Firefox can make use of the additional mounting point `/headless/.mozilla` and mount some externally accessible folder on it. It can be a local named volume (e.g. **my_Profile**) or a shared folder (e.g. **/share/homes/joe/fxprofile**).
 
-The following container uses the shared folder **/share/homes/joe/fxprofile** for the Firefox profile data: 
+The following container uses the shared folder **/share/homes/joe/fxprofile** for the Firefox profile data:
 
     docker run -d -p 25901:5901 -p 26901:6901 -v /share/homes/joe/fxprofile:/headless/.mozilla accetto/ubuntu-vnc-xfce-firefox
 
@@ -131,19 +136,19 @@ Be aware that the folder **/share/homes/joe/fxprofile** will be created if it ha
 
 ### Create image with pre-configured Firefox profile
 
-Using a simple `Dockerfile` it is easy to create a new Docker image, which will already include a pre-configured Firefox profile data. 
+Using a simple `Dockerfile` it is easy to create a new Docker image, which will already include a pre-configured Firefox profile data.
 
-You can begin by starting Firefox with parameter **P** (notice the capital 'P'). 
+You can begin by starting Firefox with parameter **P** (notice the capital 'P').
 
 For example, on Linux type the following into the terminal window:
 
-    firefox -P 
+    firefox -P
 
 On Windows type something like the following into the command prompt window:
 
     "C:\Program Files\Mozilla Firefox\firefox.exe" -P
 
-A Firefox start-up dialog will show up and you can create a fresh new Firefox profile in a folder of your choice. Then you can start Firefox with the new profile and complete its configuration. Optionally do some cleaning afterwards and copy the whole Firefox profile (the folder named **firefox**) into the working folder in which you will build the new docker image. 
+A Firefox start-up dialog will show up and you can create a fresh new Firefox profile in a folder of your choice. Then you can start Firefox with the new profile and complete its configuration. Optionally do some cleaning afterwards and copy the whole Firefox profile (the folder named **firefox**) into the working folder in which you will build the new docker image.
 
 For example, the provided [Dockerfile-firefox-profile](https://github.com/accetto/ubuntu-vnc-xfce.git) expects the Firefox profile data in the folder **./src/firefox/profile/** because it includes the following `COPY` command:
 

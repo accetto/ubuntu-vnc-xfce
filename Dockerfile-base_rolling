@@ -2,10 +2,10 @@
 
 FROM ubuntu:rolling
 
-MAINTAINER accetto
-ENV REFRESHED_AT 2018-01-06
+ENV REFRESHED_AT 2018-03-03
 
 LABEL vendor="accetto" \
+    maintainer="https://github.com/accetto" \
     any.accetto.description="Headless Ubuntu VNC/noVNC container with Xfce desktop" \
     any.accetto.display-name="Headless Ubuntu/Xfce VNC/noVNC container" \
     any.accetto.expose-services="6901:http,5901:xvnc" \
@@ -28,7 +28,9 @@ ENV \
     VNC_PORT="5901" \
     VNC_RESOLUTION="1360x768" \
     VNC_PW=$VNC_PW \
-    VNC_VIEW_ONLY=false
+    VNC_VIEW_ONLY=false \
+    VNC_BLACKLIST_TIMEOUT=0 \
+    VNC_BLACKLIST_THRESHOLD=20
   
 WORKDIR $HOME
 

@@ -2,10 +2,10 @@
 
 FROM accetto/ubuntu-vnc-xfce-firefox
 
-MAINTAINER accetto
-ENV REFRESHED_AT 2018-01-06
+ENV REFRESHED_AT 2018-03-03
 
 LABEL vendor="accetto" \
+    maintainer="https://github.com/accetto" \
     any.accetto.description="Headless Ubuntu VNC/noVNC container with Xfce desktop and Firefox with profile" \
     any.accetto.display-name="Headless Ubuntu/Xfce VNC/noVNC container with Firefox profile" \
     any.accetto.expose-services="6901:http,5901:xvnc" \

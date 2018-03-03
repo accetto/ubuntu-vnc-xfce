@@ -6,13 +6,11 @@
 
 (March 2018)
 
-* base image
-  * fix: occasional VNC Viewer connection problem ("Too many security failures")
-    * VNC parameter **BlacklistTimetout** set to **0**
-    * VNC parameter **BlacklistThreshold** set to **20**
-    * both VNC parameters configurable by new build arguments and environment variables **BLACKLIST_TIMEOUT** and **BLACKLIST_THRESHOLD**
-* image with Firefox
-  * new environment variable **VNC_USER** (configurable by already existing build argument **VNC_USER**)
+* fix: occasional VNC Viewer connection problem ("Too many security failures")
+  * VNC parameter **BlacklistTimetout** set to **0**
+  * VNC parameter **BlacklistThreshold** set to **20**
+  * both VNC parameters configurable through the new build arguments and environment variables **BLACKLIST_TIMEOUT** and **BLACKLIST_THRESHOLD**
+* image with Firefox got a new environment variable **VNC_USER** (configurable through the previously added build argument **VNC_USER**)
 
 ### Version 1.1.2
 

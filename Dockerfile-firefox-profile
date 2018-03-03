@@ -11,6 +11,15 @@ LABEL vendor="accetto" \
     any.accetto.expose-services="6901:http,5901:xvnc" \
     any.accetto.tags="ubuntu, xfce, vnc, novnc, firefox, profile"
 
+### Arguments can be provided during build
+ARG VNC_BLACKLIST_TIMEOUT=0
+ARG VNC_BLACKLIST_THRESHOLD=20
+
+### Environment config
+ENV \
+  VNC_BLACKLIST_TIMEOUT=$VNC_BLACKLIST_TIMEOUT \
+  VNC_BLACKLIST_THRESHOLD=$VNC_BLACKLIST_THRESHOLD
+
 WORKDIR $HOME
 
 ### Preseeded Firefox profile (possibly a volume)

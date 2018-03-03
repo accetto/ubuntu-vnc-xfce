@@ -14,6 +14,8 @@ LABEL vendor="accetto" \
 ### Arguments can be provided during build
 ARG HOME=/headless
 ARG VNC_PW=headless
+ARG VNC_BLACKLIST_TIMEOUT=0
+ARG VNC_BLACKLIST_THRESHOLD=20
 
 ### Environment config
 ENV \
@@ -29,9 +31,9 @@ ENV \
     VNC_RESOLUTION="1360x768" \
     VNC_PW=$VNC_PW \
     VNC_VIEW_ONLY=false \
-    VNC_BLACKLIST_TIMEOUT=0 \
-    VNC_BLACKLIST_THRESHOLD=20
-  
+    VNC_BLACKLIST_TIMEOUT=$VNC_BLACKLIST_TIMEOUT \
+    VNC_BLACKLIST_THRESHOLD=$VNC_BLACKLIST_THRESHOLD
+
 WORKDIR $HOME
 
 ### be sure to use the root user
@@ -40,7 +42,7 @@ USER 0
 ### Copy install scripts and Xfce stuff
 COPY ./src/ubuntu/install/ $INST_SCRIPTS/
 COPY ./src/xfce/ $HOME/
-  
+
 ### Install common tools, VNC, Xfce, create common folders and remove some stuff
 RUN find $INST_SCRIPTS -name '*.sh' -exec chmod a+x {} +
 RUN $INST_SCRIPTS/tools.sh \
@@ -56,7 +58,7 @@ COPY ./src/ubuntu/startup $STARTUPDIR
 RUN $INST_SCRIPTS/libnss_wrapper.sh \
     && $INST_SCRIPTS/create_user_and_fix_permissions.sh $STARTUPDIR $HOME \
     && rm $INST_SCRIPTS/*
-  
+
 ### Connection ports for controlling the UI:
 ### VNC port:5901
 ### noVNC webport, connect via http://IP:6901/?password=headless

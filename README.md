@@ -78,7 +78,7 @@ The following container will not use any external volumes and it will listen on 
 
     docker run -d -p 25901:5901 -p 26901:6901 accetto/ubuntu-vnc-xfce
 
-Containers created from the image with Firefox run under the non-root user **headles:headless** by default.
+Containers created from the image with Firefox run under the non-root user **headless:headless** by default.
 
 The following container wil create or re-use the local named volume **my\_Documents** mounted as `/headless/Documents` and the local named volume **my\_Downloads** mounted as `/headless/Downloads`. Its Firefox profile will be created or re-used on the local named volume **my_Profile** mounted as `/headless/.mozilla`. The container will be accessible via the same **tcp** ports as the one above:
 

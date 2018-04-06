@@ -98,37 +98,37 @@ Be aware that the folder **/share/homes/joe/download** will be created if it has
 
 Simply provide a value for the environment variable **VNC_PW**:
 
-    docker run -d -p 25901:5901 -p 26901:6901 -e "VNC_PW=newpassword" accetto/ubuntu-vnc-xfce-firefox
+> docker run -d -P **-e VNC_PW=newpassword** accetto/ubuntu-vnc-xfce-firefox
 
 ### Override VNC resolution
 
 Simply provide a value for the environment variable **VNC\_RESOLUTION**:
 
-    docker run -it -p 25901:5901 -p 26901:6901 -e VNC_RESOLUTION=800x600 accetto/ubuntu-vnc-xfce-firefox
+> docker run -P **-e VNC_RESOLUTION=800x600** accetto/ubuntu-vnc-xfce-firefox
 
 ### Override VNC user
 
-For running a container under some new non-root user **2017:2000** use the `user` parameter of the docker `run` command. There will be some minor limitations because of the simplified configuration of such a user. Note that in this case the user must be specified numerically (as **uid** or **uid:gid**):
+For running a container under some new non-root user **2017:2000** use the **user** parameter of the docker **run** command. There will be some minor limitations because of the simplified configuration of such a user. Note that in this case the user must be specified numerically (as **uid** or **uid:gid**):
 
-    docker run -d -p 25901:5901 -p 26901:6901 --user 2017:2000 accetto/ubuntu-vnc-xfce-firefox
+> docker run -d -P **--user 2017:2000** accetto/ubuntu-vnc-xfce-firefox
 
 The **root** user can be specified numerically or by its name (as **0**, **0:0**, **root** or **root:root**):
 
-    docker run -d -p 25901:5901 -p 26901:6901 --user root accetto/ubuntu-vnc-xfce-firefox
+> docker run -d -P **--user root** accetto/ubuntu-vnc-xfce-firefox
 
 ### Override VNC blacklist parameters
 
 The VNC parameters **BlacklistTimeout** and **BlacklistThreshold** are configurable through the build arguments and environment variables **BLACKLIST_TIMEOUT** and **BLACKLIST_THRESHOLD**. These parameters are set to **0** and **20** (since version **1.1.3**), effectively switching the built-in blacklisting off. They can be set to their previous default values using the following command:
 
-    docker run -d -p 25901:5901 -p 26901:6901 -e BLACKLIST_TIMEOUT=10 -e BLACKLIST_THRESHOLD=5 --user root accetto/ubuntu-vnc-xfce-firefox
+> docker run -d -P **-e BLACKLIST_TIMEOUT=10 -e BLACKLIST_THRESHOLD=5** accetto/ubuntu-vnc-xfce-firefox
 
 ### Use pre-configured Firefox profile
 
-Containers based on the image with Firefox can make use of the additional mounting point `/headless/.mozilla` and mount some externally accessible folder on it. It can be a local named volume (e.g. **my_Profile**) or a shared folder (e.g. **/share/homes/joe/fxprofile**).
+Containers based on the image with Firefox can make use of the additional mounting point **/headless/.mozilla** and mount some externally accessible folder on it. It can be a local named volume (e.g. **my_Profile**) or a shared folder (e.g. **/share/homes/joe/fxprofile**).
 
 The following container uses the shared folder **/share/homes/joe/fxprofile** for the Firefox profile data:
 
-    docker run -d -p 25901:5901 -p 26901:6901 -v /share/homes/joe/fxprofile:/headless/.mozilla accetto/ubuntu-vnc-xfce-firefox
+> docker run -d -P **-v /share/homes/joe/fxprofile:/headless/.mozilla** accetto/ubuntu-vnc-xfce-firefox
 
 The shared profile folder can be already pre-loaded with some pre-configured Firefox profile data or the default profile created on the first Firefox run can be overwritten afterwards. That way it is possible to quickly create containers with prefabricated web browser configurations.
 

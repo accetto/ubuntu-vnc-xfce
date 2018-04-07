@@ -27,7 +27,7 @@ The images include the following common components:
 [xfce]: http://www.xfce.org
 [tigervnc]: http://tigervnc.org
 [novnc]: https://github.com/kanaka/noVNC
-[leafpad]: http://tarot.freeshell.org/leafpad/
+[leafpad]: https://en.wikipedia.org/wiki/Leafpad
 [tightvnc]: http://www.tightvnc.com
 [firefox]: https://www.mozilla.org
 

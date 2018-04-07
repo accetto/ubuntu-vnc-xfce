@@ -13,7 +13,7 @@ The project was originally inspired by [consol/ubuntu-xfce-vnc][consol-docker-re
 
 Comparing to [ConSol][consol-docker], these images are significantly smaller because of excluded features. They are best suited for fast creation of small light-weight containers, used for testing or as throw-away web browsers. Such containers are not intended for multimedia, as any other container used remotely over VNC.
 
-[consol-docker-repo]: (https://hub.docker.com/r/consol/ubuntu-xfce-vnc/)
+[consol-docker-repo]: https://hub.docker.com/r/consol/ubuntu-xfce-vnc/
 [consol-github-repo]: https://github.com/ConSol/docker-headless-vnc-container
 [consol-docker]: https://hub.docker.com/u/consol/
 

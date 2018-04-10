@@ -1,4 +1,4 @@
-# Ubuntu/Xfce images with VNC/noVNC and Firefox
+## Ubuntu/Xfce images with VNC/noVNC and optional Firefox
 
 This repository contains resources for building Docker images based on [Ubuntu][docker-ubuntu], with **Xfce** desktops and headless **VNC**/**noVNC** environments. Images with **Firefox** browser are also included.
 
@@ -35,6 +35,10 @@ Images with Firefox have the following additional components installed:
 
 - [Firefox][firefox] Quantum web browser
 - optionally also a pre-configured Firefox profile (see [HOWTO][wiki-howto] in [wiki][wiki])
+
+The images are regularly maintained and rebuilt. The history of notable changes can be found in [CHANGELOG][changelog].
+
+[changelog]: https://github.com/accetto/ubuntu-vnc-xfce/blob/master/changelog.md
 
 ## Image set
 

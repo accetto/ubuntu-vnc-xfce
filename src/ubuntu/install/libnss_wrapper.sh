@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 ### every exit != 0 fails the script
 set -e
+set -u
 
 echo "Install nss-wrapper to be able to execute image as non-root user"
 apt-get update 

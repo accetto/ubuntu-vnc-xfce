@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 ### every exit != 0 fails the script
 set -e
+set -u
 
 echo "Install some common tools for further installation"
 apt-get update 
-apt-get install -y wget net-tools locales lsb-release
+apt-get install -y vim wget net-tools locales lsb-release \
+    python-numpy #used for websockify/novnc
 apt-get clean -y
 
 echo "generate locales for en_US.UTF-8"

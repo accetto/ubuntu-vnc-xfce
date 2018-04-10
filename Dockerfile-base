@@ -1,8 +1,8 @@
-# docker build -f Dockerfile-base -t accetto/ubuntu-vnc-xfce .
+# docker build -f Dockerfile-base -t accetto/ubuntu-vnc-xfce:latest .
 
 FROM ubuntu
 
-ENV REFRESHED_AT 2018-03-03
+ENV REFRESHED_AT 2018-04-10
 
 LABEL vendor="accetto" \
     maintainer="https://github.com/accetto" \

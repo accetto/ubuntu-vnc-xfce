@@ -1,8 +1,10 @@
 # docker build -f Dockerfile-firefox_rolling -t accetto/ubuntu-vnc-xfce-firefox:rolling .
+# docker build -f Dockerfile-firefox_rolling --build-arg VNC_USER=joe:devs -t accetto/ubuntu-vnc-xfce-firefox:rolling-joe .
+# docker build -f Dockerfile-firefox_rolling --build-arg VNC_USER=root:root -t accetto/ubuntu-vnc-xfce-firefox:rolling-root .
 
 FROM accetto/ubuntu-vnc-xfce:rolling
 
-ENV REFRESHED_AT 2018-03-03
+ENV REFRESHED_AT 2018-04-10
 
 LABEL vendor="accetto" \
     maintainer="https://github.com/accetto" \
@@ -36,7 +38,7 @@ RUN $INST_SCRIPTS/firefox.sh \
     && mkdir $HOME/Downloads \
     && mkdir $HOME/.mozilla \
     && rm $INST_SCRIPTS/*
-    
+   
 COPY ./src/ubuntu/install/create_user_and_fix_permissions.sh $INST_SCRIPTS/
 RUN find $INST_SCRIPTS -name '*.sh' -exec chmod a+x {} + 
 RUN $INST_SCRIPTS/create_user_and_fix_permissions.sh $STARTUPDIR $HOME \

@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 ### every exit != 0 fails the script
 set -e
+set -u
 
 echo "Install Xfce4 UI components"
 apt-get update 

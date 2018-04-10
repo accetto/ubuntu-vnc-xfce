@@ -1,6 +1,6 @@
-# docker build -f Dockerfile-firefox-profile -t accetto/ubuntu-vnc-xfce-firefox-profile .
+# docker build -f Dockerfile-firefox-profile_rolling -t accetto/ubuntu-vnc-xfce-firefox-profile:rolling .
 
-FROM accetto/ubuntu-vnc-xfce-firefox
+FROM accetto/ubuntu-vnc-xfce-firefox:rolling
 
 ENV REFRESHED_AT 2018-04-10
 

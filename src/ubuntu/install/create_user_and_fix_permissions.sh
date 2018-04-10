@@ -8,6 +8,7 @@
 
 ### every exit != 0 fails the script
 set -e
+#set -u     # don't!
 
 UNAME=0
 UGROUP=0

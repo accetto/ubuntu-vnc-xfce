@@ -1,9 +1,10 @@
-# docker build -f Dockerfile-firefox -t accetto/ubuntu-vnc-xfce-firefox .
-# docker build -f Dockerfile-firefox --build-arg VNC_USER=joe:devs -t accetto/ubuntu-vnc-xfce-firefox:joe .
+# docker build -f Dockerfile-firefox -t accetto/ubuntu-vnc-xfce-firefox:latest .
+# docker build -f Dockerfile-firefox --build-arg VNC_USER=joe:devs -t accetto/ubuntu-vnc-xfce-firefox:latest-joe .
+# docker build -f Dockerfile-firefox --build-arg VNC_USER=root:root -t accetto/ubuntu-vnc-xfce-firefox:latest-root .
 
 FROM accetto/ubuntu-vnc-xfce
 
-ENV REFRESHED_AT 2018-03-03
+ENV REFRESHED_AT 2018-04-10
 
 LABEL vendor="accetto" \
     maintainer="https://github.com/accetto" \

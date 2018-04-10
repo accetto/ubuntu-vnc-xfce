@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 ### every exit != 0 fails the script
 set -e
+set -u
 
 # should also source $STARTUPDIR/generate_container_user
 source $HOME/.bashrc

@@ -103,7 +103,7 @@ The image with Firefox adds two more mounting points:
 
 A volume mounted to the latter mounting point can be optionally pre-loaded with a pre-configured Firefox profile.
 
-## Usage
+## How to create containers
 
 The base image can be used for creating headless **Ubuntu** containers with **Xfce** desktops, that are accessible over **VNC** or **noVNC**. Be aware that such containers run under the privileged **root** user by default.
 
@@ -130,6 +130,40 @@ docker run -d -p 25901:5901 -p 26901:6901 -v /share/homes/joe/download:/headless
 Be aware that the folder **/share/homes/joe/download** will be created if it hasn't existed yet and that it will not be removed automatically after destroying the container. It will be also necessary to adjust the access permissions, because the folder will belong to the local account creating the container.
 
 More usage examples can be found in [wiki][wiki], especially on the [HOWTO][wiki-howto] page.
+
+## How to use containers
+
+There are currently three ways, how to use the created containers remotely.
+
+Note that the default VNC password for all three cases is **headless**.
+
+### Over VNC
+
+To be able to use the containers over **VNC**, a **VNC Viewer** is needed (e.g. [TigerVNC][tigervnc] or [TightVNC][tightvnc]).
+
+The VNC Viewer should connect to the host running the container, pointing to the host's port mapped to the container's port **5901**. 
+
+For example, if the container have been created on a host called **mynas** using the parameters described above, the VNC Viewer should connect to the URL `mynas:25901`.
+
+### Over noVNC
+
+To be able to use the containers over **noVNC**, an **HTML5** capable web browser is needed. It means, that any modern web browser can be used.
+
+The browser should navigate to the host running the container, pointing to the host's port mapped to the container's port **6901**.
+
+However, since version **1.2.0** the containers support also a **full noVNC client**, additionally to the previously supported **light noVNC client**. The connection URL differs slightly for both cases.
+
+If the container have been created on a host called **mynas** using the parameters described above, then the web browser should navigate to the following URLs:
+
+- full client: `http://mynas:26901/vnc.html`
+- light client: `http://mynas:26901/vnc_lite.html`
+
+It's also possible to provide the password like this:
+
+- full client: `http://mynas:26901/vnc.html?password=headless`
+- light client: `http://mynas:26901/vnc_lite.html?password=headless`
+
+The most convenient way is to bookmark the used URLs.
 
 ## Issues
 

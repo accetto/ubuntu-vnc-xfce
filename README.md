@@ -151,7 +151,7 @@ To be able to use the containers over **noVNC**, an **HTML5** capable web browse
 
 The browser should navigate to the host running the container, pointing to the host's port mapped to the container's port **6901**.
 
-However, since version **1.2.0** the containers support also a **full noVNC client**, additionally to the previously supported **light noVNC client**. The connection URL differs slightly for both cases.
+However, since the version **1.2.0** the containers support also the **full noVNC client**, additionally to the previously supported **light noVNC client**. The connection URL differs slightly in both cases.
 
 If the container have been created on a host called **mynas** using the parameters described above, then the web browser should navigate to the following URLs:
 

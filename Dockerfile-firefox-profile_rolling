@@ -2,7 +2,7 @@
 
 FROM accetto/ubuntu-vnc-xfce-firefox:rolling
 
-ENV REFRESHED_AT 2018-04-10
+ENV REFRESHED_AT 2018-04-15
 
 LABEL vendor="accetto" \
     maintainer="https://github.com/accetto" \
@@ -15,6 +15,8 @@ LABEL vendor="accetto" \
 ARG VNC_BLACKLIST_TIMEOUT=0
 ARG VNC_BLACKLIST_THRESHOLD=20
 
+SHELL ["/bin/bash", "-c"]
+
 ### Environment config
 ENV \
   VNC_BLACKLIST_TIMEOUT=$VNC_BLACKLIST_TIMEOUT \
@@ -22,5 +24,14 @@ ENV \
 
 WORKDIR $HOME
 
-### Preseeded Firefox profile (possibly a volume)
+### Be sure to use the root user
+USER 0
+
+### Copy the pre-configured Firefox profile
 COPY ./src/firefox/profile/ $HOME/.mozilla/
+
+### Change owner
+RUN chown -R $VNC_USER $HOME/.mozilla
+
+### Switch to the non-root user
+USER $VNC_USER

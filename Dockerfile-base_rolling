@@ -2,7 +2,7 @@
 
 FROM ubuntu:rolling
 
-ENV REFRESHED_AT 2018-04-10
+ENV REFRESHED_AT 2018-04-15
 
 LABEL vendor="accetto" \
     maintainer="https://github.com/accetto" \
@@ -16,6 +16,8 @@ ARG HOME=/headless
 ARG VNC_PW=headless
 ARG VNC_BLACKLIST_TIMEOUT=0
 ARG VNC_BLACKLIST_THRESHOLD=20
+
+SHELL ["/bin/bash", "-c"]
 
 ### Environment config
 ENV \
@@ -36,7 +38,7 @@ ENV \
 
 WORKDIR $HOME
 
-### be sure to use the root user
+### Be sure to use the root user
 USER 0
 
 ### Copy install scripts and Xfce stuff
@@ -57,7 +59,7 @@ RUN $INST_SCRIPTS/tools.sh \
 COPY ./src/ubuntu/startup $STARTUPDIR
 RUN $INST_SCRIPTS/libnss_wrapper.sh \
     && $INST_SCRIPTS/create_user_and_fix_permissions.sh $STARTUPDIR $HOME \
-    && rm $INST_SCRIPTS/*
+    && rm -r $INST_SCRIPTS
 
 ### Connection ports for controlling the UI:
 ### VNC port:5901

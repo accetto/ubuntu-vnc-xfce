@@ -1,14 +1,9 @@
-#!/usr/bin/env bash
+#!/bin/bash
 ## Creates an ordinary non-root VNC_USER and calls the script to fix the file permissions
-##!/bin/sh
-## Warning about she-bang!
-## Cannot use '/bin/sh' in Dockerfile, because the expansions are not supported.
-## Therefore it also cannot be sourced there.
-## Remark: Docker 1.12 and above support SHELL command, which could help.
 
 ### every exit != 0 fails the script
 set -e
-#set -u     # don't!
+#set -u     # don't use!
 
 UNAME=0
 UGROUP=0
@@ -31,13 +26,57 @@ if [[ -n "${VNC_USER}" ]] ; then
     fi
 fi
 
+FIXING="Fixing permissions: "
+
 for var in "$@"
 do
-    echo "fix permissions for: $var"
-    find "$var"/ -name '*.sh' -exec chmod -v a+x {} +
-    find "$var"/ -name '*.desktop' -exec chmod -v a+x {} +
+    echo "$FIXING $var"
+    find "$var"/ -name '*.sh' -exec chmod a+x {} +
+    find "$var"/ -name '*.desktop' -exec chmod a+x {} +
     
-    # 2017-12-18: Not root any more. It's assumed that the user and its group names are identical.
+    ### Not root any more. It's assumed that the user and its group names are identical.
     #chgrp -R 0 "$var" && chmod -R -v a+rw "$var" && find "$var" -type d -exec chmod -v a+x {} +
-    chgrp -R $UGROUP "$var" && chmod -R -v a+rw "$var" && find "$var" -type d -exec chmod -v a+x {} +
+    chgrp -R $UGROUP "$var" && chmod -R a+rw "$var" && find "$var" -type d -exec chmod a+x {} +
 done
+
+LIST="$HOME/Desktop $HOME/Documents $HOME/Downloads"
+for var in $LIST
+do
+    if [[ -d "$var" ]] ; then
+        echo "$FIXING $var"
+        chown -R $UNAME:$UGROUP $var
+        chmod -R 755 $var
+    fi
+done
+
+### only for image with Firefox
+MOZILLA="$HOME/.mozilla"
+FFOX="$MOZILLA/firefox"
+if [[ -d "$MOZILLA" ]] ; then
+
+    LIST="$MOZILLA $FFOX $FFOX/profile0.default"
+    for var in $LIST
+    do
+        if [[ -d "$var" ]] ; then
+            echo "$FIXING $var"
+            chown -R $UNAME:$UGROUP $var
+            chmod -R 700 $var
+        fi
+    done
+
+    var="/usr/lib/firefox/browser/defaults/preferences/all-accetto.js"
+    echo "$FIXING $var"
+    chgrp $UGROUP "$var"
+    chmod 664 "$var"
+
+    ARRA=("$FFOX/profiles.ini" "$FFOX/user.js.txt" "$FFOX/profile0.default/user.js")
+    ARRB=(644 600 600)
+    MAXI=${#ARRA[@]}
+    for (( i=0; i<=$MAXI; i++ ))
+    do
+        if [[ -f ${ARRA[$i]} ]] ; then
+            echo "$FIXING ${ARRA[$i]}"
+            chmod "${ARRB[$i]}" "${ARRA[$i]}"
+        fi
+    done
+fi

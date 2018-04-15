@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 ### every exit != 0 fails the script
 set -e
 set -u

@@ -1,10 +1,10 @@
-# docker build -f Dockerfile-firefox -t accetto/ubuntu-vnc-xfce-firefox:latest .
-# docker build -f Dockerfile-firefox --build-arg VNC_USER=joe:devs -t accetto/ubuntu-vnc-xfce-firefox:latest-joe .
-# docker build -f Dockerfile-firefox --build-arg VNC_USER=root:root -t accetto/ubuntu-vnc-xfce-firefox:latest-root .
+# docker build -f Dockerfile-firefox -t accetto/ubuntu-vnc-xfce-firefox .
+# docker build -f Dockerfile-firefox --build-arg VNC_USER=joe:devs -t joe/ubuntu-vnc-xfce-firefox .
+# docker build -f Dockerfile-firefox --build-arg VNC_USER=root:root -t root/ubuntu-vnc-xfce-firefox .
 
 FROM accetto/ubuntu-vnc-xfce
 
-ENV REFRESHED_AT 2018-04-10
+ENV REFRESHED_AT 2018-04-15
 
 LABEL vendor="accetto" \
     maintainer="https://github.com/accetto" \
@@ -18,6 +18,8 @@ ARG VNC_USER=headless:headless
 ARG VNC_BLACKLIST_TIMEOUT=0
 ARG VNC_BLACKLIST_THRESHOLD=20
 
+SHELL ["/bin/bash", "-c"]
+
 ### Environment config
 ENV \
   VNC_USER=$VNC_USER \
@@ -26,23 +28,23 @@ ENV \
 
 WORKDIR $HOME
 
-### be sure to use the root user
+### Be sure to use the root user
 USER 0
 
 ### Install Firefox browser
 COPY ./src/firefox/install/ $INST_SCRIPTS/
 COPY ./src/firefox/Desktop/firefox.desktop $HOME/Desktop/
 RUN find $INST_SCRIPTS -name '*.sh' -exec chmod a+x {} + 
-RUN $INST_SCRIPTS/firefox.sh \
-    && chmod +x $HOME/Desktop/firefox.desktop \
-    && mkdir $HOME/Downloads \
+RUN mkdir $HOME/Downloads \
     && mkdir $HOME/.mozilla \
+    && chmod +x $HOME/Desktop/firefox.desktop \
+    && $INST_SCRIPTS/firefox.sh \
     && rm $INST_SCRIPTS/*
     
 COPY ./src/ubuntu/install/create_user_and_fix_permissions.sh $INST_SCRIPTS/
 RUN find $INST_SCRIPTS -name '*.sh' -exec chmod a+x {} + 
 RUN $INST_SCRIPTS/create_user_and_fix_permissions.sh $STARTUPDIR $HOME \
-    && rm $INST_SCRIPTS/* 
+    && rm -r $INST_SCRIPTS
 
-### switch to the non-root user
+### Switch to the non-root user
 USER $VNC_USER

@@ -1,4 +1,4 @@
-## Ubuntu/Xfce images with VNC/noVNC and optional Firefox
+# Ubuntu/Xfce images with VNC/noVNC and optional Firefox
 
 This repository contains resources for building Docker images based on [Ubuntu][docker-ubuntu], with **Xfce** desktops and headless **VNC**/**noVNC** environments. Images with **Firefox** browser are also included.
 
@@ -66,22 +66,22 @@ The images are regularly maintained and rebuilt. The history of notable changes 
 [accetto-dockerfile-vnc-firefox-latest]: https://github.com/accetto/ubuntu-vnc-xfce/blob/master/Dockerfile-firefox
 [accetto-dockerfile-vnc-firefox-rolling]: https://github.com/accetto/ubuntu-vnc-xfce/blob/master/Dockerfile-firefox_rolling
 [accetto-dockerfile-vnc-firefox-profile]: https://github.com/accetto/ubuntu-vnc-xfce/blob/master/Dockerfile-firefox-profile
-   
+
 ## Supported tags and respective `Dockerfile` links
 
 The following images are regularly built:
 
 - [`accetto/ubuntu-vnc-xfce`][acceto-docker-vnc-base]
 
-    - `latest` based on `ubuntu:latest` ([`Dockerfile`][acceto-dockerfile-vnc-base-latest])
-    - `rolling` based on `ubuntu:rolling` ([`Dockerfile`][acceto-dockerfile-vnc-base-rolling])
+  - `latest` based on `ubuntu:latest` ([`Dockerfile`][acceto-dockerfile-vnc-base-latest])
+  - `rolling` based on `ubuntu:rolling` ([`Dockerfile`][acceto-dockerfile-vnc-base-rolling])
 
     [![version badge](https://images.microbadger.com/badges/version/accetto/ubuntu-vnc-xfce.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce "Get your own version badge on microbadger.com") [![size badge](https://images.microbadger.com/badges/image/accetto/ubuntu-vnc-xfce.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce "Get your own image badge on microbadger.com") [![version badge](https://images.microbadger.com/badges/version/accetto/ubuntu-vnc-xfce:rolling.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce:rolling "Get your own version badge on microbadger.com") [![size badge](https://images.microbadger.com/badges/image/accetto/ubuntu-vnc-xfce:rolling.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce:rolling "Get your own image badge on microbadger.com")
 
 - [`accetto/ubuntu-vnc-xfce-firefox`][accetto-docker-vnc-firefox]
 
-    - `latest` based on `accetto/ubuntu-vnc-xfce:latest` ([`Dockerfile`][accetto-dockerfile-vnc-firefox-latest])
-    - `rolling` based on `accetto/ubuntu-vnc-xfce:rolling` ([`Dockerfile`][accetto-dockerfile-vnc-firefox-rolling])
+  - `latest` based on `accetto/ubuntu-vnc-xfce:latest` ([`Dockerfile`][accetto-dockerfile-vnc-firefox-latest])
+  - `rolling` based on `accetto/ubuntu-vnc-xfce:rolling` ([`Dockerfile`][accetto-dockerfile-vnc-firefox-rolling])
 
     [![version badge](https://images.microbadger.com/badges/version/accetto/ubuntu-vnc-xfce-firefox.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce-firefox "Get your own version badge on microbadger.com") [![size badge](https://images.microbadger.com/badges/image/accetto/ubuntu-vnc-xfce-firefox.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce-firefox "Get your own image badge on microbadger.com") [![version badge](https://images.microbadger.com/badges/version/accetto/ubuntu-vnc-xfce-firefox:rolling.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce-firefox:rolling "Get your own version badge on microbadger.com") [![size badge](https://images.microbadger.com/badges/image/accetto/ubuntu-vnc-xfce-firefox:rolling.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce-firefox:rolling "Get your own image badge on microbadger.com")
 
@@ -113,7 +113,7 @@ The base image can be used for creating headless **Ubuntu** containers with **Xf
 
 The following container will not use any external volumes and it will listen on the **TCP** ports **25901** (VNC) and **26901** (noVNC):
 
-```
+```docker
 docker run -d -p 25901:5901 -p 26901:6901 accetto/ubuntu-vnc-xfce
 ```
 
@@ -121,13 +121,13 @@ Containers created from the image with Firefox run under the non-root user **hea
 
 The following container wil create or re-use the local named volume **my\_Documents** mounted as `/headless/Documents` and the local named volume **my\_Downloads** mounted as `/headless/Downloads`. Its Firefox profile will be created or re-used on the local named volume **my_Profile** mounted as `/headless/.mozilla`. The container will be accessible through the same **TCP** ports as the one above:
 
-```
+```docker
 docker run -d -p 25901:5901 -p 26901:6901 -v my_Documents:/headless/Documents -v my_Downloads:/headless/Downloads -v my_Profile:/headless/.mozilla accetto/ubuntu-vnc-xfce-firefox
 ```
 
 The following container will use the shared folder **/share/homes/joe/download** mounted as `/headless/Downloads` and it will be accessible through the same **TCP** ports:
 
-```    
+```docker
 docker run -d -p 25901:5901 -p 26901:6901 -v /share/homes/joe/download:/headless/Downloads accetto/ubuntu-vnc-xfce-firefox
 ```
 

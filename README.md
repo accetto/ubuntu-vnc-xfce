@@ -131,7 +131,7 @@ The following container will use the shared folder **/share/homes/joe/download**
 docker run -d -p 25901:5901 -p 26901:6901 -v /share/homes/joe/download:/headless/Downloads accetto/ubuntu-vnc-xfce-firefox
 ```
 
-Be aware that the folder **/share/homes/joe/download** will be created if it hasn't existed yet and that it will not be removed automatically after destroying the container. It will be also necessary to adjust the access permissions, because the folder will belong to the local account creating the container.
+Be aware that the folder **/share/homes/joe/download** will be created if it hasn't existed yet and that it will not be removed automatically after destroying the container. It will also be necessary to adjust the access permissions, because the folder will belong to the local account creating the container.
 
 More usage examples can be found in the project [Wiki][wiki], especially on the [HOWTO][wiki-howto] page.
 

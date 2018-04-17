@@ -9,13 +9,13 @@ The images have been tested also with [Container Station][container-station] on 
 [container-station]: https://www.qnap.com/solution/container_station/en/
 [qnap]: https://www.qnap.com/en/
 
-The project was originally inspired by [consol/ubuntu-xfce-vnc][consol-docker-repo] image and derived from [ConSol/docker-headless-vnc-container][consol-github-repo] repository.
+The project was originally inspired by [consol/ubuntu-xfce-vnc][consol-docker-repo] image and derived from [ConSol/docker-headless-vnc-container][consol-github-repo] repository. However, there are significant differences in between.
 
-Comparing to [ConSol][consol-docker], these images are smaller because of excluded features like, for example, Chromium browser or IceWM as alternative UI. On the other hand they include some other additional features and the current version of Firefox browser.
+Comparing to [ConSol][consol-docker], these images are smaller because of excluded features, like Chromium browser or IceWM alternative UI. On the other hand, they include some other additional features and the current version of Firefox browser with security patches.
 
-The base images are best suited for light-weight [Ubuntu][docker-ubuntu] containers, used for learning, testing or development.
+The base images (see below) are best suited for light-weight [Ubuntu][docker-ubuntu] containers, used for learning, testing or development.
 
-The images with Firefox are perfect for fast creation of secure web browser containers, that could be easily thrown away and replaced for improved privacy. Means for repeatedly used pre-configurations are also included (see [wiki][wiki]).
+The images with Firefox are perfect for fast creation of secure web browser containers. They can be thrown away easily and replaced quickly, providing much better browsing privacy. They make also excellent long-term browsers, combining the best of both worlds by including pre-configuration support. Check the project [Wiki][wiki] for more details.
 
 [consol-docker-repo]: https://hub.docker.com/r/consol/ubuntu-xfce-vnc/
 [consol-github-repo]: https://github.com/ConSol/docker-headless-vnc-container
@@ -38,7 +38,7 @@ The images include the following common components:
 Images with Firefox have the following additional components installed:
 
 - [Firefox][firefox] Quantum web browser
-- optionally also a pre-configured Firefox profile (see [HOWTO][wiki-howto] in [wiki][wiki])
+- optionally also a pre-configured Firefox profile (see [HOWTO][wiki-howto] in [Wiki][wiki])
 
 The images are regularly maintained and rebuilt. The history of notable changes can be found in [CHANGELOG][changelog].
 
@@ -52,11 +52,11 @@ The images are regularly maintained and rebuilt. The history of notable changes 
 
 - [`accetto/ubuntu-vnc-xfce-firefox`][accetto-docker-vnc-firefox]
 
-    This image is based on the one above and it adds **Firefox** web browser. It runs under a non-root user **headless:headless** by default. The often used Firefox preferences can be put into the included **user.js** file, which can be freely edited also by the non-root user (see [wiki][wiki]).
+    This image is based on the one above and it adds **Firefox** web browser. It runs under a non-root user **headless:headless** by default. The often used Firefox preferences can be put into the included **user.js** file, which can be freely edited also by the non-root user (see the project [Wiki][wiki] for more details).
 
 - `accetto/ubuntu-vnc-xfce-firefox-preferences`, `accetto/ubuntu-vnc-xfce-firefox-profile`
 
-    These optional images are based on the one above and they add pre-configured **Firefox preferences** or even a complete **Firefox profile**. The images are not actually contained in the Docker repository as a pre-built images, but the [GitHub repository][accetto-github] includes the ready-to-use [Dockerfiles][accetto-github-extras] for creating them. The [HOWTO][wiki-howto] page in [wiki][wiki] explains how to do it.
+    These optional images are based on the one above and they add pre-configured **Firefox preferences** or even a complete **Firefox profile**. The images are not actually contained in the Docker repository as a pre-built images, but the [GitHub repository][accetto-github] includes the ready-to-use [Dockerfiles][accetto-github-extras] for creating them. The [HOWTO][wiki-howto] page in [Wiki][wiki] explains how to do it.
 
 [acceto-docker-vnc-base]: https://hub.docker.com/r/accetto/ubuntu-vnc-xfce/
 [accetto-docker-vnc-firefox]: https://hub.docker.com/r/accetto/ubuntu-vnc-xfce-firefox/
@@ -133,7 +133,7 @@ docker run -d -p 25901:5901 -p 26901:6901 -v /share/homes/joe/download:/headless
 
 Be aware that the folder **/share/homes/joe/download** will be created if it hasn't existed yet and that it will not be removed automatically after destroying the container. It will be also necessary to adjust the access permissions, because the folder will belong to the local account creating the container.
 
-More usage examples can be found in [wiki][wiki], especially on the [HOWTO][wiki-howto] page.
+More usage examples can be found in the project [Wiki][wiki], especially on the [HOWTO][wiki-howto] page.
 
 ## How to use the containers
 

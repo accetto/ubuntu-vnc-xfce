@@ -7,11 +7,12 @@
 (April 2018)
 
 - Handling of Firefox profiles has been redesigned
-  - Folder **profile0.default** for the default Firefox profile has been pre-created and initialized with the file **user.js**, which includes the fix of the issue #2 (see version 1.2.0).
-  - The actual Firefox profile is creted on the first Firefox start.
-  - User can modify the **user.js** file and the whole profile.
+  - The folder **profile0.default** for the default Firefox profile has been pre-created and initialized with the **user.js** file, which includes the fix of the issue #2 (see the version 1.2.0).
+  - The actual Firefox profile is created on the first Firefox start.
+  - The non-root **VNC user** got permissions to modify the **user.js** file and the whole profile.
   - The backup copy **user.js.txt** is in the folder **/headless/.mozilla/firefox**, so the default profile can be safely deleted.
-- In the images with Firefox is the VNC user (**headless:headless** by default) the owner of the most folders created in his home folder **/headless**.
+- In the images with Firefox is the non-root **VNC user** (**headless:headless** by default) the owner of the most folders created in his home folder **/headless**.
+- File permissions have been sorted-out.
 
 ### Version 1.2.0
 

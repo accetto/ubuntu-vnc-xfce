@@ -1,71 +1,44 @@
-# Ubuntu/Xfce images with VNC/noVNC and optional Firefox
+# Ubuntu/Xfce images with headless VNC/noVNC and customizable Firefox
 
-This repository contains resources for building Docker images based on [Ubuntu][docker-ubuntu], with **Xfce** desktops and headless **VNC**/**noVNC** environments. Images with **Firefox** browser are also included.
+This repository contains resources for building Docker images based on [Ubuntu][docker-ubuntu], with **Xfce** desktops and headless **VNC**/**noVNC** environments. Resources for building images with customizable **Firefox** browser are included as well.
 
-[docker-ubuntu]: https://hub.docker.com/_/ubuntu/
+These images can be also built and used on NAS devices. They
+have been successfully tested with [Container Station][container-station] from [QNAP][qnap].
 
-The images have been tested also with [Container Station][container-station] on NAS devices from [QNAP][qnap].
+The base images (see [below](#user-content-image-set)) are best suited for creating headless [Ubuntu][docker-ubuntu] containers, used for learning, testing or development.
 
-[container-station]: https://www.qnap.com/solution/container_station/en/
-[qnap]: https://www.qnap.com/en/
+The images with [Firefox](firefox) are perfect for fast creation of secure and light-weight web browser containers. They can be thrown away easily and replaced quickly, improving browsing privacy. They make also excellent long-term browsers, because the browser preferences and profiles can be easily pre-configured and stored outside the containers. Check the project [Wiki][wiki] for more details.
 
-The project was originally inspired by [consol/ubuntu-xfce-vnc][consol-docker-repo] image and derived from [ConSol/docker-headless-vnc-container][consol-github-repo] repository. However, there are significant differences in between.
-
-Comparing to [ConSol][consol-docker], these images are smaller because of excluded features, like Chromium browser or IceWM alternative UI. On the other hand, they include some other additional features and the current version of Firefox browser with security patches.
-
-The base images (see below) are best suited for light-weight [Ubuntu][docker-ubuntu] containers, used for learning, testing or development.
-
-The images with Firefox are perfect for fast creation of secure web browser containers. They can be thrown away easily and replaced quickly, providing much better browsing privacy. They make also excellent long-term browsers, combining the best of both worlds by including pre-configuration support. Check the project [Wiki][wiki] for more details.
-
-[consol-docker-repo]: https://hub.docker.com/r/consol/ubuntu-xfce-vnc/
-[consol-github-repo]: https://github.com/ConSol/docker-headless-vnc-container
-[consol-docker]: https://hub.docker.com/u/consol/
-
-The images include the following common components:
+All images include the following common components
 
 - Light-weight [Xfce][xfce] desktop environment
 - High-performance VNC server [TigerVNC][tigervnc] (TCP port **5901**)
-- HTML5 VNC client [noVNC][novnc] (TCP port **6901**)
+- HTML5 [noVNC][novnc] clients (full and light) (TCP port **6901**)
 - Light-weight graphical editor [leafpad][leafpad]
+- Popular text editor [vim][vim]
 
-[xfce]: http://www.xfce.org
-[tigervnc]: http://tigervnc.org
-[novnc]: https://github.com/kanaka/noVNC
-[leafpad]: https://en.wikipedia.org/wiki/Leafpad
-[tightvnc]: http://www.tightvnc.com
-[firefox]: https://www.mozilla.org
+Images with Firefox add the following
 
-Images with Firefox have the following additional components installed:
+- Current [Firefox][firefox] Quantum web browser
+- Support for pre-configured Firefox preferences or profiles (see [HOWTO][wiki-howto] in [Wiki][wiki])
 
-- [Firefox][firefox] Quantum web browser
-- optionally also a pre-configured Firefox profile (see [HOWTO][wiki-howto] in [Wiki][wiki])
+The images are regularly maintained and rebuilt. The history of notable changes is documented in [CHANGELOG][accetto-github-changelog].
 
-The images are regularly maintained and rebuilt. The history of notable changes can be found in [CHANGELOG][changelog].
-
-[changelog]: https://github.com/accetto/ubuntu-vnc-xfce/blob/master/changelog.md
+This project has been originally inspired by the [consol/ubuntu-xfce-vnc][consol-docker-repo] image and its [ConSol/docker-headless-vnc-container][consol-github-repo] repository.
 
 ## Image set
 
 - [`accetto/ubuntu-vnc-xfce`][acceto-docker-vnc-base]
 
-    This is the base **Ubuntu** image with **Xfce** desktop and **VNC/nonVNC** headless environments. Containers created from this image are accessible over VNC using a **VNC Viewer** (e.g. [TigerVNC][tigervnc]] or [TightVNC][tightvnc]) or directly from a web browser over **noVNC**. Any web browser with HTML5 support will do. It should be noticed, that these containers do not include any web browser and that they run under the privileged **root** user by default. However, the graphical editor **leafpad** is already included.
+    This is the base **Ubuntu** image with **Xfce** desktop and **VNC/nonVNC** headless environments. Containers created from this image are accessible over VNC using a **VNC Viewer** (e.g. [TigerVNC][tigervnc]] or [TightVNC][tightvnc]) or directly from a web browser over **noVNC**. Any web browser with HTML5 support can be used. It should be noticed, that these containers do not include any web browser and that they run under the privileged **root** user by default. However, the graphical editor [leafpad](leafpad) and the text editor [vim](vim) are already included.
 
 - [`accetto/ubuntu-vnc-xfce-firefox`][accetto-docker-vnc-firefox]
 
-    This image is based on the one above and it adds **Firefox** web browser. It runs under a non-root user **headless:headless** by default. The often used Firefox preferences can be put into the included **user.js** file, which can be freely edited also by the non-root user (see the project [Wiki][wiki] for more details).
+    This image is based on the one above and it adds **Firefox** web browser. It runs under a non-root **VNC user** by default. The frequently used Firefox preferences can be put into the included **user.js** file, which can be fully edited by the non-root **VNC user** (see the project [Wiki][wiki] for more details).
 
 - `accetto/ubuntu-vnc-xfce-firefox-preferences`, `accetto/ubuntu-vnc-xfce-firefox-profile`
 
-    These optional images are based on the one above and they add pre-configured **Firefox preferences** or even a complete **Firefox profile**. The images are not actually contained in the Docker repository as a pre-built images, but the [GitHub repository][accetto-github] includes the ready-to-use [Dockerfiles][accetto-github-extras] for creating them. The [HOWTO][wiki-howto] page in [Wiki][wiki] explains how to do it.
-
-[acceto-docker-vnc-base]: https://hub.docker.com/r/accetto/ubuntu-vnc-xfce/
-[accetto-docker-vnc-firefox]: https://hub.docker.com/r/accetto/ubuntu-vnc-xfce-firefox/
-
-[acceto-dockerfile-vnc-base-latest]: https://github.com/accetto/ubuntu-vnc-xfce/blob/master/Dockerfile-base
-[acceto-dockerfile-vnc-base-rolling]: https://github.com/accetto/ubuntu-vnc-xfce/blob/master/Dockerfile-base_rolling
-[accetto-dockerfile-vnc-firefox-latest]: https://github.com/accetto/ubuntu-vnc-xfce/blob/master/Dockerfile-firefox
-[accetto-dockerfile-vnc-firefox-rolling]: https://github.com/accetto/ubuntu-vnc-xfce/blob/master/Dockerfile-firefox_rolling
-[accetto-dockerfile-vnc-firefox-profile]: https://github.com/accetto/ubuntu-vnc-xfce/blob/master/Dockerfile-firefox-profile
+    These optional images are based on the one above and they add pre-configured **Firefox preferences** or a complete **Firefox profile**. The images are not actually contained in the Docker repository as a pre-built images, but the [GitHub repository][accetto-github] includes the ready-to-use [Dockerfiles][accetto-github-extras] to build them yourself. The [HOWTO][wiki-howto] page in [Wiki][wiki] explains how to do it.
 
 ## Supported tags and respective `Dockerfile` links
 
@@ -175,7 +148,19 @@ If you have a problem or a question, please check the repository [Issues][accett
 
 If you do not find a solution, you can file a new issue. The better you describe the problem, the bigger the chance it'll be solved soon.
 
+([accetto](accetto-docker), April 2018)
+
+[accetto-docker]: https://hub.docker.com/u/accetto/
+[acceto-docker-vnc-base]: https://hub.docker.com/r/accetto/ubuntu-vnc-xfce/
+[accetto-docker-vnc-firefox]: https://hub.docker.com/r/accetto/ubuntu-vnc-xfce-firefox/
+[acceto-dockerfile-vnc-base-latest]: https://github.com/accetto/ubuntu-vnc-xfce/blob/master/Dockerfile-base
+[acceto-dockerfile-vnc-base-rolling]: https://github.com/accetto/ubuntu-vnc-xfce/blob/master/Dockerfile-base_rolling
+[accetto-dockerfile-vnc-firefox-latest]: https://github.com/accetto/ubuntu-vnc-xfce/blob/master/Dockerfile-firefox
+[accetto-dockerfile-vnc-firefox-rolling]: https://github.com/accetto/ubuntu-vnc-xfce/blob/master/Dockerfile-firefox_rolling
+[accetto-dockerfile-vnc-firefox-profile]: https://github.com/accetto/ubuntu-vnc-xfce/blob/master/Dockerfile-firefox-profile
+
 [accetto-github]: https://github.com/accetto/ubuntu-vnc-xfce
+[accetto-github-changelog]: https://github.com/accetto/ubuntu-vnc-xfce/blob/master/changelog.md
 [accetto-github-extras]: https://github.com/accetto/ubuntu-vnc-xfce/extras
 [accetto-github-issues]: https://github.com/accetto/ubuntu-vnc-xfce/issues
 
@@ -183,3 +168,20 @@ If you do not find a solution, you can file a new issue. The better you describe
 [wiki-howto]: https://github.com/accetto/ubuntu-vnc-xfce/wiki/How-to
 [wiki-troubleshooting]: https://github.com/accetto/ubuntu-vnc-xfce/wiki/Troubleshooting
 [wiki-faq]: https://github.com/accetto/ubuntu-vnc-xfce/wiki/Frequently-asked-questions
+
+[docker-ubuntu]: https://hub.docker.com/_/ubuntu/
+
+[xfce]: http://www.xfce.org
+[tigervnc]: http://tigervnc.org
+[novnc]: https://github.com/kanaka/noVNC
+[leafpad]: https://en.wikipedia.org/wiki/Leafpad
+[tightvnc]: http://www.tightvnc.com
+[firefox]: https://www.mozilla.org
+[vim]: https://www.vim.org/
+
+[consol-docker-repo]: https://hub.docker.com/r/consol/ubuntu-xfce-vnc/
+[consol-github-repo]: https://github.com/ConSol/docker-headless-vnc-container
+[consol-docker]: https://hub.docker.com/u/consol/
+
+[qnap]: https://www.qnap.com/en/
+[container-station]: https://www.qnap.com/solution/container_station/en/

@@ -40,7 +40,7 @@ The images are regularly maintained and rebuilt. The history of notable changes 
 
 - `accetto/ubuntu-vnc-xfce-firefox-preferences`, `accetto/ubuntu-vnc-xfce-firefox-profile`
 
-    These optional images are based on the one above and they add pre-configured **Firefox preferences** or a complete **Firefox profile**. They are not actually contained in the [Docker repository](acceto-docker) in the form of pre-built images, but the [GitHub repository][accetto-github] includes the ready-to-use [Dockerfiles][accetto-github-extras] to build them yourself. The [HOWTO][wiki-howto] page in [Wiki][wiki] explains how to do it.
+    These optional images are based on the one above and they add pre-configured **Firefox preferences** or a complete **Firefox profile**. They are not actually contained in the [Docker repository](accetto-docker) in the form of pre-built images, but the [GitHub repository][accetto-github] includes the ready-to-use [Dockerfiles][accetto-github-extras] to build them yourself. The [HOWTO][wiki-howto] page in [Wiki][wiki] explains how to do it.
 
 ## Supported tags and respective `Dockerfile` links
 

@@ -1,48 +1,48 @@
-# Ubuntu/Xfce images with headless VNC/noVNC and customizable Firefox
+# Headless Ubuntu/Xfce with VNC/noVNC and customizable Firefox
 
-This repository contains resources for building Docker images based on [Ubuntu][docker-ubuntu], with **Xfce** desktops and headless **VNC**/**noVNC** environments. Resources for building images with customizable **Firefox** browser are included as well.
+This repository contains resources for building Docker images based on [Ubuntu][docker-ubuntu], with [Xfce](xfce) desktops and headless **VNC**/[noVNC](novnc) environments. Resources for building images with customizable [Firefox](firefox) browser are included as well.
 
-These images can be also built and used on NAS devices. They
-have been successfully tested with [Container Station][container-station] from [QNAP][qnap].
+These images can be successfully built and used on NAS devices. They
+have been tested with [Container Station][container-station] from [QNAP][qnap].
 
 The base images (see [below](#user-content-image-set)) are best suited for creating headless [Ubuntu][docker-ubuntu] containers, used for learning, testing or development.
 
-The images with [Firefox](firefox) are perfect for fast creation of secure and light-weight web browser containers. They can be thrown away easily and replaced quickly, improving browsing privacy. They make also excellent long-term browsers, because the browser preferences and profiles can be easily pre-configured and stored outside the containers. Check the project [Wiki][wiki] for more details.
+The images with [Firefox](firefox) are perfect for fast creation of secure and light-weight web browser containers. They can be thrown away easily and replaced quickly, improving user's browsing privacy. 
 
-All images include the following common components
+They make also excellent long-term browsers, because the preferences and profiles can be easily pre-configured and stored on external volumes that survive container destruction. 
 
-- Light-weight [Xfce][xfce] desktop environment
-- High-performance VNC server [TigerVNC][tigervnc] (TCP port **5901**)
-- HTML5 [noVNC][novnc] clients (full and light) (TCP port **6901**)
-- Light-weight graphical editor [leafpad][leafpad]
-- Popular text editor [vim][vim]
+Frequently used preferences and profiles can be also embedded into images themselves, for even faster creation of pre-configured browsers. Check the project [Wiki][wiki] for more details.
 
-Images with Firefox add the following
+All images share the following common components
 
-- Current [Firefox][firefox] Quantum web browser
-- Support for pre-configured Firefox preferences or profiles (see [HOWTO][wiki-howto] in [Wiki][wiki])
+- light-weight [Xfce][xfce] desktop environment
+- high-performance VNC server [TigerVNC][tigervnc] (TCP port **5901**)
+- [noVNC][novnc] HTML5 clients (full and light ones) (TCP port **6901**)
+- light-weight graphical editor [leafpad][leafpad]
+- popular text editor [vim][vim]
+
+Images with Firefox add the following features
+
+- current [Firefox][firefox] Quantum web browser
+- support for pre-configured Firefox preferences and profiles
 
 The images are regularly maintained and rebuilt. The history of notable changes is documented in [CHANGELOG][accetto-github-changelog].
-
-This project has been originally inspired by the [consol/ubuntu-xfce-vnc][consol-docker-repo] image and its [ConSol/docker-headless-vnc-container][consol-github-repo] repository.
 
 ## Image set
 
 - [`accetto/ubuntu-vnc-xfce`][acceto-docker-vnc-base]
 
-    This is the base **Ubuntu** image with **Xfce** desktop and **VNC/nonVNC** headless environments. Containers created from this image are accessible over VNC using a **VNC Viewer** (e.g. [TigerVNC][tigervnc]] or [TightVNC][tightvnc]) or directly from a web browser over **noVNC**. Any web browser with HTML5 support can be used. It should be noticed, that these containers do not include any web browser and that they run under the privileged **root** user by default. However, the graphical editor [leafpad](leafpad) and the text editor [vim](vim) are already included.
+    This is the base [Ubuntu](docker-ubuntu) image with [Xfce](xfce) desktop and **VNC**/[nonVNC](novnc) headless environments. Containers created from this image are accessible over VNC using a **VNC Viewer** (e.g. [TigerVNC][tigervnc]] or [TightVNC][tightvnc]) or directly from a web browser over [noVNC](novnc). Any web browser supporting HTML5 can be used. It should be noticed, that these containers do not include any web browser and that they run under the privileged **root** user by default. However, the graphical editor [leafpad](leafpad) and the text editor [vim](vim) are already included.
 
 - [`accetto/ubuntu-vnc-xfce-firefox`][accetto-docker-vnc-firefox]
 
-    This image is based on the one above and it adds **Firefox** web browser. It runs under a non-root **VNC user** by default. The frequently used Firefox preferences can be put into the included **user.js** file, which can be fully edited by the non-root **VNC user** (see the project [Wiki][wiki] for more details).
+    This image is based on the one above and it adds **Firefox** web browser. It runs under a non-root **VNC user** by default. The frequently used Firefox preferences can be put into the included file **user.js**, which can be edited or deleted by the non-root **VNC user** (see the project [Wiki][wiki] for more details).
 
 - `accetto/ubuntu-vnc-xfce-firefox-preferences`, `accetto/ubuntu-vnc-xfce-firefox-profile`
 
-    These optional images are based on the one above and they add pre-configured **Firefox preferences** or a complete **Firefox profile**. The images are not actually contained in the Docker repository as a pre-built images, but the [GitHub repository][accetto-github] includes the ready-to-use [Dockerfiles][accetto-github-extras] to build them yourself. The [HOWTO][wiki-howto] page in [Wiki][wiki] explains how to do it.
+    These optional images are based on the one above and they add pre-configured **Firefox preferences** or a complete **Firefox profile**. They are not actually contained in the [Docker repository](acceto-docker) in the form of pre-built images, but the [GitHub repository][accetto-github] includes the ready-to-use [Dockerfiles][accetto-github-extras] to build them yourself. The [HOWTO][wiki-howto] page in [Wiki][wiki] explains how to do it.
 
 ## Supported tags and respective `Dockerfile` links
-
-The following images are regularly built:
 
 - [`accetto/ubuntu-vnc-xfce`][acceto-docker-vnc-base]
 
@@ -62,10 +62,10 @@ The following images are regularly built:
 
 All images expose the following **TCP** ports:
 
-- **5901** is used for access over **VNC**
-- **6901** is used for access over **noVNC**
+- **5901** used for access over **VNC**
+- **6901** used for access over [noVNC](novnc)
 
-The default VNC password is **headless**.
+The default **VNC user** password is **headless**.
 
 ### Volumes
 
@@ -73,7 +73,7 @@ The images do not create or use any external volumes by default. However, the fo
 
 - `/headless/Documents`
 
-The image with Firefox adds two more mounting points:
+The images with [Firefox](firefox) add two more mounting points:
 
 - `/headless/Downloads`
 - `/headless/.mozilla`
@@ -82,15 +82,15 @@ A volume mounted to the latter mounting point can be optionally pre-loaded with 
 
 ## How to create containers
 
-The base image can be used for creating headless **Ubuntu** containers with **Xfce** desktops, that are accessible over **VNC** or **noVNC**. Be aware that such containers run under the privileged **root** user by default.
+The base image can be used for creating headless [Ubuntu](docker-ubuntu) containers with [Xfce](xfce) desktops, that are accessible over **VNC** or [noVNC](novnc). Be aware that such containers run under the privileged **root** user by default.
 
-The following container will not use any external volumes and it will listen on the **TCP** ports **25901** (VNC) and **26901** (noVNC):
+The following container will not use any external volumes and it will listen on the host's **TCP** ports **25901** (VNC) and **26901** (noVNC):
 
 ```docker
 docker run -d -p 25901:5901 -p 26901:6901 accetto/ubuntu-vnc-xfce
 ```
 
-Containers created from the image with Firefox run under the non-root user **headless:headless** by default.
+Containers created from the image with [Firefox](firefox) run under the non-root user **headless:headless** by default.
 
 The following container wil create or re-use the local named volume **my\_Documents** mounted as `/headless/Documents` and the local named volume **my\_Downloads** mounted as `/headless/Downloads`. Its Firefox profile will be created or re-used on the local named volume **my_Profile** mounted as `/headless/.mozilla`. The container will be accessible through the same **TCP** ports as the one above:
 
@@ -104,38 +104,38 @@ The following container will use the shared folder **/share/homes/joe/download**
 docker run -d -p 25901:5901 -p 26901:6901 -v /share/homes/joe/download:/headless/Downloads accetto/ubuntu-vnc-xfce-firefox
 ```
 
-Be aware that the folder **/share/homes/joe/download** will be created if it hasn't existed yet and that it will not be removed automatically after destroying the container. It will also be necessary to adjust the access permissions, because the folder will belong to the local account creating the container.
+Be aware that the folder **/share/homes/joe/download** will be automatically created if it hasn't existed yet and that it will not be removed automatically after destroying the container. It will be also necessary to adjust its access permissions, because the folder will belong to the host's account creating the container.
 
-More usage examples can be found in the project [Wiki][wiki], especially on the [HOWTO][wiki-howto] page.
+More usage examples can be found in the project's [Wiki][wiki], especially on the [HOWTO][wiki-howto] page.
 
-## How to use the containers
+## How to use headless containers
 
-There are currently three ways, how to use the created containers remotely.
+There are currently three ways, how to use the created headless containers.
 
-Note that the default VNC password for all three cases is **headless**.
+Note that the default **VNC user** password for all three cases is **headless**.
 
 ### Over VNC
 
 To be able to use the containers over **VNC**, a **VNC Viewer** is needed (e.g. [TigerVNC][tigervnc] or [TightVNC][tightvnc]).
 
-The VNC Viewer should connect to the host running the container, pointing to the host's port mapped to the container's port **5901**. 
+The VNC Viewer should connect to the host running the container, pointing to the host's TCP port mapped to the container's TCP port **5901**. 
 
-For example, if the container have been created on a host called **mynas** using the parameters described above, the VNC Viewer should connect to the URL `mynas:25901`.
+For example, if the container have been created on the host called `mynas` using the parameters described above, the VNC Viewer should connect to `mynas:25901`.
 
 ### Over noVNC
 
-To be able to use the containers over **noVNC**, an **HTML5** capable web browser is needed. It means, that any modern web browser can be used.
+To be able to use the containers over [noVNC](novnc), an HTML5 capable web browser is needed. It actually means, that any current web browser can be used.
 
-The browser should navigate to the host running the container, pointing to the host's port mapped to the container's port **6901**.
+The browser should navigate to the host running the container, pointing to the host's TCP port mapped to the container's TCP port **6901**.
 
-However, since the version **1.2.0** the containers support also the **full noVNC client**, additionally to the previously supported **light noVNC client**. The connection URL differs slightly in both cases.
+However, since the version **1.2.0** the containers actually offer two [noVNC](novnc) clients. Additionally to the previously available **light noVNC client** there is also the **full noVNC client** with more features. The connection URL differs slightly in both cases.
 
-If the container have been created on a host called **mynas** using the parameters described above, then the web browser should navigate to the following URLs:
+If the container have been created on the host called `mynas` using the parameters described above, then the web browser should navigate to the following URLs:
 
 - full client: `http://mynas:26901/vnc.html`
 - light client: `http://mynas:26901/vnc_lite.html`
 
-It's also possible to provide the password like this:
+It's also possible to provide the password through the URL like this:
 
 - full client: `http://mynas:26901/vnc.html?password=headless`
 - light client: `http://mynas:26901/vnc_lite.html?password=headless`
@@ -144,11 +144,13 @@ The most convenient way is to bookmark the used URLs.
 
 ## Issues
 
-If you have a problem or a question, please check the repository [Issues][accetto-github-issues] and the [Troubleshooting][wiki-troubleshooting], [FAQ][wiki-faq] and [HOWTO][wiki-howto] pages first. Please do not overlook the closed issues.
+If you have found a problem or just have a question, please check the [Issues][accetto-github-issues] and the [Troubleshooting][wiki-troubleshooting], [FAQ][wiki-faq] and [HOWTO][wiki-howto] pages in [Wiki](wiki) first. Please do not overlook also the closed issues.
 
 If you do not find a solution, you can file a new issue. The better you describe the problem, the bigger the chance it'll be solved soon.
 
-([accetto](accetto-docker), April 2018)
+## Credits
+
+This project has been originally inspired by the image [consol/ubuntu-xfce-vnc][consol-docker-repo] and derived from the repository [ConSol/docker-headless-vnc-container][consol-github-repo].
 
 [accetto-docker]: https://hub.docker.com/u/accetto/
 [acceto-docker-vnc-base]: https://hub.docker.com/r/accetto/ubuntu-vnc-xfce/

@@ -152,7 +152,7 @@ If you do not find a solution, you can file a new issue. The better you describe
 
 This project has been originally inspired by the image [consol/ubuntu-xfce-vnc][consol-docker-repo] and derived from the repository [ConSol/docker-headless-vnc-container][consol-github-repo].
 
-[accetto-docker]: https://hub.docker.com/u/accetto/
+[accetto-docker]: https://hub.docker.com/r/accetto/
 [acceto-docker-vnc-base]: https://hub.docker.com/r/accetto/ubuntu-vnc-xfce/
 [accetto-docker-vnc-firefox]: https://hub.docker.com/r/accetto/ubuntu-vnc-xfce-firefox/
 [acceto-dockerfile-vnc-base-latest]: https://github.com/accetto/ubuntu-vnc-xfce/blob/master/Dockerfile-base

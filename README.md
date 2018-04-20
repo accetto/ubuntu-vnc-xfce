@@ -1,13 +1,13 @@
 # Headless Ubuntu/Xfce with VNC/noVNC and customizable Firefox
 
-This repository contains resources for building Docker images based on [Ubuntu][docker-ubuntu], with [Xfce](xfce) desktops and headless **VNC**/[noVNC](novnc) environments. Resources for building images with customizable [Firefox](firefox) browser are included as well.
+This repository contains resources for building Docker images based on [Ubuntu][docker-ubuntu], with [Xfce][xfce] desktops and headless **VNC**/[noVNC][novnc] environments. Resources for building images with customizable [Firefox][firefox] browser are included as well.
 
 These images can be successfully built and used on NAS devices. They
 have been tested with [Container Station][container-station] from [QNAP][qnap].
 
 The base images (see [below](#user-content-image-set)) are best suited for creating headless [Ubuntu][docker-ubuntu] containers, used for learning, testing or development.
 
-The images with [Firefox](firefox) are perfect for fast creation of secure and light-weight web browser containers. They can be thrown away easily and replaced quickly, improving user's browsing privacy. 
+The images with [Firefox][firefox] are perfect for fast creation of secure and light-weight web browser containers. They can be thrown away easily and replaced quickly, improving user's browsing privacy. 
 
 They make also excellent long-term browsers, because the preferences and profiles can be easily pre-configured and stored on external volumes that survive container destruction. 
 
@@ -32,7 +32,7 @@ The images are regularly maintained and rebuilt. The history of notable changes 
 
 - [`accetto/ubuntu-vnc-xfce`][acceto-docker-vnc-base]
 
-    This is the base [Ubuntu](docker-ubuntu) image with [Xfce](xfce) desktop and **VNC**/[nonVNC](novnc) headless environments. Containers created from this image are accessible over VNC using a **VNC Viewer** (e.g. [TigerVNC][tigervnc]] or [TightVNC][tightvnc]) or directly from a web browser over [noVNC](novnc). Any web browser supporting HTML5 can be used. It should be noticed, that these containers do not include any web browser and that they run under the privileged **root** user by default. However, the graphical editor [leafpad](leafpad) and the text editor [vim](vim) are already included.
+    This is the base [Ubuntu][docker-ubuntu] image with [Xfce][xfce] desktop and **VNC**/[nonVNC][novnc] headless environments. Containers created from this image are accessible over VNC using a **VNC Viewer** (e.g. [TigerVNC][tigervnc]] or [TightVNC][tightvnc]) or directly from a web browser over [noVNC][novnc]. Any web browser supporting HTML5 can be used. It should be noticed, that these containers do not include any web browser and that they run under the privileged **root** user by default. However, the graphical editor [leafpad][leafpad] and the text editor [vim][vim] are already included.
 
 - [`accetto/ubuntu-vnc-xfce-firefox`][accetto-docker-vnc-firefox]
 
@@ -40,7 +40,7 @@ The images are regularly maintained and rebuilt. The history of notable changes 
 
 - `accetto/ubuntu-vnc-xfce-firefox-preferences`, `accetto/ubuntu-vnc-xfce-firefox-profile`
 
-    These optional images are based on the one above and they add pre-configured **Firefox preferences** or a complete **Firefox profile**. They are not actually contained in the [Docker repository](accetto-docker) in the form of pre-built images, but the [GitHub repository][accetto-github] includes the ready-to-use [Dockerfiles][accetto-github-extras] to build them yourself. The [HOWTO][wiki-howto] page in [Wiki][wiki] explains how to do it.
+    These optional images are based on the one above and they add pre-configured **Firefox preferences** or a complete **Firefox profile**. They are not actually contained in the [Docker repository][accetto-docker] in the form of pre-built images, but the [GitHub repository][accetto-github] includes the ready-to-use [Dockerfiles][accetto-github-extras] to build them yourself. The [HOWTO][wiki-howto] page in [Wiki][wiki] explains how to do it.
 
 ## Supported tags and respective `Dockerfile` links
 
@@ -63,7 +63,7 @@ The images are regularly maintained and rebuilt. The history of notable changes 
 All images expose the following **TCP** ports:
 
 - **5901** used for access over **VNC**
-- **6901** used for access over [noVNC](novnc)
+- **6901** used for access over [noVNC][novnc]
 
 The default **VNC user** password is **headless**.
 
@@ -73,7 +73,7 @@ The images do not create or use any external volumes by default. However, the fo
 
 - `/headless/Documents`
 
-The images with [Firefox](firefox) add two more mounting points:
+The images with [Firefox][firefox] add two more mounting points:
 
 - `/headless/Downloads`
 - `/headless/.mozilla`
@@ -82,7 +82,7 @@ A volume mounted to the latter mounting point can be optionally pre-loaded with 
 
 ## How to create containers
 
-The base image can be used for creating headless [Ubuntu](docker-ubuntu) containers with [Xfce](xfce) desktops, that are accessible over **VNC** or [noVNC](novnc). Be aware that such containers run under the privileged **root** user by default.
+The base image can be used for creating headless [Ubuntu][docker-ubuntu] containers with [Xfce][xfce] desktops, that are accessible over **VNC** or [noVNC][novnc]. Be aware that such containers run under the privileged **root** user by default.
 
 The following container will not use any external volumes and it will listen on the host's **TCP** ports **25901** (VNC) and **26901** (noVNC):
 
@@ -90,7 +90,7 @@ The following container will not use any external volumes and it will listen on 
 docker run -d -p 25901:5901 -p 26901:6901 accetto/ubuntu-vnc-xfce
 ```
 
-Containers created from the image with [Firefox](firefox) run under the non-root user **headless:headless** by default.
+Containers created from the image with [Firefox][firefox] run under the non-root user **headless:headless** by default.
 
 The following container wil create or re-use the local named volume **my\_Documents** mounted as `/headless/Documents` and the local named volume **my\_Downloads** mounted as `/headless/Downloads`. Its Firefox profile will be created or re-used on the local named volume **my_Profile** mounted as `/headless/.mozilla`. The container will be accessible through the same **TCP** ports as the one above:
 
@@ -124,11 +124,11 @@ For example, if the container have been created on the host called `mynas` using
 
 ### Over noVNC
 
-To be able to use the containers over [noVNC](novnc), an HTML5 capable web browser is needed. It actually means, that any current web browser can be used.
+To be able to use the containers over [noVNC][novnc], an HTML5 capable web browser is needed. It actually means, that any current web browser can be used.
 
 The browser should navigate to the host running the container, pointing to the host's TCP port mapped to the container's TCP port **6901**.
 
-However, since the version **1.2.0** the containers actually offer two [noVNC](novnc) clients. Additionally to the previously available **light noVNC client** there is also the **full noVNC client** with more features. The connection URL differs slightly in both cases.
+However, since the version **1.2.0** the containers actually offer two [noVNC][novnc] clients. Additionally to the previously available **light noVNC client** there is also the **full noVNC client** with more features. The connection URL differs slightly in both cases.
 
 If the container have been created on the host called `mynas` using the parameters described above, then the web browser should navigate to the following URLs:
 
@@ -144,7 +144,7 @@ The most convenient way is to bookmark the used URLs.
 
 ## Issues
 
-If you have found a problem or just have a question, please check the [Issues][accetto-github-issues] and the [Troubleshooting][wiki-troubleshooting], [FAQ][wiki-faq] and [HOWTO][wiki-howto] pages in [Wiki](wiki) first. Please do not overlook also the closed issues.
+If you have found a problem or just have a question, please check the [Issues][accetto-github-issues] and the [Troubleshooting][wiki-troubleshooting], [FAQ][wiki-faq] and [HOWTO][wiki-howto] pages in [Wiki][wiki] first. Please do not overlook also the closed issues.
 
 If you do not find a solution, you can file a new issue. The better you describe the problem, the bigger the chance it'll be solved soon.
 

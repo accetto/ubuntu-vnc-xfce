@@ -1,4 +1,4 @@
-# Headless Ubuntu/Xfce with VNC/noVNC and customizable Firefox
+# Headless Ubuntu/Xfce containers with VNC/noVNC and customizable Firefox
 
 This repository contains resources for building Docker images based on [Ubuntu][docker-ubuntu], with [Xfce][xfce] desktops and headless **VNC**/[noVNC][novnc] environments. Resources for building images with customizable [Firefox][firefox] browser are included as well.
 
@@ -7,7 +7,7 @@ have been tested with [Container Station][container-station] from [QNAP][qnap].
 
 The base images (see [below](#user-content-image-set)) are best suited for creating headless [Ubuntu][docker-ubuntu] containers, used for learning, testing or development.
 
-The images with [Firefox][firefox] are perfect for fast creation of secure and light-weight web browser containers. They can be thrown away easily and replaced quickly, improving user's browsing privacy. 
+The images with [Firefox][firefox] are perfect for fast creation of secure and light-weight web browser containers. They can be thrown away easily and replaced quickly, improving user's browsing privacy.
 
 They make also excellent long-term browsers, because the preferences and profiles can be easily pre-configured and stored on external volumes that survive container destruction. 
 
@@ -151,6 +151,10 @@ If you do not find a solution, you can file a new issue. The better you describe
 ## Credits
 
 This project has been originally inspired by the image [consol/ubuntu-xfce-vnc][consol-docker-repo] and derived from the repository [ConSol/docker-headless-vnc-container][consol-github-repo].
+
+Credit also goes to all the countless people and companies who contribute to open source community and make so many dreamy things real.
+
+<!-- spell-checker: disable -->
 
 [accetto-docker]: https://hub.docker.com/u/accetto/
 [acceto-docker-vnc-base]: https://hub.docker.com/r/accetto/ubuntu-vnc-xfce/

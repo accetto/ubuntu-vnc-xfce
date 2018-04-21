@@ -154,8 +154,6 @@ This project has been originally inspired by the image [consol/ubuntu-xfce-vnc][
 
 Credit also goes to all the countless people and companies who contribute to open source community and make so many dreamy things real.
 
-<!-- spell-checker: disable -->
-
 [accetto-docker]: https://hub.docker.com/u/accetto/
 [acceto-docker-vnc-base]: https://hub.docker.com/r/accetto/ubuntu-vnc-xfce/
 [accetto-docker-vnc-firefox]: https://hub.docker.com/r/accetto/ubuntu-vnc-xfce-firefox/

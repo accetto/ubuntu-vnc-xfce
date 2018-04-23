@@ -6,6 +6,8 @@
 
 (April 2018)
 
+**Warning!** Still pre-release. Docker Hub build currently fails, local build not. Must be still researched and fixed.
+
 - Fixed **Issue #3**: Default Firefox profile not initialized on external volumes
 - Handling of Firefox profiles has been improved
   - Firefox proto-profile **profile0.default** is created also on external volumes if there is no Firefox profile yet

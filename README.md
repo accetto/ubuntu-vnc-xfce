@@ -5,13 +5,13 @@ This repository contains resources for building Docker images based on [Ubuntu][
 These images can be successfully built and used on NAS devices. They
 have been tested with [Container Station][container-station] from [QNAP][qnap].
 
-The base images (see [below](#user-content-image-set)) are best suited for creating headless [Ubuntu][docker-ubuntu] containers, used for learning, testing or development.
-
 The images with [Firefox][firefox] are perfect for fast creation of secure and light-weight web browser containers. They can be thrown away easily and replaced quickly, improving user's browsing privacy.
 
-They make also excellent long-term browsers, because the preferences and profiles can be easily pre-configured and stored on external volumes that survive container destruction. 
+They make also excellent long-term browsers, because the preferences and profiles can be not only pre-configured, but also stored on external volumes that survive container destruction. 
 
-Frequently used preferences and profiles can be also embedded into images themselves, for even faster creation of pre-configured browsers. Check the project [Wiki][wiki] for more details.
+Frequently used preferences and profiles can also be embedded into the user built images. Ready-to-use Dockerfiles are also provided (see [below](#user-content-image-set)).
+
+The base images are best suited for creating headless [Ubuntu][docker-ubuntu] containers, used for learning, testing or development.
 
 All images share the following common components
 

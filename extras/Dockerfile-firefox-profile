@@ -1,8 +1,10 @@
 # docker build -f Dockerfile-firefox-profile -t accetto/ubuntu-vnc-xfce-firefox-profile .
+# docker run -d -P -e "VNC_PW=docker" --name=firefox accetto/ubuntu-vnc-xfce-firefox-profile
+# docker run -d -P -e "VNC_PW=docker" --user root --name=rootfox accetto/ubuntu-vnc-xfce-firefox-profile
 
 FROM accetto/ubuntu-vnc-xfce-firefox
 
-ENV REFRESHED_AT 2018-04-15
+ENV REFRESHED_AT 2018-04-23
 
 LABEL vendor="accetto" \
     maintainer="https://github.com/accetto" \

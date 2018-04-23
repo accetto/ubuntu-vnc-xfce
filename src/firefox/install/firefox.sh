@@ -21,11 +21,11 @@ cp $INST_SCRIPTS/all-accetto.js /usr/lib/firefox/browser/defaults/preferences/
 
 ### Create the default profile folder and put the file with default preferences there.
 ### The preferences will be forced for each session, but only in the profile containing the file.
-### There will be also a backup copy of the file (/headless/.mozilla/firefox/user.js.txt).
 ### The VNC user ('headles:headless' by default) will get permissions to modify or delete the file.
-echo "Preparing for Firefox profile"
+### There will be also a backup copy of the proto-profile.
+echo "Preparing Firefox proto-profile"
 mkdir $HOME/.mozilla/firefox
 mkdir $HOME/.mozilla/firefox/profile0.default
 cp $INST_SCRIPTS/profiles.ini $HOME/.mozilla/firefox
 cp $INST_SCRIPTS/user.js $HOME/.mozilla/firefox/profile0.default
-cp $INST_SCRIPTS/user.js $HOME/.mozilla/firefox/user.js.txt
+cp -r $HOME/.mozilla/firefox $HOME/firefox.backup

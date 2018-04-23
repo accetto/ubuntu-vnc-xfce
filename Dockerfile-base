@@ -2,7 +2,7 @@
 
 FROM ubuntu
 
-ENV REFRESHED_AT 2018-04-15
+ENV REFRESHED_AT 2018-04-22
 
 LABEL vendor="accetto" \
     maintainer="https://github.com/accetto" \
@@ -55,6 +55,9 @@ RUN $INST_SCRIPTS/tools.sh \
     && apt-get purge -y pavucontrol pulseaudio \
     && apt autoremove -y
 
+### Set locale variables
+ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
+
 ### Configure startup and clean up scripts
 COPY ./src/ubuntu/startup $STARTUPDIR
 RUN $INST_SCRIPTS/libnss_wrapper.sh \
@@ -68,4 +71,4 @@ RUN $INST_SCRIPTS/libnss_wrapper.sh \
 EXPOSE $VNC_PORT $NO_VNC_PORT
 
 ENTRYPOINT ["/dockerstartup/vnc_startup.sh"]
-CMD ["--tail-log"]
+CMD ["--wait"]

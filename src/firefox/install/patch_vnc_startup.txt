@@ -1,0 +1,9 @@
+### Patch #1
+### Issue #3: Default Firefox profile not initialized on external volumes
+### Only for images with Firefox
+if [[ -d "$HOME/.mozilla" ]] ; then
+    if [[ ! -d "$HOME/.mozilla/firefox" ]] ; then
+        cp -r $HOME/firefox.backup $HOME/.mozilla/firefox
+    fi
+fi
+### End-of-patch #1

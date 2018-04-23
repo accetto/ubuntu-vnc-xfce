@@ -4,7 +4,7 @@
 
 FROM accetto/ubuntu-vnc-xfce-firefox
 
-ENV REFRESHED_AT 2018-04-15
+ENV REFRESHED_AT 2018-04-23
 
 LABEL vendor="accetto" \
     maintainer="https://github.com/accetto" \
@@ -41,15 +41,15 @@ COPY $INST_SCRIPTS/all-accetto.js /usr/lib/firefox/browser/defaults/preferences/
 ### Make also a backup copy of the file (/headless/.mozilla/firefox/user.js.txt).
 ### The VNC user ('headles:headless' by default) will get permissions to modify or delete the file.
 COPY $INST_SCRIPTS/user.js $HOME/.mozilla/firefox/profile0.default
-COPY $INST_SCRIPTS/user.js $HOME/.mozilla/firefox/user.js.txt
+COPY $INST_SCRIPTS/user.js $HOME/firefox.backup/profile0.default/user.js
 
 ### Fix permissions
 RUN chgrp $(id -g $(echo "$VNC_USER" | cut -d : -f 1)) /usr/lib/firefox/browser/defaults/preferences/all-accetto.js \
     && chmod 664 /usr/lib/firefox/browser/defaults/preferences/all-accetto.js \
     && chown $VNC_USER $HOME/.mozilla/firefox/profile0.default/user.js \
     && chmod 600 $HOME/.mozilla/firefox/profile0.default/user.js \
-    && chown $VNC_USER $HOME/.mozilla/firefox/user.js.txt \
-    && chmod 600 $HOME/.mozilla/firefox/user.js.txt
+    && chown $VNC_USER $HOME/firefox.backup/profile0.default/user.js \
+    && chmod 600 $HOME/firefox.backup/profile0.default/user.js
 
 ### Switch to the non-root user
 USER $VNC_USER

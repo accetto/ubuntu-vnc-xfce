@@ -1,6 +1,18 @@
 ## CHANGELOG
 
-### `accetto/ubuntu-vnc-xfce`, `accetto/ubuntu-vnc-xfce-firefox`
+### `accetto/ubuntu-vnc-xfce-firefox`, `accetto/ubuntu-vnc-xfce`
+
+### Version 1.4.0
+
+(April 2018)
+
+- Fixed **Issue #3**: Default Firefox profile not initialized on external volumes
+- Handling of Firefox profiles has been improved
+  - Firefox proto-profile **profile0.default** is created also on external volumes if there is no Firefox profile yet
+  - Proto-profile is backed-up as folder **/headless/firefox.backup**
+- Startup scripts has been improved
+- Default **noVNC** startup page has been set to *vnc.html* (full client). Lite client can be used by navigating to *vnc_lite.html*.
+- Locale related environment variables **LANG**, **LANGUAGE** and **LC_ALL** has been added
 
 ### Version 1.3.0
 
@@ -21,7 +33,7 @@
 - **noVNC** updated to version **1.0.0** (was 0.6.2)
 - **Firefox Quantum** updated to version **59.0.2** (64-bit)
 - **vim** editor has been installed back
-- **Issue #2**: Firefox tab crashes "Gah. Your tab just crashed."
+- Fixed: **Issue #2**: Firefox tab crashes "Gah. Your tab just crashed."
   - Mitigated by forcing the following Firefox preferences:
     - **browser.tabs.remote.autostart = false**
     - **browser.tabs.remote.autostart.2 = false**
@@ -31,7 +43,7 @@
 
 (March 2018)
 
-- fix: occasional VNC Viewer connection problem ("Too many security failures")
+- Fixed **Issue #1**: Occasional VNC Viewer connection problem ("Too many security failures")
   - VNC parameter **BlacklistTimetout** set to **0**
   - VNC parameter **BlacklistThreshold** set to **20**
   - both VNC parameters configurable through the new build arguments and environment variables **BLACKLIST_TIMEOUT** and **BLACKLIST_THRESHOLD**

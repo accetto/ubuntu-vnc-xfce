@@ -1,3 +1,6 @@
+<!-- markdownlint-disable MD002 -->
+<!-- markdownlint-disable MD041 -->
+
 ## CHANGELOG
 
 ### `accetto/ubuntu-vnc-xfce-firefox`, `accetto/ubuntu-vnc-xfce`
@@ -5,8 +8,6 @@
 ### Version 1.4.0
 
 (April 2018)
-
-**Warning!** Still pre-release. Docker Hub build currently fails, local build not. Must be still researched and fixed.
 
 - Fixed **Issue #3**: Default Firefox profile not initialized on external volumes
 - Handling of Firefox profiles has been improved

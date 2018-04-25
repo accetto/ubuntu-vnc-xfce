@@ -35,14 +35,14 @@ USER 0
 COPY ./src/firefox/install/ $INST_SCRIPTS/
 COPY ./src/firefox/Desktop/firefox.desktop $HOME/Desktop/
 COPY ./src/ubuntu/install/create_user_and_fix_permissions.sh $INST_SCRIPTS/
+RUN find $INST_SCRIPTS -name '*.sh' -exec chmod a+x {} +
 RUN mkdir $HOME/Downloads \
     && mkdir $HOME/.mozilla \
     && chmod +x $HOME/Desktop/firefox.desktop \
-    && find $INST_SCRIPTS -name '*.sh' -exec chmod a+x {} + \
     && $INST_SCRIPTS/firefox.sh \
     && $INST_SCRIPTS/patch_vnc_startup.sh \
-    && $INST_SCRIPTS/patch_create_user_and_fix_permissions.sh \
-    && $INST_SCRIPTS/create_user_and_fix_permissions.sh $STARTUPDIR $HOME \
+    && $INST_SCRIPTS/patch_create_user_and_fix_permissions.sh 
+RUN $INST_SCRIPTS/create_user_and_fix_permissions.sh $STARTUPDIR $HOME \
     && rm -r $INST_SCRIPTS
 
 ### Switch to the non-root user

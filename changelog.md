@@ -10,6 +10,7 @@
 (April 2018)
 
 - Fixed **Issue #1**: Occasional VNC Viewer connection problem ("Too many security failures")
+- **Ubuntu 18.04 LTS** (bionic) as **ubuntu:latest**
 
 ### Version 1.4.0
 

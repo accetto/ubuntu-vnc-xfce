@@ -9,9 +9,9 @@ The images with [Firefox][firefox] are perfect for fast creation of secure and l
 
 They make also excellent long-term browsers, because the preferences and profiles can be pre-configured and also stored on external volumes that survive container destruction. 
 
-There are two kinds of pre-configuration. Firstly, it's possible to force Firefox preferences by modifying the provided **user.js** file. Secondly, it's possible to to use a complete Firefox profile, previously created on a volume. The [HOWTO][wiki-howto] page in [Wiki][wiki] describes it in more details.
+There are two ways of customization. Firstly, it's possible to force Firefox preferences by modifying the provided **user.js** file. Secondly, it's possible to use a complete Firefox profile, previously created on a volume. The [HOWTO][wiki-howto] page in [Wiki][wiki] describes it in more details.
 
-Frequently used preferences and profiles can also be embedded into the user built images. The ready-to-use Dockerfiles are also provided (see [below](#user-content-image-set)).
+Frequently used preferences and profiles can also be embedded into user built images. The ready-to-use Dockerfiles are already provided (see [below](#user-content-image-set)). The [HOWTO][wiki-howto] page in [Wiki][wiki] describes how to build such images.
 
 The base images are best suited for creating headless [Ubuntu][docker-ubuntu] containers, used for learning, testing or development.
 

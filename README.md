@@ -32,31 +32,32 @@ The images are regularly maintained and rebuilt. The history of notable changes 
 
 ## Image set
 
-- [`accetto/ubuntu-vnc-xfce`][acceto-docker-vnc-base]
+- [accetto/ubuntu-vnc-xfce][acceto-docker-vnc-base]
 
     This is the base [Ubuntu][docker-ubuntu] image with [Xfce][xfce] desktop and **VNC**/[nonVNC][novnc] headless environments. Containers created from this image are accessible over VNC using a **VNC Viewer** (e.g. [TigerVNC][tigervnc]] or [TightVNC][tightvnc]) or directly from a web browser over [noVNC][novnc]. Any web browser supporting HTML5 can be used. It should be noticed, that these containers do not include any web browser and that they run under the privileged **root** user by default. However, the graphical editor [leafpad][leafpad] and the text editor [vim][vim] are already included.
 
-- [`accetto/ubuntu-vnc-xfce-firefox`][accetto-docker-vnc-firefox]
+- [accetto/ubuntu-vnc-xfce-firefox][accetto-docker-vnc-firefox]
 
     This image is based on the one above and it adds **Firefox** web browser. It runs under a non-root **VNC user** by default. The frequently used Firefox preferences can be put into the included file **user.js**, which can be edited or deleted by the non-root **VNC user** (see the project [Wiki][wiki] for more details).
 
-- `accetto/ubuntu-vnc-xfce-firefox-preferences`, `accetto/ubuntu-vnc-xfce-firefox-profile`
+- **accetto/ubuntu-vnc-xfce-firefox-preferences**, 
+**accetto/ubuntu-vnc-xfce-firefox-profile**
 
     These optional images are based on the one above and they add pre-configured **Firefox preferences** or a complete **Firefox profile**. They are not actually contained in the [Docker repository][accetto-docker] in the form of pre-built images, but the [GitHub repository][accetto-github] includes the ready-to-use [Dockerfiles][accetto-github-extras] to build them yourself. The [HOWTO][wiki-howto] page in [Wiki][wiki] explains how to do it.
 
-## Supported tags and respective `Dockerfile` links
+## Supported tags and respective Dockerfile links
 
-- [`accetto/ubuntu-vnc-xfce`][acceto-docker-vnc-base]
+- [accetto/ubuntu-vnc-xfce][acceto-docker-vnc-base]
 
-  - `latest` based on `ubuntu:latest` ([`Dockerfile`][acceto-dockerfile-vnc-base-latest])
-  - `rolling` based on `ubuntu:rolling` ([`Dockerfile`][acceto-dockerfile-vnc-base-rolling])
+  - `latest` based on `ubuntu:latest` ([Dockerfile][acceto-dockerfile-vnc-base-latest])
+  - `rolling` based on `ubuntu:rolling` ([Dockerfile][acceto-dockerfile-vnc-base-rolling])
 
     [![version badge](https://images.microbadger.com/badges/version/accetto/ubuntu-vnc-xfce.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce "Get your own version badge on microbadger.com") [![size badge](https://images.microbadger.com/badges/image/accetto/ubuntu-vnc-xfce.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce "Get your own image badge on microbadger.com") [![version badge](https://images.microbadger.com/badges/version/accetto/ubuntu-vnc-xfce:rolling.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce:rolling "Get your own version badge on microbadger.com") [![size badge](https://images.microbadger.com/badges/image/accetto/ubuntu-vnc-xfce:rolling.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce:rolling "Get your own image badge on microbadger.com")
 
-- [`accetto/ubuntu-vnc-xfce-firefox`][accetto-docker-vnc-firefox]
+- [accetto/ubuntu-vnc-xfce-firefox][accetto-docker-vnc-firefox]
 
-  - `latest` based on `accetto/ubuntu-vnc-xfce:latest` ([`Dockerfile`][accetto-dockerfile-vnc-firefox-latest])
-  - `rolling` based on `accetto/ubuntu-vnc-xfce:rolling` ([`Dockerfile`][accetto-dockerfile-vnc-firefox-rolling])
+  - `latest` based on `accetto/ubuntu-vnc-xfce:latest` ([Dockerfile][accetto-dockerfile-vnc-firefox-latest])
+  - `rolling` based on `accetto/ubuntu-vnc-xfce:rolling` ([Dockerfile][accetto-dockerfile-vnc-firefox-rolling])
 
     [![version badge](https://images.microbadger.com/badges/version/accetto/ubuntu-vnc-xfce-firefox.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce-firefox "Get your own version badge on microbadger.com") [![size badge](https://images.microbadger.com/badges/image/accetto/ubuntu-vnc-xfce-firefox.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce-firefox "Get your own image badge on microbadger.com") [![version badge](https://images.microbadger.com/badges/version/accetto/ubuntu-vnc-xfce-firefox:rolling.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce-firefox:rolling "Get your own version badge on microbadger.com") [![size badge](https://images.microbadger.com/badges/image/accetto/ubuntu-vnc-xfce-firefox:rolling.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce-firefox:rolling "Get your own image badge on microbadger.com")
 
@@ -143,6 +144,8 @@ It's also possible to provide the password through the URL like this:
 - light client: `http://mynas:26901/vnc_lite.html?password=headless`
 
 The most convenient way is to bookmark the used URLs.
+
+The **full noVNC client** is started by default.
 
 ## Issues
 

@@ -5,10 +5,17 @@
 
 ### `accetto/ubuntu-vnc-xfce-firefox`, `accetto/ubuntu-vnc-xfce`
 
+### Version 1.4.1
+
+(April 2018)
+
+- Fixed **Issue #1**: Occasional VNC Viewer connection problem ("Too many security failures")
+
 ### Version 1.4.0
 
 (April 2018)
 
+- Warning, the **issue #1** is unfortunately back in this release.
 - Fixed **Issue #3**: Default Firefox profile not initialized on external volumes
 - Handling of Firefox profiles has been improved
   - Firefox proto-profile **profile0.default** is created also on external volumes if there is no Firefox profile yet

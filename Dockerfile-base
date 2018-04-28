@@ -2,7 +2,7 @@
 
 FROM ubuntu
 
-ENV REFRESHED_AT 2018-04-25
+ENV REFRESHED_AT 2018-04-27
 
 LABEL vendor="accetto" \
     maintainer="https://github.com/accetto" \
@@ -53,7 +53,7 @@ RUN $INST_SCRIPTS/tools.sh \
     && $INST_SCRIPTS/xfce_ui.sh \
     && mkdir $HOME/Documents \
     && apt-get purge -y pavucontrol pulseaudio \
-    && apt autoremove -y
+    && apt-get autoremove -y
 
 ### Set locale variables
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'

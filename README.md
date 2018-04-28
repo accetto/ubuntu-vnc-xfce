@@ -7,9 +7,11 @@ have been tested with [Container Station][container-station] from [QNAP][qnap].
 
 The images with [Firefox][firefox] are perfect for fast creation of secure and light-weight web browser containers. They can be thrown away easily and replaced quickly, improving user's browsing privacy.
 
-They make also excellent long-term browsers, because the preferences and profiles can be not only pre-configured, but also stored on external volumes that survive container destruction. 
+They make also excellent long-term browsers, because the preferences and profiles can be pre-configured and also stored on external volumes that survive container destruction. 
 
-Frequently used preferences and profiles can also be embedded into the user built images. Ready-to-use Dockerfiles are also provided (see [below](#user-content-image-set)).
+There are two kinds of pre-configuration. Firstly, it's possible to force Firefox preferences by modifying the provided **user.js** file. Secondly, it's possible to to use a complete Firefox profile, previously created on a volume. The [HOWTO][wiki-howto] page in [Wiki][wiki] describes it in more details.
+
+Frequently used preferences and profiles can also be embedded into the user built images. The ready-to-use Dockerfiles are also provided (see [below](#user-content-image-set)).
 
 The base images are best suited for creating headless [Ubuntu][docker-ubuntu] containers, used for learning, testing or development.
 

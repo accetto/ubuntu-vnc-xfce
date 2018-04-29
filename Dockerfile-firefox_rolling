@@ -4,7 +4,7 @@
 
 FROM accetto/ubuntu-vnc-xfce:rolling
 
-ENV REFRESHED_AT 2018-04-25
+ENV REFRESHED_AT 2018-04-29
 
 LABEL vendor="accetto" \
     maintainer="https://github.com/accetto" \
@@ -15,16 +15,16 @@ LABEL vendor="accetto" \
 
 ### Arguments can be provided during build
 ARG VNC_USER=headless:headless
-ARG VNC_BLACKLIST_TIMEOUT=0
 ARG VNC_BLACKLIST_THRESHOLD=20
+ARG VNC_BLACKLIST_TIMEOUT=0
 
 SHELL ["/bin/bash", "-c"]
 
 ### Environment config
 ENV \
   VNC_USER=$VNC_USER \
-  VNC_BLACKLIST_TIMEOUT=$VNC_BLACKLIST_TIMEOUT \
-  VNC_BLACKLIST_THRESHOLD=$VNC_BLACKLIST_THRESHOLD
+  VNC_BLACKLIST_THRESHOLD=$VNC_BLACKLIST_THRESHOLD \
+  VNC_BLACKLIST_TIMEOUT=$VNC_BLACKLIST_TIMEOUT 
 
 WORKDIR $HOME
 
@@ -44,6 +44,9 @@ RUN mkdir $HOME/Downloads \
     && $INST_SCRIPTS/patch_create_user_and_fix_permissions.sh 
 RUN $INST_SCRIPTS/create_user_and_fix_permissions.sh $STARTUPDIR $HOME \
     && rm -r $INST_SCRIPTS
+
+### Declare volume mounting points
+VOLUME $HOME/Downloads $HOME/.mozilla
 
 ### Switch to the non-root user
 USER $VNC_USER

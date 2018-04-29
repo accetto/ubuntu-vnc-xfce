@@ -4,7 +4,7 @@
 
 FROM accetto/ubuntu-vnc-xfce-firefox:rolling
 
-ENV REFRESHED_AT 2018-04-25
+ENV REFRESHED_AT 2018-04-29
 
 LABEL vendor="accetto" \
     maintainer="https://github.com/accetto" \
@@ -14,8 +14,8 @@ LABEL vendor="accetto" \
     any.accetto.tags="ubuntu, xfce, vnc, novnc, firefox, profile"
 
 ### Arguments can be provided during build
-ARG VNC_BLACKLIST_TIMEOUT=0
 ARG VNC_BLACKLIST_THRESHOLD=20
+ARG VNC_BLACKLIST_TIMEOUT=0
 
 SHELL ["/bin/bash", "-c"]
 

@@ -2,7 +2,7 @@
 
 FROM ubuntu
 
-ENV REFRESHED_AT 2018-04-27
+ENV REFRESHED_AT 2018-04-29
 
 LABEL vendor="accetto" \
     maintainer="https://github.com/accetto" \
@@ -14,8 +14,8 @@ LABEL vendor="accetto" \
 ### Arguments can be provided during build
 ARG HOME=/headless
 ARG VNC_PW=headless
-ARG VNC_BLACKLIST_TIMEOUT=0
 ARG VNC_BLACKLIST_THRESHOLD=20
+ARG VNC_BLACKLIST_TIMEOUT=0
 
 SHELL ["/bin/bash", "-c"]
 
@@ -25,16 +25,19 @@ ENV \
     DISPLAY=:1 \
     HOME=$HOME \
     INST_SCRIPTS=$HOME/install \
+    LANG='en_US.UTF-8' \
+    LANGUAGE='en_US:en' \
+    LC_ALL='en_US.UTF-8' \
     NO_VNC_HOME=$HOME/noVNCdim \
     NO_VNC_PORT="6901" \
     STARTUPDIR=/dockerstartup \
+    VNC_BLACKLIST_THRESHOLD=$VNC_BLACKLIST_THRESHOLD \
+    VNC_BLACKLIST_TIMEOUT=$VNC_BLACKLIST_TIMEOUT \
     VNC_COL_DEPTH=24 \
     VNC_PORT="5901" \
-    VNC_RESOLUTION="1360x768" \
     VNC_PW=$VNC_PW \
-    VNC_VIEW_ONLY=false \
-    VNC_BLACKLIST_TIMEOUT=$VNC_BLACKLIST_TIMEOUT \
-    VNC_BLACKLIST_THRESHOLD=$VNC_BLACKLIST_THRESHOLD
+    VNC_RESOLUTION="1360x768" \
+    VNC_VIEW_ONLY=false 
 
 WORKDIR $HOME
 
@@ -55,14 +58,14 @@ RUN $INST_SCRIPTS/tools.sh \
     && apt-get purge -y pavucontrol pulseaudio \
     && apt-get autoremove -y
 
-### Set locale variables
-ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
-
 ### Configure startup and clean up scripts
 COPY ./src/ubuntu/startup $STARTUPDIR
 RUN $INST_SCRIPTS/libnss_wrapper.sh \
     && $INST_SCRIPTS/create_user_and_fix_permissions.sh $STARTUPDIR $HOME \
     && rm -r $INST_SCRIPTS
+
+### Declare volume mounting points
+VOLUME $HOME/Documents
 
 ### Exposed VNC/noVNC ports for remote access
 ### VNC port: 5901, use a VNC Viewer

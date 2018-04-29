@@ -3,7 +3,15 @@
 
 ## CHANGELOG
 
-### `accetto/ubuntu-vnc-xfce-firefox`, `accetto/ubuntu-vnc-xfce`
+### accetto/ubuntu-vnc-xfce-firefox, accetto/ubuntu-vnc-xfce
+
+### Version 1.4.2
+
+(April 2018)
+
+- Adjustments in Dockerfiles
+  - **VOLUME** instructions added
+  - Build arguments and environment variables sorted alphabetically
 
 ### Version 1.4.1
 

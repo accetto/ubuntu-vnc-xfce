@@ -1,8 +1,11 @@
-# docker build -f Dockerfile-base_rolling -t accetto/ubuntu-vnc-xfce:rolling .
+# docker build -t accetto/ubuntu-vnc-xfce .
+# docker build --build-arg BASETAG=rolling -t accetto/ubuntu-vnc-xfce:rolling .
 
-FROM ubuntu:rolling
+ARG BASETAG=latest
 
-ENV REFRESHED_AT 2018-04-29
+FROM ubuntu:${BASETAG}
+
+ENV REFRESHED_AT 2018-05-10
 
 LABEL vendor="accetto" \
     maintainer="https://github.com/accetto" \
@@ -25,9 +28,6 @@ ENV \
     DISPLAY=:1 \
     HOME=$HOME \
     INST_SCRIPTS=$HOME/install \
-    LANG='en_US.UTF-8' \
-    LANGUAGE='en_US:en' \
-    LC_ALL='en_US.UTF-8' \
     NO_VNC_HOME=$HOME/noVNCdim \
     NO_VNC_PORT="6901" \
     STARTUPDIR=/dockerstartup \
@@ -49,27 +49,26 @@ COPY ./src/ubuntu/install/ $INST_SCRIPTS/
 COPY ./src/xfce/ $HOME/
 
 ### Install common tools, VNC, Xfce, create common folders and remove some stuff
-RUN find $INST_SCRIPTS -name '*.sh' -exec chmod a+x {} +
-RUN $INST_SCRIPTS/tools.sh \
+RUN find $INST_SCRIPTS -name '*.sh' -exec chmod a+x {} + \
+    && $INST_SCRIPTS/tools.sh \
     && $INST_SCRIPTS/tigervnc.sh \
     && $INST_SCRIPTS/no_vnc.sh \
     && $INST_SCRIPTS/xfce_ui.sh \
-    && mkdir $HOME/Documents \
     && apt-get purge -y pavucontrol pulseaudio \
     && apt-get autoremove -y
+
+### Set locale variables
+ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'    
 
 ### Configure startup and clean up scripts
 COPY ./src/ubuntu/startup $STARTUPDIR
 RUN $INST_SCRIPTS/libnss_wrapper.sh \
-    && $INST_SCRIPTS/create_user_and_fix_permissions.sh $STARTUPDIR $HOME \
     && rm -r $INST_SCRIPTS
 
-### Declare volume mounting points
-VOLUME $HOME/Documents
-
-### Connection ports for controlling the UI:
-### VNC port:5901
-### noVNC webport, connect via http://IP:6901/?password=headless
+### Exposed VNC/noVNC ports for remote access
+### VNC port: 5901, use a VNC Viewer
+### noVNC port: 6901, full client: http://IP:6901/vnc.html
+### noVNC port: 6901, light client: http://IP:6901/vnc_lite.html
 EXPOSE $VNC_PORT $NO_VNC_PORT
 
 ENTRYPOINT ["/dockerstartup/vnc_startup.sh"]

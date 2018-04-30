@@ -1,9 +1,32 @@
-<!-- markdownlint-disable MD002 -->
-<!-- markdownlint-disable MD041 -->
+<!-- spell-checker:words pavucontrol websockify Centos -->
 
-## CHANGELOG
+# CHANGELOG
 
-### accetto/ubuntu-vnc-xfce-firefox, accetto/ubuntu-vnc-xfce
+## accetto/ubuntu-vnc-xfce
+
+### Version 18.05
+
+- Resources for base Ubuntu/VNC images and images with Firefox split into separate GitHub repositories, consequently
+  - README, CHANGELOG and Wiki are not common any more
+  - Resources for images with the default Firefox installation moved to repository [accetto/ubuntu-vnc-xfce-firefox][accetto-github-ubuntu-vnc-xfce-firefox]
+  - Resources for images with configurable Firefox installation moved to repository [accetto/ubuntu-vnc-xfce-firefox-plus][accetto-github-ubuntu-vnc-xfce-firefox-plus]
+- Dockerfile *rolling* removed, **FROM** uses build arguments
+- Folder **/headless/Documents** not created explicitly any more
+- Simple startup page for choosing noVNC client added
+- This is the first version of generation 2 after repository split and version numbering change
+  - Branch **master** has been reset to this version
+
+### Version 1.4.3 and 18.04
+
+(April 2018)
+
+- Quick-fix **Issue #4**: Volume '/headless/Documents' owned by 'root'
+- Essentially a rollback to the previous version
+  - **VOLUME** instructions removed
+  - Environment variables **LANG**, **LANGUAGE** and **LC_ALL** declared at the previous place
+- **Issue #5** mitigated by setting the lite noVNC client as the default one. Full client can be used by navigating to *vnc.html*.
+- This is the final version of generation 1 before repository split and version numbering change
+  - Branch **18.04** keeps this stage which will not be developed any more
 
 ### Version 1.4.2
 
@@ -57,7 +80,6 @@
     - **browser.tabs.remote.autostart = false**
     - **browser.tabs.remote.autostart.2 = false**
 
-
 ### Version 1.1.3
 
 (March 2018)
@@ -79,8 +101,8 @@
 
 (December 2017)
 
-- more tagged versions added, all based on the official [`ubuntu`](https://hub.docker.com/_/ubuntu/) images
-- README got badges from [MicroBadger](https://microbadger.com/) (still Beta)
+- more tagged versions added, all based on the official [`ubuntu`][docker-ubuntu] images
+- README got badges from [MicroBadger][microbadger] (still Beta)
 - added **lsb-release** package
 
 ### Version 1.1.0
@@ -94,9 +116,9 @@
 - **vim** editor has been removed
 - **leafpad** editor has been added as part of **Xfce** layer
 - base image runs under the **root** user by default
-- following changes has been accepted from the newer version **1.2.3** of [`ConSol/docker-headless-vnc-container`](https://github.com/ConSol/docker-headless-vnc-container)
-  - using older version **0.6.1** (was 0.8.0) of **websockify** to prevent hanging connections on offline containers (see on [ConSol](https://github.com/ConSol/docker-headless-vnc-container/issues/50))
-  - environment variable **VNC\_VIEW\_ONLY** with default value **false** (see on [ConSol](https://github.com/ConSol/docker-headless-vnc-container))
+- following changes has been accepted from the newer version **1.2.3** of [ConSol/docker-headless-vnc-container][consol-github-docker-headless-vnc-container]
+  - using older version **0.6.1** (was 0.8.0) of **websockify** to prevent hanging connections on offline containers (see on [ConSol][consol-issue-50])
+  - environment variable **VNC\_VIEW\_ONLY** with default value **false** (see on [ConSol][consol-github-docker-headless-vnc-container])
   - VNC startup script has been updated accordingly
 - image with Firefox
   - introduces a new build argument **VNC\_USER** with default value **headless:headless**
@@ -107,7 +129,7 @@
 
 (March 2017)
 
-Derived from [`ConSol/docker-headless-vnc-container`](https://github.com/ConSol/docker-headless-vnc-container) and modified:
+Derived from [ConSol/docker-headless-vnc-container][consol-github-docker-headless-vnc-container] and modified:
 
 - kept only Ubuntu support (v16.04)
 - removed Centos7 support
@@ -126,3 +148,17 @@ Created the following set of images:
 - `accetto/ubuntu-vnc-xfce` is the base Ubuntu/Xfce image with VNC/nonVNC
 - `accetto/ubuntu-vnc-xfce-firefox` adds Firefox
 - optional `accetto/ubuntu-vnc-xfce-firefox-profile` adds a pre-configured Firefox profile
+
+<!-- References -->
+<!-- spell-checker:disable -->
+
+[accetto-github-ubuntu-vnc-xfce-firefox]: https://github.com/accetto/ubuntu-vnc-xfce-firefox
+[accetto-github-ubuntu-vnc-xfce-firefox-plus]: https://github.com/accetto/ubuntu-vnc-xfce-firefox-plus
+
+[docker-ubuntu]: https://hub.docker.com/_/ubuntu/
+
+[microbadger]: https://microbadger.com/
+
+[consol-github-docker-headless-vnc-container]: https://github.com/ConSol/docker-headless-vnc-container
+[consol-docker]: https://hub.docker.com/u/consol/
+[consol-issue-50]: https://github.com/ConSol/docker-headless-vnc-container/issues/50

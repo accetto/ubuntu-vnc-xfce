@@ -5,6 +5,15 @@
 
 ### accetto/ubuntu-vnc-xfce-firefox, accetto/ubuntu-vnc-xfce
 
+### Version 1.4.3
+
+(April 2018)
+
+- Quick-fix **Issue #4**: Volume '/headless/Documents' owned by 'root'
+- Essentially a rollback to the previous version
+  - **VOLUME** instructions removed
+  - Environment variables **LANG**, **LANGUAGE** and **LC_ALL** declared at the previous place
+
 ### Version 1.4.2
 
 (April 2018)

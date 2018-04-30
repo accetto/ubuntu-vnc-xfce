@@ -13,6 +13,7 @@
 - Essentially a rollback to the previous version
   - **VOLUME** instructions removed
   - Environment variables **LANG**, **LANGUAGE** and **LC_ALL** declared at the previous place
+- **Issue #5** mitigated by setting the lite noVNC client as the default one. Full client can be used by navigating to *vnc.html*.
 
 ### Version 1.4.2
 

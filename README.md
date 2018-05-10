@@ -141,7 +141,6 @@ Credit also goes to all the countless people and companies who contribute to ope
 [accetto-github]: https://github.com/accetto/
 [accetto-docker]: https://hub.docker.com/u/accetto/
 
-[accetto-docker-ubuntu-vnc-xfce-firefox]: https://hub.docker.com/r/accetto/ubuntu-vnc-xfce-firefox/
 [accetto-docker-ubuntu-vnc-xfce-firefox-plus]: https://hub.docker.com/r/accetto/ubuntu-vnc-xfce-firefox-plus/
 
 [accetto-github-ubuntu-vnc-xfce-firefox]: https://github.com/accetto/ubuntu-vnc-xfce-firefox

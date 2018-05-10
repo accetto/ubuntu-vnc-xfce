@@ -4,6 +4,8 @@
 
 ## accetto/ubuntu-vnc-xfce
 
+[Docker Hub][this-docker] - [Git Hub][this-github]
+
 ### Version 18.05
 
 - Resources for base Ubuntu/VNC images and images with Firefox split into separate GitHub repositories, consequently
@@ -149,8 +151,8 @@ Created the following set of images:
 - `accetto/ubuntu-vnc-xfce-firefox` adds Firefox
 - optional `accetto/ubuntu-vnc-xfce-firefox-profile` adds a pre-configured Firefox profile
 
-<!-- References -->
-<!-- spell-checker:disable -->
+[this-docker]: https://hub.docker.com/r/accetto/ubuntu-vnc-xfce/
+[this-github]: https://github.com/accetto/ubuntu-vnc-xfce
 
 [accetto-github-ubuntu-vnc-xfce-firefox]: https://github.com/accetto/ubuntu-vnc-xfce-firefox
 [accetto-github-ubuntu-vnc-xfce-firefox-plus]: https://github.com/accetto/ubuntu-vnc-xfce-firefox-plus

@@ -49,8 +49,8 @@ COPY ./src/ubuntu/install/ $INST_SCRIPTS/
 COPY ./src/xfce/ $HOME/
 
 ### Install common tools, VNC, Xfce, create common folders and remove some stuff
-RUN find $INST_SCRIPTS -name '*.sh' -exec chmod a+x {} + \
-    && $INST_SCRIPTS/tools.sh \
+RUN find $INST_SCRIPTS -name '*.sh' -exec chmod a+x {} +
+RUN $INST_SCRIPTS/tools.sh \
     && $INST_SCRIPTS/tigervnc.sh \
     && $INST_SCRIPTS/no_vnc.sh \
     && $INST_SCRIPTS/xfce_ui.sh \

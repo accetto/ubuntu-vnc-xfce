@@ -2,20 +2,24 @@
 
 ## accetto/ubuntu-vnc-xfce
 
-[Docker Hub][this-docker] - [Git Hub][this-github]
+[Docker Hub][this-docker] - [Git Hub][this-github] - [CHANGELOG][this-changelog]
 
-This repository contains resources for building Docker images based on [Ubuntu][docker-ubuntu], with [Xfce][xfce] desktops and headless **VNC**/[noVNC][novnc] environments.
+**Attention:** Resources for building images with Firefox and configurable Firefox, previously contained in this repository, have been moved to their own GitHub repositories [ubuntu-vnc-xfce-firefox][accetto-github-ubuntu-vnc-xfce-firefox] and [ubuntu-vnc-xfce-firefox-plus][accetto-github-ubuntu-vnc-xfce-firefox-plus].
+
+***
+
+**This repository** contains resources for building Docker images based on [Ubuntu][docker-ubuntu], with [Xfce][xfce] desktops and headless **VNC**/[noVNC][novnc] environments.
 
 These images can be also successfully built and used on NAS devices. They
 have been tested with [Container Station][container-station] from [QNAP][qnap].
 
-The images are also used as bases for other Docker images with additional features (e.g. [accetto/ubuntu-vnc-xfce-firefox][accetto-github-ubuntu-vnc-xfce-firefox] or [accetto/ubuntu-vnc-xfce-firefox-plus][accetto-github-ubuntu-vnc-xfce-firefox-plus]).
+The images are also used as bases for other Docker images with additional features (e.g. [accetto/ubuntu-vnc-xfce-firefox-default][accetto-docker-ubuntu-vnc-xfce-firefox-default] or [accetto/ubuntu-vnc-xfce-firefox-plus][accetto-docker-ubuntu-vnc-xfce-firefox-plus]).
 
-Containers created from these images are perfect for learning, testing or development, because they can be used headless over VNC using a **VNC Viewer** (e.g. [TigerVNC][tigervnc]] or [TightVNC][tightvnc]) or directly from web browsers over [noVNC][novnc]. Any web browser supporting HTML5 can be used.
+Containers created from these images are perfect for learning, testing or development, because they can be used headless over VNC using a **VNC Viewer** (e.g. [TigerVNC][tigervnc]] or [TightVNC][tightvnc]) or directly from a web browser over [noVNC][novnc]. Any web browser supporting HTML5 can be used. Both **lite** and **full** [noVNC][novnc] clients are provided.
 
-It should be noticed, that the containers do not include any web browser and that they run under the privileged **root** user by default. However, the graphical editor [leafpad][leafpad] and the text editor [vim][vim] are already included and other applications can be easily added.
+It should be noticed, that the containers do not include any web browser and that they run under the privileged **root** user by default. However, the graphical editor [leafpad][leafpad] and the text editor [vim][vim] are already included and other applications can be added by the user easily.
 
-The image contains the following components
+The image contains the following components:
 
 - light-weight [Xfce][xfce] desktop environment
 - high-performance VNC server [TigerVNC][tigervnc] (TCP port **5901**)
@@ -24,8 +28,6 @@ The image contains the following components
 - popular text editor [vim][vim]
 
 The images are regularly maintained and rebuilt. The history of notable changes is documented in [CHANGELOG][this-changelog].
-
-*Remark:* Resources for building images with Firefox and pre-configurable Firefox, previously contained in this repository, have been moved to separate repositories ([ubuntu-vnc-xfce-firefox][accetto-github-ubuntu-vnc-xfce-firefox] and [ubuntu-vnc-xfce-firefox-plus][accetto-github-ubuntu-vnc-xfce-firefox-plus]).
 
 ### Image set
 
@@ -59,7 +61,7 @@ The images do not create or use any external volumes by default. However, the fo
 - /headless/Templates/
 - /headless/Videos/
 
-Both *named volumes* and *bind mounts* can be used. More about volumes can be found in [Docker documentation][docker-doc-managing-data].
+Both **named volumes** and **bind mounts** can be used. More about volumes can be found in [Docker documentation][docker-doc-managing-data].
 
 ## Creating containers
 
@@ -142,6 +144,7 @@ Credit also goes to all the countless people and companies who contribute to ope
 [accetto-docker]: https://hub.docker.com/u/accetto/
 
 [accetto-docker-ubuntu-vnc-xfce-firefox-plus]: https://hub.docker.com/r/accetto/ubuntu-vnc-xfce-firefox-plus/
+[accetto-docker-ubuntu-vnc-xfce-firefox-default]: https://hub.docker.com/r/accetto/ubuntu-vnc-xfce-firefox-default/
 
 [accetto-github-ubuntu-vnc-xfce-firefox]: https://github.com/accetto/ubuntu-vnc-xfce-firefox
 [accetto-github-ubuntu-vnc-xfce-firefox-plus]: https://github.com/accetto/ubuntu-vnc-xfce-firefox-plus

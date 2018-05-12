@@ -4,7 +4,9 @@
 
 ## accetto/ubuntu-vnc-xfce
 
-[Docker Hub][this-docker] - [Git Hub][this-github]
+[Docker Hub][this-docker] - [Git Hub][this-github] - [Wiki][this-wiki]
+
+***
 
 ### Version 18.05
 
@@ -153,6 +155,7 @@ Created the following set of images:
 
 [this-docker]: https://hub.docker.com/r/accetto/ubuntu-vnc-xfce/
 [this-github]: https://github.com/accetto/ubuntu-vnc-xfce
+[this-wiki]: https://github.com/accetto/ubuntu-vnc-xfce/wiki
 
 [accetto-github-ubuntu-vnc-xfce-firefox]: https://github.com/accetto/ubuntu-vnc-xfce-firefox
 [accetto-github-ubuntu-vnc-xfce-firefox-plus]: https://github.com/accetto/ubuntu-vnc-xfce-firefox-plus

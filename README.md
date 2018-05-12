@@ -2,7 +2,7 @@
 
 ## accetto/ubuntu-vnc-xfce
 
-[Docker Hub][this-docker] - [Git Hub][this-github] - [CHANGELOG][this-changelog]
+[Docker Hub][this-docker] - [Git Hub][this-github] - [Changelog][this-changelog] - [Wiki][this-wiki]
 
 **Attention:** Resources for building images with Firefox and configurable Firefox, previously contained in this repository, have been moved to their own GitHub repositories [ubuntu-vnc-xfce-firefox][accetto-github-ubuntu-vnc-xfce-firefox] and [ubuntu-vnc-xfce-firefox-plus][accetto-github-ubuntu-vnc-xfce-firefox-plus].
 

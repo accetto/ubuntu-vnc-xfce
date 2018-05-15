@@ -1,11 +1,19 @@
 # docker build -t accetto/ubuntu-vnc-xfce .
 # docker build --build-arg BASETAG=rolling -t accetto/ubuntu-vnc-xfce:rolling .
+# docker build --build-arg ARG_VNC_RESOLUTION=1360x768 -t accetto/ubuntu-vnc-xfce .
 
 ARG BASETAG=latest
 
 FROM ubuntu:${BASETAG}
 
-ENV REFRESHED_AT 2018-05-10
+### Arguments can be provided during build
+ARG ARG_HOME
+ARG ARG_VNC_BLACKLIST_THRESHOLD
+ARG ARG_VNC_BLACKLIST_TIMEOUT
+ARG ARG_VNC_PW
+ARG ARG_VNC_RESOLUTION
+
+ENV REFRESHED_AT 2018-05-15
 
 LABEL vendor="accetto" \
     maintainer="https://github.com/accetto" \
@@ -14,30 +22,24 @@ LABEL vendor="accetto" \
     any.accetto.expose-services="6901:http,5901:xvnc" \
     any.accetto.tags="ubuntu, xfce, vnc, novnc"
 
-### Arguments can be provided during build
-ARG HOME=/headless
-ARG VNC_PW=headless
-ARG VNC_BLACKLIST_THRESHOLD=20
-ARG VNC_BLACKLIST_TIMEOUT=0
-
 SHELL ["/bin/bash", "-c"]
 
 ### Environment config
 ENV \
     DEBIAN_FRONTEND=noninteractive \
     DISPLAY=:1 \
-    HOME=$HOME \
+    HOME=${ARG_HOME:-/headless} \
     INST_SCRIPTS=$HOME/install \
     NO_VNC_HOME=$HOME/noVNCdim \
     NO_VNC_PORT="6901" \
     STARTUPDIR=/dockerstartup \
-    VNC_BLACKLIST_THRESHOLD=$VNC_BLACKLIST_THRESHOLD \
-    VNC_BLACKLIST_TIMEOUT=$VNC_BLACKLIST_TIMEOUT \
+    VNC_BLACKLIST_THRESHOLD=${ARG_VNC_BLACKLIST_THRESHOLD:-20} \
+    VNC_BLACKLIST_TIMEOUT=${ARG_VNC_BLACKLIST_TIMEOUT:-0} \
     VNC_COL_DEPTH=24 \
     VNC_PORT="5901" \
-    VNC_PW=$VNC_PW \
-    VNC_RESOLUTION="1360x768" \
-    VNC_VIEW_ONLY=false 
+    VNC_PW=${ARG_VNC_PW:-headless} \
+    VNC_RESOLUTION=${ARG_VNC_RESOLUTION:-1024x768} \
+    VNC_VIEW_ONLY=false
 
 WORKDIR $HOME
 

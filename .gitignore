@@ -10,5 +10,6 @@
 # '[0-9]' matches the characters inside the brackets
 # '**' matches nested directories (e.g. 'a/**/z')
 # recommended files on 'https://github.com/github/gitignore'
-TODO*
+
 .vscode
+developer*

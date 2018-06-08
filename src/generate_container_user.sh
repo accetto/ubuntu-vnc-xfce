@@ -1,5 +1,8 @@
-# Set current user in nss_wrapper
+#!/bin/bash
+
 # This script should be sourced!
+
+# Set current user in nss_wrapper
 USER_ID=$(id -u)
 GROUP_ID=$(id -g)
 echo "USER_ID: $USER_ID, GROUP_ID: $GROUP_ID"

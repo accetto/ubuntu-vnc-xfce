@@ -3,7 +3,7 @@
 set -e
 #set -u     # do not use
 
-### should also source $STARTUPDIR/generate_container_user
+### should also source '$STARTUPDIR/generate_container_user.sh'
 source $HOME/.bashrc
 
 ### add `--skip` to startup args, to skip the VNC startup procedure
@@ -57,7 +57,6 @@ echo -e "start vncserver with param: VNC_COL_DEPTH=$VNC_COL_DEPTH, VNC_RESOLUTIO
 if [[ $DEBUG == true ]]; then echo "vncserver $DISPLAY -depth $VNC_COL_DEPTH -geometry $VNC_RESOLUTION"; fi
 vncserver $DISPLAY -depth $VNC_COL_DEPTH -geometry $VNC_RESOLUTION -BlacklistTimeout $VNC_BLACKLIST_TIMEOUT -BlacklistThreshold $VNC_BLACKLIST_THRESHOLD &> $STARTUPDIR/no_vnc_startup.log
 echo -e "start window manager\n..."
-$HOME/wm_startup.sh &> $STARTUPDIR/wm_startup.log
 
 ### log connect options
 echo -e "\n\n------------------ VNC environment started ------------------"

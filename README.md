@@ -10,22 +10,22 @@
 
 **This repository** contains resources for building Docker images based on [Ubuntu][docker-ubuntu], with [Xfce][xfce] desktops and headless **VNC**/[noVNC][novnc] environments.
 
-These images can be also successfully built and used on NAS devices. They
+These images can also be successfully built and used on NAS devices. They
 have been tested with [Container Station][container-station] from [QNAP][qnap].
 
-The images are also used as bases for other Docker images with additional features (e.g. [accetto/ubuntu-vnc-xfce-firefox-default][accetto-docker-ubuntu-vnc-xfce-firefox-default] or [accetto/ubuntu-vnc-xfce-firefox-plus][accetto-docker-ubuntu-vnc-xfce-firefox-plus]).
+The images are also used as base images for other Docker images with additional features (e.g. [accetto/ubuntu-vnc-xfce-firefox-default][accetto-docker-ubuntu-vnc-xfce-firefox-default] or [accetto/ubuntu-vnc-xfce-firefox-plus][accetto-docker-ubuntu-vnc-xfce-firefox-plus]).
 
 Containers created from these images are perfect for learning, testing or development, because they can be used headless over VNC using a **VNC Viewer** (e.g. [TigerVNC][tigervnc]] or [TightVNC][tightvnc]) or directly from a web browser over [noVNC][novnc]. Any web browser supporting HTML5 can be used. Both **lite** and **full** [noVNC][novnc] clients are provided.
 
-It should be noticed, that the containers do not include any web browser and that they run under the privileged **root** user by default. However, the graphical editor [leafpad][leafpad] and the text editor [vim][vim] are already included and other applications can be added by the user easily.
+It should be noticed, that the containers do not include any web browser and that they run under the privileged **root** user by default. However, the graphical editor [mousepad][mousepad] and the text editor [vim][vim] are already included and other applications can be added by the user easily.
 
 The image contains the following components:
 
 - light-weight [Xfce][xfce] desktop environment
 - high-performance VNC server [TigerVNC][tigervnc] (TCP port **5901**)
 - [noVNC][novnc] HTML5 clients (full and lite) (TCP port **6901**)
-- light-weight graphical editor [leafpad][leafpad]
 - popular text editor [vim][vim]
+- lite but advanced graphical editor [mousepad][mousepad]
 
 The images are regularly maintained and rebuilt. The history of notable changes is documented in [CHANGELOG][this-changelog].
 
@@ -53,13 +53,13 @@ The default **VNC user** password is **headless**.
 
 The images do not create or use any external volumes by default. However, the following folders make good mounting points:
 
-- /headless/Documents/
-- /headless/Downloads/
-- /headless/Music/
-- /headless/Pictures/
-- /headless/Public/
-- /headless/Templates/
-- /headless/Videos/
+- /home/headless/Documents/
+- /home/headless/Downloads/
+- /home/headless/Music/
+- /home/headless/Pictures/
+- /home/headless/Public/
+- /home/headless/Templates/
+- /home/headless/Videos/
 
 Both **named volumes** and **bind mounts** can be used. More about volumes can be found in [Docker documentation][docker-doc-managing-data].
 
@@ -76,13 +76,13 @@ docker run -d -p 25901:5901 -p 26901:6901 accetto/ubuntu-vnc-xfce
 The following container wil create or re-use the local named volume **my\_Downloads** mounted as `/headless/Downloads`. The container will be accessible through the same **TCP** ports as the one above:
 
 ```docker
-docker run -d -p 25901:5901 -p 26901:6901 -v my_Downloads:/headless/Downloads accetto/ubuntu-vnc-xfce
+docker run -d -p 25901:5901 -p 26901:6901 -v my_Downloads:/home/headless/Downloads accetto/ubuntu-vnc-xfce
 ```
 
 or using the newer syntax with **--mount** flag:
 
 ```docker
-docker run -d -p 25901:5901 -p 26901:6901 --mount source=my_Downloads,target=/headless/Downloads accetto/ubuntu-vnc-xfce
+docker run -d -p 25901:5901 -p 26901:6901 --mount source=my_Downloads,target=/home/headless/Downloads accetto/ubuntu-vnc-xfce
 ```
 
 ## Using headless containers
@@ -152,17 +152,17 @@ Credit also goes to all the countless people and companies who contribute to ope
 [docker-ubuntu]: https://hub.docker.com/_/ubuntu/
 [docker-doc-managing-data]: https://docs.docker.com/storage/
 
-[xfce]: http://www.xfce.org
-[tigervnc]: http://tigervnc.org
-[novnc]: https://github.com/kanaka/noVNC
-[leafpad]: https://en.wikipedia.org/wiki/Leafpad
-[tightvnc]: http://www.tightvnc.com
-[firefox]: https://www.mozilla.org
-[vim]: https://www.vim.org/
-
 [consol-docker-ubuntu-xfce-vnc]: https://hub.docker.com/r/consol/ubuntu-xfce-vnc/
 [consol-github-docker-headless-vnc-container]: https://github.com/ConSol/docker-headless-vnc-container
 [consol-docker]: https://hub.docker.com/u/consol/
 
 [qnap]: https://www.qnap.com/en/
 [container-station]: https://www.qnap.com/solution/container_station/en/
+
+[firefox]: https://www.mozilla.org
+[mousepad]: https://github.com/codebrainz/mousepad
+[novnc]: https://github.com/kanaka/noVNC
+[tigervnc]: http://tigervnc.org
+[tightvnc]: http://www.tightvnc.com
+[vim]: https://www.vim.org/
+[xfce]: http://www.xfce.org

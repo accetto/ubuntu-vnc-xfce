@@ -8,6 +8,19 @@
 
 ***
 
+### Version 18.06
+
+- Dockerfile redesigned
+  - multi-staged and explicit
+  - helper installation scripts mostly removed
+- Changes in folders
+  - home path `/headless` changed to `/home/headless` (careful by mounting volumes!)
+  - startup path `/dockerstartup` changed to `/boot/dockerstartup`
+  - *TigerVNC* and *noVNC* installed into `/usr` tree
+- Standard *Xfce* desktop, incl. initial panel configuration on the first start
+- Editor **leafpad** replaced by more advanced but still lite [mousepad][mousepad]
+- **pulseaudio** and **pavucontrol** not purged any more
+
 ### Version 18.05.1
 
 - Dockerfiles - build arguments and environment variables interaction redesigned
@@ -94,7 +107,7 @@
 (March 2018)
 
 - Fixed **Issue #1**: Occasional VNC Viewer connection problem ("Too many security failures")
-  - VNC parameter **BlacklistTimetout** set to **0**
+  - VNC parameter **BlacklistTimeout** set to **0**
   - VNC parameter **BlacklistThreshold** set to **20**
   - both VNC parameters configurable through the new build arguments and environment variables **BLACKLIST_TIMEOUT** and **BLACKLIST_THRESHOLD**
 - image with Firefox got a new environment variable **VNC_USER** (configurable through the previously added build argument **VNC_USER**)
@@ -172,3 +185,5 @@ Created the following set of images:
 [consol-github-docker-headless-vnc-container]: https://github.com/ConSol/docker-headless-vnc-container
 [consol-docker]: https://hub.docker.com/u/consol/
 [consol-issue-50]: https://github.com/ConSol/docker-headless-vnc-container/issues/50
+
+[mousepad]: https://github.com/codebrainz/mousepad

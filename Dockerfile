@@ -6,7 +6,7 @@ ARG BASETAG=latest
 
 FROM ubuntu:${BASETAG} as stage-ubuntu
 
-ENV REFRESHED_AT 2018-06-11
+ENV REFRESHED_AT 2018-06-24
 
 LABEL \
     maintainer="https://github.com/accetto" \
@@ -113,19 +113,20 @@ ENV \
     VNC_RESOLUTION=${ARG_VNC_RESOLUTION:-1024x768} \
     VNC_VIEW_ONLY=false
 
-COPY [ "./src/", "${STARTUPDIR}/" ]
-
 ### Creates home folder
 WORKDIR ${HOME}
 
+COPY [ "./src/", "${STARTUPDIR}/" ]
+
 ### 'apt-get clean' runs automatically
 ### Install nss-wrapper to be able to execute image as non-root user
-### 'generate_container_user.sh' has to be sourced to hold all env vars correctly
+### 'generate_container_user' has to be sourced to hold all env vars correctly
 RUN apt-get update && apt-get install -y \
         gettext \
         libnss-wrapper \
-    && echo 'source $STARTUPDIR/generate_container_user.sh' >> ${HOME}/.bashrc \
-    && rm -rf /var/lib/apt/lists/*
+    && echo 'source $STARTUPDIR/generate_container_user' >> ${HOME}/.bashrc \
+    && rm -rf /var/lib/apt/lists/* \
+    && chmod +x ${STARTUPDIR}/*.sh
 
 EXPOSE ${VNC_PORT} ${NO_VNC_PORT}
 

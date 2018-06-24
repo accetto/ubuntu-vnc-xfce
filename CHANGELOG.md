@@ -8,6 +8,11 @@
 
 ***
 
+### Version 18.06.1
+
+- Fixed **Issue #6** ("--wait: /boot/dockerstartup/vnc_startup.sh: Permission denied" on startup)
+  - Only automated builds have been plagued by this issue.
+
 ### Version 18.06
 
 - Dockerfile redesigned

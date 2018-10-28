@@ -10,14 +10,18 @@
 
 **This repository** contains resources for building Docker images based on [Ubuntu][docker-ubuntu], with [Xfce][xfce] desktops and headless **VNC**/[noVNC][novnc] environments.
 
-These images can also be successfully built and used on NAS devices. They
-have been tested with [Container Station][container-station] from [QNAP][qnap].
+This image can also be successfully built and used on NAS devices. It
+has been tested with [Container Station][container-station] from [QNAP][qnap].
 
-The images are also used as base images for other Docker images with additional features (e.g. [accetto/ubuntu-vnc-xfce-firefox-default][accetto-docker-ubuntu-vnc-xfce-firefox-default] or [accetto/ubuntu-vnc-xfce-firefox-plus][accetto-docker-ubuntu-vnc-xfce-firefox-plus]).
+The image is also used as the base image for other Docker images with additional features (e.g. [accetto/ubuntu-vnc-xfce-firefox-default][accetto-docker-ubuntu-vnc-xfce-firefox-default] or [accetto/ubuntu-vnc-xfce-firefox-plus][accetto-docker-ubuntu-vnc-xfce-firefox-plus]).
 
-Containers created from these images are perfect for learning, testing or development, because they can be used headless over VNC using a **VNC Viewer** (e.g. [TigerVNC][tigervnc]] or [TightVNC][tightvnc]) or directly from a web browser over [noVNC][novnc]. Any web browser supporting HTML5 can be used. Both **lite** and **full** [noVNC][novnc] clients are provided.
+Running containers in background is the primary scenario this image has been developed for. However, running in foreground can be useful in many cases. See the description below for examples of using the containers both ways.
 
-It should be noticed, that the containers do not include any web browser and that they run under the privileged **root** user by default. However, the graphical editor [mousepad][mousepad] and the text editor [vim][vim] are already included and other applications can be added by the user easily.
+Containers created from this image are perfect for learning, testing or development, because they can be used headless over VNC using a **VNC Viewer** (e.g. [TigerVNC][tigervnc]] or [TightVNC][tightvnc]) or directly from a web browser over [noVNC][novnc]. Any web browser supporting HTML5 can be used. Both **lite** and **full** [noVNC][novnc] clients are provided.
+
+It should be noticed, that containers created from this image do not include any web browser and that they run under the privileged **root** user (container's root) by default. However, the graphical editor [mousepad][mousepad] and the text editor [vim][vim] are already included and other applications can be added by the user easily.
+
+It should be also noticed, that the container's **root** is not the same as the host's **root** and that he does not automatically get the same privileges on the hosting computer. Please check the [Docker documentation][docker-doc] for more information (e.g. [Runtime privilege and Linux capabilities][docker-doc-capabilities]).
 
 The image contains the following components:
 
@@ -27,7 +31,7 @@ The image contains the following components:
 - popular text editor [vim][vim]
 - lite but advanced graphical editor [mousepad][mousepad]
 
-The images are regularly maintained and rebuilt. The history of notable changes is documented in [CHANGELOG][this-changelog].
+The image is regularly maintained and rebuilt. The history of notable changes is documented in [CHANGELOG][this-changelog].
 
 ### Image set
 
@@ -61,28 +65,80 @@ The images do not create or use any external volumes by default. However, the fo
 - /home/headless/Templates/
 - /home/headless/Videos/
 
-Both **named volumes** and **bind mounts** can be used. More about volumes can be found in [Docker documentation][docker-doc-managing-data].
+Both **named volumes** and **bind mounts** can be used. More about volumes can be found in the [Docker documentation][docker-doc] (e.g. [Manage data in Docker][docker-doc-managing-data]).
 
-## Creating containers
+## Running containers in background (detached)
 
-Created containers will run under the privileged **root** user by default.
+Created containers run under the privileged **root** user by default. However, it's the container's root, which is not the same as the root of the hosting computer (see above).
 
-The following container will listen on the host's **TCP** ports **25901** (VNC) and **26901** (noVNC):
+The following container will listen on automatically selected **TCP** ports of the host computer:
+
+```docker
+docker run -d -P accetto/ubuntu-vnc-xfce
+```
+
+The following container will listen on the host's explicit **TCP** ports **25901** (VNC) and **26901** (noVNC):
 
 ```docker
 docker run -d -p 25901:5901 -p 26901:6901 accetto/ubuntu-vnc-xfce
 ```
 
-The following container wil create or re-use the local named volume **my\_Downloads** mounted as `/headless/Downloads`. The container will be accessible through the same **TCP** ports as the one above:
+The following container will create or re-use the local named volume **my\_Downloads** mounted as `/headless/Downloads`:
 
 ```docker
-docker run -d -p 25901:5901 -p 26901:6901 -v my_Downloads:/home/headless/Downloads accetto/ubuntu-vnc-xfce
+docker run -d -P -v my_Downloads:/home/headless/Downloads accetto/ubuntu-vnc-xfce
 ```
 
 or using the newer syntax with **--mount** flag:
 
 ```docker
-docker run -d -p 25901:5901 -p 26901:6901 --mount source=my_Downloads,target=/home/headless/Downloads accetto/ubuntu-vnc-xfce
+docker run -d -P --mount source=my_Downloads,target=/home/headless/Downloads accetto/ubuntu-vnc-xfce
+```
+
+## Running containers in foreground (interactively)
+
+The image supports the following container start-up options: `--wait` (default), `--skip`, `--debug` (also `--tail-log`) and `--help`.
+
+The following container will print out the help and then it'll remove itself:
+
+```docker
+docker run --rm accetto/ubuntu-vnc-xfce --help
+```
+
+Excerpt from the output, which describes the other options:
+
+```docker
+OPTIONS:
+-w, --wait      (default) Keeps the UI and the vnc server up until SIGINT or SIGTERM are received.
+                An optional command can be executed after the vnc starts up.
+                example: docker run -d -P accetto/ubuntu-vnc-xfce
+                example: docker run -it -P accetto/ubuntu-vnc-xfce /bin/bash
+
+-s, --skip      Skips the vnc startup and just executes the provided command.
+                example: docker run -it -P accetto/ubuntu-vnc-xfce --skip /bin/bash
+
+-d, --debug     Executes the vnc startup and tails the vnc/noVNC logs.
+                Any parameters after '--debug' are ignored. CTRL-C stops the container.
+                example: docker run -it -P accetto/ubuntu-vnc-xfce --debug
+
+-t, --tail-log  same as '--debug'
+
+-h, --help      Prints out this help.
+                example: docker run --rm accetto/ubuntu-vnc-xfce
+```
+
+It should be noticed, that the `--debug` start-up option does not show the command prompt even if the `-it` run arguments are provided. This is because the container is watching the incoming vnc/noVNC connections and prints out their logs in real time. However, it is easy to attach to the running container like in the following example.
+
+In the first terminal window on the host computer, create a new container named **foo**:
+
+```docker
+docker run --name foo accetto/ubuntu-vnc-xfce --debug
+```
+
+In the second terminal window on the host computer, execute the shell inside the **foo** container:
+
+```docker
+docker exec -it foo /bin/bash
 ```
 
 ## Using headless containers
@@ -150,7 +206,9 @@ Credit also goes to all the countless people and companies who contribute to ope
 [accetto-github-ubuntu-vnc-xfce-firefox-plus]: https://github.com/accetto/ubuntu-vnc-xfce-firefox-plus
 
 [docker-ubuntu]: https://hub.docker.com/_/ubuntu/
+[docker-doc]: https://docs.docker.com/
 [docker-doc-managing-data]: https://docs.docker.com/storage/
+[docker-doc-capabilities]: https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities
 
 [consol-docker-ubuntu-xfce-vnc]: https://hub.docker.com/r/consol/ubuntu-xfce-vnc/
 [consol-github-docker-headless-vnc-container]: https://github.com/ConSol/docker-headless-vnc-container

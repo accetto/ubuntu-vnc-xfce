@@ -8,6 +8,13 @@
 
 ***
 
+### Version 18.10
+
+- Fixed **Issue #7** (Problem with foreground mode)
+  - supported startup options: `--wait` (default), `--skip`, `--debug` (also `--tail-log`) and `--help`
+  - getting help: `docker run --rm accetto/ubuntu-vnc-xfce --help`
+  - README file is extended
+
 ### Version 18.06.1
 
 - Fixed **Issue #6** ("--wait: /boot/dockerstartup/vnc_startup.sh: Permission denied" on startup)

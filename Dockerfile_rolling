@@ -6,7 +6,7 @@ ARG BASETAG=rolling
 
 FROM ubuntu:${BASETAG} as stage-ubuntu
 
-ENV REFRESHED_AT 2018-06-24
+ENV REFRESHED_AT 2018-10-28
 
 LABEL \
     maintainer="https://github.com/accetto" \
@@ -130,5 +130,7 @@ RUN apt-get update && apt-get install -y \
 
 EXPOSE ${VNC_PORT} ${NO_VNC_PORT}
 
-ENTRYPOINT [ "/bin/bash", "-c", "${STARTUPDIR}/vnc_startup.sh" ]
+### Issue #7: Mitigating problems with foreground mode
+WORKDIR ${STARTUPDIR}
+ENTRYPOINT ["./vnc_startup.sh"]
 CMD [ "--wait" ]

@@ -30,3 +30,7 @@ if [ x"$USER_ID" != x"0" ] ; then
     echo "nss_wrapper location: $LD_PRELOAD"
     export LD_PRELOAD
 fi
+
+### Issue #7: Fixing problems with foreground mode
+### (compensates the last 'WORKDIR ${STARTUPDIR}' in Dockerfile)
+cd "$HOME"

@@ -10,8 +10,9 @@
 
 **This repository** contains resources for building Docker images based on [Ubuntu][docker-ubuntu], with [Xfce][xfce] desktops and headless **VNC**/[noVNC][novnc] environments.
 
-This image can also be successfully built and used on NAS devices. It
-has been tested with [Container Station][container-station] from [QNAP][qnap].
+This image can be successfully built and used on Linux, NAS devices and Windows.
+
+It has been tested with [Docker CE][docker-ce] on [Ubuntu flavours][ubuntu-flavours], with [Container Station][container-station] on a NAS from [QNAP][qnap] and with [Docker for Windows][docker-for-windows] on Windows 10.
 
 The image is also used as the base image for other Docker images with additional features (e.g. [accetto/ubuntu-vnc-xfce-firefox-default][accetto-docker-ubuntu-vnc-xfce-firefox-default] or [accetto/ubuntu-vnc-xfce-firefox-plus][accetto-docker-ubuntu-vnc-xfce-firefox-plus]).
 
@@ -94,6 +95,8 @@ or using the newer syntax with **--mount** flag:
 ```docker
 docker run -d -P --mount source=my_Downloads,target=/home/headless/Downloads accetto/ubuntu-vnc-xfce
 ```
+
+More usage examples can be found in [Wiki][this-wiki] (section [HOWTO][this-wiki-howto]).
 
 ## Running containers in foreground (interactively)
 
@@ -209,6 +212,8 @@ Credit also goes to all the countless people and companies who contribute to ope
 [docker-doc]: https://docs.docker.com/
 [docker-doc-managing-data]: https://docs.docker.com/storage/
 [docker-doc-capabilities]: https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities
+[docker-for-windows]: https://docs.docker.com/docker-for-windows/
+[docker-ce]: https://docs.docker.com/install/
 
 [consol-docker-ubuntu-xfce-vnc]: https://hub.docker.com/r/consol/ubuntu-xfce-vnc/
 [consol-github-docker-headless-vnc-container]: https://github.com/ConSol/docker-headless-vnc-container
@@ -216,6 +221,8 @@ Credit also goes to all the countless people and companies who contribute to ope
 
 [qnap]: https://www.qnap.com/en/
 [container-station]: https://www.qnap.com/solution/container_station/en/
+
+[ubuntu-flavours]: https://www.ubuntu.com/download/flavours
 
 [firefox]: https://www.mozilla.org
 [mousepad]: https://github.com/codebrainz/mousepad

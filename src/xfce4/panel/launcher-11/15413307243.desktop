@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Exec=mousepad %F
+Icon=accessories-text-editor
+StartupNotify=true
+Terminal=false
+Categories=Network;X-XFCE;X-Xfce-Toplevel;
+OnlyShowIn=XFCE;
+X-XFCE-MimeType=x-scheme-handler/http;x-scheme-handler/https;
+Name=Mousepad
+Comment=Simple Text Editor
+X-XFCE-Source=file:///usr/share/applications/exo-web-browser.desktop
+Path=

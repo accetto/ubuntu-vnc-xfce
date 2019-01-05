@@ -8,6 +8,14 @@
 
 ***
 
+### Version 19.01
+
+- **TigerVNC** updated to version **1.9.0** (formerly 1.8.0)
+- **websockify** updated to version **0.8.0** (formerly 0.6.1)
+- Environment variable **REFRESHED_AT** removed
+- Xfce panels are pre-configured now
+- Container screenshot added to README
+
 ### Version 18.10
 
 - Fixed **Issue #7** (Problem with foreground mode)

@@ -34,6 +34,8 @@ The image contains the following components:
 
 The image is regularly maintained and rebuilt. The history of notable changes is documented in [CHANGELOG][this-changelog].
 
+![screenshot-container][screenshot-container]
+
 ### Image set
 
 - [accetto/ubuntu-vnc-xfce][this-docker]
@@ -231,3 +233,5 @@ Credit also goes to all the countless people and companies who contribute to ope
 [tightvnc]: http://www.tightvnc.com
 [vim]: https://www.vim.org/
 [xfce]: http://www.xfce.org
+
+[screenshot-container]: https://raw.githubusercontent.com/accetto/ubuntu-vnc-xfce/master/ubuntu-vnc-xfce.jpg

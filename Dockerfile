@@ -1,6 +1,7 @@
 # docker build -t accetto/ubuntu-vnc-xfce .
-# docker build --build-arg BASETAG=rolling -t accetto/ubuntu-vnc-xfce:rolling .
+# docker build -t accetto/ubuntu-vnc-xfce:dev .
 # docker build --build-arg ARG_VNC_RESOLUTION=1360x768 -t accetto/ubuntu-vnc-xfce .
+# docker build --build-arg BASETAG=rolling -t accetto/ubuntu-vnc-xfce:rolling .
 
 ARG BASETAG=latest
 
@@ -12,6 +13,7 @@ LABEL \
 
 ### 'apt-get clean' runs automatically
 RUN apt-get update && apt-get install -y \
+        inetutils-ping \
         lsb-release \
         net-tools \
         vim \
@@ -63,7 +65,7 @@ ENV NO_VNC_HOME=/usr/share/usr/local/share/noVNCdim
 RUN apt-get update && apt-get install -y \
         python-numpy \
     && mkdir -p ${NO_VNC_HOME}/utils/websockify \
-    && wget -qO- https://github.com/novnc/noVNC/archive/v1.0.0.tar.gz | tar xz --strip 1 -C ${NO_VNC_HOME} \
+    && wget -qO- https://github.com/novnc/noVNC/archive/v1.1.0.tar.gz | tar xz --strip 1 -C ${NO_VNC_HOME} \
     && wget -qO- https://github.com/novnc/websockify/archive/v0.8.0.tar.gz | tar xz --strip 1 -C ${NO_VNC_HOME}/utils/websockify \
     && chmod +x -v ${NO_VNC_HOME}/utils/*.sh \
     && rm -rf /var/lib/apt/lists/*
@@ -126,15 +128,18 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/* \
     && chmod +x ${STARTUPDIR}/*.sh
 
-### Preconfigure Xfce panels
-COPY [ "./src/xfce4/panel", "./.config/xfce4/panel/" ]
-COPY [ "./src/xfce4/xfce4-panel.xml", "./.config/xfce4/xfconf/xfce-perchannel-xml/" ]
-RUN chmod 700 ./.config/xfce4/xfconf/xfce-perchannel-xml \
-    && chmod 644 ./.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml \
+### Preconfigure Xfce
+COPY [ "./src/home/Desktop", "./Desktop/" ]
+COPY [ "./src/home/config/xfce4/panel", "./.config/xfce4/panel/" ]
+COPY [ "./src/home/config/xfce4/xfconf/xfce-perchannel-xml", "./.config/xfce4/xfconf/xfce-perchannel-xml/" ]
+RUN chmod 755 ./Desktop/*.desktop \
     && chmod 700 ./.config/xfce4/panel/launcher* \
-    && chmod 644 ./.config/xfce4/panel/launcher*/*
+    && chmod 644 ./.config/xfce4/panel/launcher*/*.desktop \
+    && chmod 644 ./.config/xfce4/xfconf/xfce-perchannel-xml/*.xml
 
 EXPOSE ${VNC_PORT} ${NO_VNC_PORT}
+
+ENV REFRESHED_AT 2019-04-27
 
 ### Issue #7: Mitigating problems with foreground mode
 WORKDIR ${STARTUPDIR}

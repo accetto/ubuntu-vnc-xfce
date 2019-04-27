@@ -8,21 +8,19 @@
 
 ***
 
-**This repository** contains resources for building Docker images based on [Ubuntu][docker-ubuntu], with [Xfce][xfce] desktops and headless **VNC**/[noVNC][novnc] environments.
+**This repository** contains resources for building a Docker image based on [Ubuntu][docker-ubuntu] with [Xfce][xfce] desktop environment and **VNC**/[noVNC][novnc] servers for headless use.
 
-This image can be successfully built and used on Linux, NAS devices and Windows.
+The image can be successfully built and used on Linux, Windows, Mac and NAS devices. It has been tested with [Docker Desktop][docker-desktop] on [Ubuntu flavours][ubuntu-flavours], [Windows 10][docker-for-windows] and [Container Station][container-station] from [QNAP][qnap].
 
-It has been tested with [Docker CE][docker-ce] on [Ubuntu flavours][ubuntu-flavours], with [Container Station][container-station] on a NAS from [QNAP][qnap] and with [Docker for Windows][docker-for-windows] on Windows 10.
+This is also the base of my other Docker images with additional features (e.g. [accetto/ubuntu-vnc-xfce-firefox-plus][accetto-docker-ubuntu-vnc-xfce-firefox-plus] or [accetto/ubuntu-vnc-xfce-firefox-default][accetto-docker-ubuntu-vnc-xfce-firefox-default]).
 
-The image is also used as the base image for other Docker images with additional features (e.g. [accetto/ubuntu-vnc-xfce-firefox-default][accetto-docker-ubuntu-vnc-xfce-firefox-default] or [accetto/ubuntu-vnc-xfce-firefox-plus][accetto-docker-ubuntu-vnc-xfce-firefox-plus]).
+Containers created from this image are perfect for learning, development or testing, because they can be easily used headless via web browsers (over [noVNC][novnc]) or VNC viewers (e.g. [TigerVNC][tigervnc] or [TightVNC][tightvnc]). Both **lite** and **full** [noVNC][novnc] clients are provided.
 
-Running containers in background is the primary scenario this image has been developed for. However, running in foreground can be useful in many cases. See the description below for examples of using the containers both ways.
+While the containers do not include any web browsers, [mousepad][mousepad] and [vim][vim] editors and the **ping** utility are already included. Other applications can be easily added also at runtime, because the containers run under the privileged **root** user.
 
-Containers created from this image are perfect for learning, testing or development, because they can be used headless over VNC using a **VNC Viewer** (e.g. [TigerVNC][tigervnc]] or [TightVNC][tightvnc]) or directly from a web browser over [noVNC][novnc]. Any web browser supporting HTML5 can be used. Both **lite** and **full** [noVNC][novnc] clients are provided.
+It should be noticed, that the container's root is not the same as the host's root and that it does not automatically get all root privileges on the hosting computer. Please check the [Docker documentation][docker-doc] for more information about it (e.g. [Runtime privilege and Linux capabilities][docker-doc-capabilities]).
 
-It should be noticed, that containers created from this image do not include any web browser and that they run under the privileged **root** user (container's root) by default. However, the graphical editor [mousepad][mousepad] and the text editor [vim][vim] are already included and other applications can be added by the user easily.
-
-It should be also noticed, that the container's **root** is not the same as the host's **root** and that he does not automatically get the same privileges on the hosting computer. Please check the [Docker documentation][docker-doc] for more information (e.g. [Runtime privilege and Linux capabilities][docker-doc-capabilities]).
+Running in background is the primary scenario for the containers, but using them interactively in foreground is also possible. For examples see the description below or the [HOWTO][this-wiki-howto] section in [Wiki][this-wiki].
 
 The image contains the following components:
 
@@ -31,6 +29,7 @@ The image contains the following components:
 - [noVNC][novnc] HTML5 clients (full and lite) (TCP port **6901**)
 - popular text editor [vim][vim]
 - lite but advanced graphical editor [mousepad][mousepad]
+- **ping** utility
 
 The image is regularly maintained and rebuilt. The history of notable changes is documented in [CHANGELOG][this-changelog].
 
@@ -43,9 +42,8 @@ The image is regularly maintained and rebuilt. The history of notable changes is
   Images based on the official [ubuntu][docker-ubuntu] images.
 
   - `latest` based on `ubuntu:latest`
-  - `rolling` based on `ubuntu:rolling`
 
-    [![version badge](https://images.microbadger.com/badges/version/accetto/ubuntu-vnc-xfce.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce "Get your own version badge on microbadger.com") [![size badge](https://images.microbadger.com/badges/image/accetto/ubuntu-vnc-xfce.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce "Get your own image badge on microbadger.com") [![version badge](https://images.microbadger.com/badges/version/accetto/ubuntu-vnc-xfce:rolling.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce:rolling "Get your own version badge on microbadger.com") [![size badge](https://images.microbadger.com/badges/image/accetto/ubuntu-vnc-xfce:rolling.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce:rolling "Get your own image badge on microbadger.com")
+    [![version badge](https://images.microbadger.com/badges/version/accetto/ubuntu-vnc-xfce.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce "Get your own version badge on microbadger.com") [![size badge](https://images.microbadger.com/badges/image/accetto/ubuntu-vnc-xfce.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce "Get your own image badge on microbadger.com")
 
 ### Ports
 
@@ -58,7 +56,7 @@ The default **VNC user** password is **headless**.
 
 ### Volumes
 
-The images do not create or use any external volumes by default. However, the following folders make good mounting points:
+The containers do not create or use any external volumes by default. However, the following folders make good mounting points:
 
 - /home/headless/Documents/
 - /home/headless/Downloads/
@@ -72,7 +70,7 @@ Both **named volumes** and **bind mounts** can be used. More about volumes can b
 
 ## Running containers in background (detached)
 
-Created containers run under the privileged **root** user by default. However, it's the container's root, which is not the same as the root of the hosting computer (see above).
+The containers run under the privileged **root** user by default. However, it's the container's root, which is not the same as the root of the hosting computer (see above).
 
 The following container will listen on automatically selected **TCP** ports of the host computer:
 
@@ -152,9 +150,9 @@ There are two ways, how to use the created headless containers. Note that the de
 
 ### Over VNC
 
-To be able to use the containers over **VNC**, a **VNC Viewer** is needed (e.g. [TigerVNC][tigervnc] or [TightVNC][tightvnc]).
+To be able to use the containers over **VNC**, some **VNC Viewer** is needed (e.g. [TigerVNC][tigervnc] or [TightVNC][tightvnc]).
 
-The VNC Viewer should connect to the host running the container, pointing to the host's TCP port mapped to the container's TCP port **5901**.
+The VNC Viewer should connect to the host running the container, pointing to its TCP port mapped to the container's TCP port **5901**.
 
 For example, if the container has been created on the host called `mynas` using the parameters described above, the VNC Viewer should connect to `mynas:25901`.
 
@@ -162,11 +160,11 @@ For example, if the container has been created on the host called `mynas` using 
 
 To be able to use the containers over [noVNC][novnc], an HTML5 capable web browser is needed. It actually means, that any current web browser can be used.
 
-The browser should navigate to the host running the container, pointing to the host's TCP port mapped to the container's TCP port **6901**.
+The browser should navigate to the host running the container, pointing to its TCP port mapped to the container's TCP port **6901**.
 
-However, since the version **1.2.0** the containers offer two [noVNC][novnc] clients. Additionally to the previously available **lite** client there is also the **full** client with more features. The connection URL differs slightly in both cases. To make it easier, a simple startup page is implemented.
+However, since the version **1.2.0** the containers offer two [noVNC][novnc] clients. Additionally to the previously available **lite** client there is also the **full** client with more features. The connection URL differs slightly in both cases. To make it easier, a **simple startup page** is implemented.
 
-If the container have been created on the host called `mynas` using the parameters described above, then the web browser should navigate to `http://mynas:26901`.
+If the container has been created on the host called `mynas` using the parameters described above, then the web browser should navigate to `http://mynas:26901`.
 
 The startup page will show two hyperlinks pointing to the both noVNC clients:
 
@@ -180,7 +178,7 @@ It's also possible to provide the password through the links:
 
 ## Issues
 
-If you have found a problem or just have a question, please check the [Issues][this-issues] and the [Troubleshooting][this-wiki-troubleshooting], [FAQ][this-wiki-faq] and [HOWTO][this-wiki-howto] pages in [Wiki][this-wiki] first. Please do not overlook the closed issues.
+If you have found a problem or you just have a question, please check the [Issues][this-issues] and the [Troubleshooting][this-wiki-troubleshooting], [FAQ][this-wiki-faq] and [HOWTO][this-wiki-howto] sections in [Wiki][this-wiki] first. Please do not overlook the closed issues.
 
 If you do not find a solution, you can file a new issue. The better you describe the problem, the bigger the chance it'll be solved soon.
 
@@ -214,8 +212,8 @@ Credit also goes to all the countless people and companies who contribute to ope
 [docker-doc]: https://docs.docker.com/
 [docker-doc-managing-data]: https://docs.docker.com/storage/
 [docker-doc-capabilities]: https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities
-[docker-for-windows]: https://docs.docker.com/docker-for-windows/
-[docker-ce]: https://docs.docker.com/install/
+[docker-for-windows]: https://hub.docker.com/editions/community/docker-ce-desktop-windows
+[docker-desktop]: https://www.docker.com/products/docker-desktop
 
 [consol-docker-ubuntu-xfce-vnc]: https://hub.docker.com/r/consol/ubuntu-xfce-vnc/
 [consol-github-docker-headless-vnc-container]: https://github.com/ConSol/docker-headless-vnc-container

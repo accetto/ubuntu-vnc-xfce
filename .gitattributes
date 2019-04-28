@@ -1,6 +1,6 @@
 # GitHub language detection
 # linguist-language, linguist-vendored, linguist-documentation, linguist-generated, linguist-detectable
-#* linguist-documentation
+*.sh linguist-documentation=true
 Dockerfile linguist-detectable=true
 Dockerfile linguist-language=Dockerfile
 

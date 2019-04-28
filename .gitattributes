@@ -1,3 +1,10 @@
+# GitHub language detection
+# linguist-language, linguist-vendored, linguist-documentation, linguist-generated, linguist-detectable
+* linguist-documentation=true
+Dockerfile linguist-documentation=false
+Dockerfile linguist-language=Dockerfile
+Dockerfile linguist-detectable=true
+
 # Set default behaviour, in case users don't have core.autocrlf set.
 * text=auto
 

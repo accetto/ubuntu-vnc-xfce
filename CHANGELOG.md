@@ -8,6 +8,17 @@
 
 ***
 
+### Version 19.04
+
+- **noVNC** updated to version **1.1.0** (formerly 1.0.0)
+- **ping** utility added
+- Environment variable **REFRESHED_AT** added back
+- Display settings launcher added to the desktop and the panels
+  - to make resolution switching more convenient also with **noVNC** lite client
+- **Dockerfile_rolling** file removed
+  - it can be easily cloned from the Dockerfile file for the **latest** build
+  - **rolling** build will not be maintained on **Docker Hub** any more
+
 ### Version 19.01
 
 - **TigerVNC** updated to version **1.9.0** (formerly 1.8.0)

@@ -1,4 +1,4 @@
-# Headless Ubuntu/Xfce containers with VNC/noVNC
+# Headless Ubuntu/Xfce container with VNC/noVNC
 
 ## accetto/ubuntu-vnc-xfce
 

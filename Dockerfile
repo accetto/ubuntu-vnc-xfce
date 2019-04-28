@@ -116,7 +116,7 @@ ENV \
 ### Creates home folder
 WORKDIR ${HOME}
 
-COPY [ "./src/", "${STARTUPDIR}/" ]
+COPY [ "./src/startup", "${STARTUPDIR}/" ]
 
 ### 'apt-get clean' runs automatically
 ### Install nss-wrapper to be able to execute image as non-root user

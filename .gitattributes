@@ -2,6 +2,7 @@
 # linguist-language, linguist-vendored, linguist-documentation, linguist-generated, linguist-detectable
 * linguist-documentation
 Dockerfile linguist-detectable=true
+Dockerfile linguist-language=Dockerfile
 
 # Set default behaviour, in case users don't have core.autocrlf set.
 * text=auto

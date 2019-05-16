@@ -139,7 +139,7 @@ RUN chmod 755 ./Desktop/*.desktop \
 
 EXPOSE ${VNC_PORT} ${NO_VNC_PORT}
 
-ENV REFRESHED_AT 2019-05-13
+ENV REFRESHED_AT 2019-05-16
 
 ### Issue #7: Mitigating problems with foreground mode
 WORKDIR ${STARTUPDIR}

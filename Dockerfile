@@ -1,5 +1,12 @@
 # docker build -t accetto/ubuntu-vnc-xfce .
 # docker build -t accetto/ubuntu-vnc-xfce:dev .
+# docker build --target stage-ubuntu -t dev/ubuntu-vnc-xfce:stage-ubuntu .
+# docker build --target stage-xfce -t dev/ubuntu-vnc-xfce:stage-xfce .
+# docker build --target stage-vnc -t dev/ubuntu-vnc-xfce:stage-vnc .
+# docker build --target stage-novnc -t dev/ubuntu-vnc-xfce:stage-novnc .
+# docker build --target stage-wrapper -t dev/ubuntu-vnc-xfce:stage-wrapper .
+# docker build --target stage-final -t dev/ubuntu-vnc-xfce:stage-final .
+# docker build -t dev/ubuntu-vnc-xfce .
 # docker build --build-arg ARG_VNC_RESOLUTION=1360x768 -t accetto/ubuntu-vnc-xfce .
 # docker build --build-arg BASETAG=rolling -t accetto/ubuntu-vnc-xfce:rolling .
 
@@ -19,8 +26,12 @@ RUN apt-get update && apt-get install -y \
         vim \
     && rm -rf /var/lib/apt/lists/*
 
-### supports testing, should be overriden
-#ENTRYPOINT ["tail", "-f", "/dev/null"]
+### next ENTRYPOINT command supports development and should be overriden or disabled
+### it allows running detached containers created from intermediate images, for example:
+### docker build --target stage-vnc -t dev/ubuntu-vnc-xfce:stage-vnc .
+### docker run -d --name test-stage-vnc dev/ubuntu-vnc-xfce:stage-vnc
+### docker exec -it test-stage-vnc bash
+# ENTRYPOINT ["tail", "-f", "/dev/null"]
 
 FROM stage-ubuntu as stage-xfce
 
@@ -85,7 +96,16 @@ RUN echo \
 "</html>" \
 > ${NO_VNC_HOME}/index.html
 
-FROM stage-novnc as stage-final
+FROM stage-novnc as stage-wrapper
+
+### 'apt-get clean' runs automatically
+### Install nss-wrapper to be able to execute image as non-root user
+RUN apt-get update && apt-get install -y \
+        gettext \
+        libnss-wrapper \
+    && rm -rf /var/lib/apt/lists/*
+
+FROM stage-wrapper as stage-final
 
 LABEL \
     any.accetto.description="Headless Ubuntu VNC/noVNC container with Xfce desktop" \
@@ -104,7 +124,7 @@ ENV \
     DISPLAY=:1 \
     HOME=${ARG_HOME:-/home/headless} \
     NO_VNC_PORT="6901" \
-    STARTUPDIR=/boot/dockerstartup \
+    STARTUPDIR=/dockerstartup \
     VNC_BLACKLIST_THRESHOLD=${ARG_VNC_BLACKLIST_THRESHOLD:-20} \
     VNC_BLACKLIST_TIMEOUT=${ARG_VNC_BLACKLIST_TIMEOUT:-0} \
     VNC_COL_DEPTH=24 \
@@ -118,28 +138,20 @@ WORKDIR ${HOME}
 
 COPY [ "./src/startup", "${STARTUPDIR}/" ]
 
-### 'apt-get clean' runs automatically
-### Install nss-wrapper to be able to execute image as non-root user
-### 'generate_container_user' has to be sourced to hold all env vars correctly
-RUN apt-get update && apt-get install -y \
-        gettext \
-        libnss-wrapper \
-    && echo 'source $STARTUPDIR/generate_container_user' >> ${HOME}/.bashrc \
-    && rm -rf /var/lib/apt/lists/* \
-    && chmod +x ${STARTUPDIR}/*.sh
-
 ### Preconfigure Xfce
 COPY [ "./src/home/Desktop", "./Desktop/" ]
 COPY [ "./src/home/config/xfce4/panel", "./.config/xfce4/panel/" ]
 COPY [ "./src/home/config/xfce4/xfconf/xfce-perchannel-xml", "./.config/xfce4/xfconf/xfce-perchannel-xml/" ]
-RUN chmod 755 ./Desktop/*.desktop \
-    && chmod 700 ./.config/xfce4/panel/launcher* \
-    && chmod 644 ./.config/xfce4/panel/launcher*/*.desktop \
-    && chmod 644 ./.config/xfce4/xfconf/xfce-perchannel-xml/*.xml
+
+### 'generate_container_user' has to be sourced to hold all env vars correctly
+RUN echo 'source $STARTUPDIR/generate_container_user' >> ${HOME}/.bashrc
+
+RUN chmod +x ${STARTUPDIR}/set_user_permissions.sh \
+    && ${STARTUPDIR}/set_user_permissions.sh $STARTUPDIR $HOME
 
 EXPOSE ${VNC_PORT} ${NO_VNC_PORT}
 
-ENV REFRESHED_AT 2019-05-16
+ENV REFRESHED_AT 2019-05-26
 
 ### Issue #7: Mitigating problems with foreground mode
 WORKDIR ${STARTUPDIR}

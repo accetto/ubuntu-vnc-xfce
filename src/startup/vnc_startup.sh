@@ -42,7 +42,8 @@ if [[ $1 =~ -h|--help ]]; then
     exit 0
 fi
 
-### should also source '$STARTUPDIR/generate_container_user.sh'
+### '.bashrc' will also source '$STARTUPDIR/generate_container_user'
+### (see 'stage-final' in Dockerfile)
 source "$HOME"/.bashrc
 
 ### add `--skip` to startup args, to skip the VNC startup procedure
@@ -67,6 +68,16 @@ trap cleanup SIGINT SIGTERM
 
 ### resolve_vnc_connection
 VNC_IP=$(hostname -i)
+
+### DEV
+if [[ $DEBUG ]] ; then
+    echo "DEBUG:"
+    id
+    echo "DEBUG: ls -la /"
+    ls -la /
+    echo "DEBUG: ls -la ."
+    ls -la .
+fi
 
 ### change vnc password
 echo -e "\n------------------ change VNC password  ------------------"

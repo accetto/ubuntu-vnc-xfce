@@ -8,6 +8,17 @@
 
 ***
 
+### Version 19.05
+
+- Fixed [Issue #8](https://github.com/accetto/ubuntu-vnc-xfce/issues/8) (Error if changing default user)
+- **Dockerfile** updated
+  - new intermediate stage `stage-wrapper` added
+  - some commands moved out from `stage-wrapper` to `stage-final`
+  - user permissions set using `set_user_permissions.sh` script
+  - **STARTUPDIR** changed from `/boot/dockerstartup` to `/dockerstartup`
+- Launchers for **Vim** and **TigerVNC Viewer** added to the desktop
+- Utility `util-hdx.sh` updated (using [accetto/argbash-docker][accetto-docker-argbash-docker])
+
 ### Version 19.04
 
 - **noVNC** updated to version **1.1.0** (formerly 1.0.0)
@@ -29,14 +40,14 @@
 
 ### Version 18.10
 
-- Fixed **Issue #7** (Problem with foreground mode)
+- Fixed [Issue #7](https://github.com/accetto/ubuntu-vnc-xfce/issues/7) (Problem with foreground mode)
   - supported startup options: `--wait` (default), `--skip`, `--debug` (also `--tail-log`) and `--help`
   - getting help: `docker run --rm accetto/ubuntu-vnc-xfce --help`
   - README file is extended
 
 ### Version 18.06.1
 
-- Fixed **Issue #6** ("--wait: /boot/dockerstartup/vnc_startup.sh: Permission denied" on startup)
+- Fixed [Issue #6](https://github.com/accetto/ubuntu-vnc-xfce/issues/6) ("--wait: /boot/dockerstartup/vnc_startup.sh: Permission denied" on startup)
   - Only automated builds have been plagued by this issue.
 
 ### Version 18.06
@@ -73,11 +84,11 @@
 
 (April 2018)
 
-- Quick-fix **Issue #4**: Volume '/headless/Documents' owned by 'root'
+- Quick-fix [Issue #4](https://github.com/accetto/ubuntu-vnc-xfce/issues/4) (Volume '/headless/Documents' owned by 'root')
 - Essentially a rollback to the previous version
   - **VOLUME** instructions removed
   - Environment variables **LANG**, **LANGUAGE** and **LC_ALL** declared at the previous place
-- **Issue #5** mitigated by setting the lite noVNC client as the default one. Full client can be used by navigating to *vnc.html*.
+- [Issue #5](https://github.com/accetto/ubuntu-vnc-xfce/issues/5) mitigated by setting the lite noVNC client as the default one. Full client can be used by navigating to *vnc.html*.
 - This is the final version of generation 1 before repository split and version numbering change
   - Branch **18.04** keeps this stage which will not be developed any more
 
@@ -93,15 +104,15 @@
 
 (April 2018)
 
-- Fixed **Issue #1**: Occasional VNC Viewer connection problem ("Too many security failures")
+- Fixed [Issue #1](https://github.com/accetto/ubuntu-vnc-xfce/issues/1) (Occasional VNC Viewer connection problem "Too many security failures")
 - **Ubuntu 18.04 LTS** (bionic) as **ubuntu:latest**
 
 ### Version 1.4.0
 
 (April 2018)
 
-- Warning, the **issue #1** is unfortunately back in this release.
-- Fixed **Issue #3**: Default Firefox profile not initialized on external volumes
+- Warning, the [issue #1](https://github.com/accetto/ubuntu-vnc-xfce/issues/1) is unfortunately back in this release.
+- Fixed [Issue #3](https://github.com/accetto/ubuntu-vnc-xfce/issues/3) (Default Firefox profile not initialized on external volumes)
 - Handling of Firefox profiles has been improved
   - Firefox proto-profile **profile0.default** is created also on external volumes if there is no Firefox profile yet
   - Proto-profile is backed-up as folder **/headless/firefox.backup**
@@ -114,7 +125,7 @@
 (April 2018)
 
 - Handling of Firefox profiles has been redesigned
-  - The folder **profile0.default** for the default Firefox profile has been pre-created and initialized with the **user.js** file, which includes the fix of the issue #2 (see the version 1.2.0).
+  - The folder **profile0.default** for the default Firefox profile has been pre-created and initialized with the **user.js** file, which includes the fix of the [issue #2](https://github.com/accetto/ubuntu-vnc-xfce/issues/2) (see the version 1.2.0).
   - The actual Firefox profile is created on the first Firefox start.
   - The non-root **VNC user** got permissions to modify the **user.js** file and the whole profile.
   - The backup copy **user.js.txt** is in the folder **/headless/.mozilla/firefox**, so the default profile can be safely deleted.
@@ -128,7 +139,7 @@
 - **noVNC** updated to version **1.0.0** (was 0.6.2)
 - **Firefox Quantum** updated to version **59.0.2** (64-bit)
 - **vim** editor has been installed back
-- Fixed: **Issue #2**: Firefox tab crashes "Gah. Your tab just crashed."
+- Fixed: [Issue #2](https://github.com/accetto/ubuntu-vnc-xfce/issues/2) (Firefox tab crashes "Gah. Your tab just crashed.")
   - Mitigated by forcing the following Firefox preferences:
     - **browser.tabs.remote.autostart = false**
     - **browser.tabs.remote.autostart.2 = false**
@@ -137,7 +148,7 @@
 
 (March 2018)
 
-- Fixed **Issue #1**: Occasional VNC Viewer connection problem ("Too many security failures")
+- Fixed [Issue #1](https://github.com/accetto/ubuntu-vnc-xfce/issues/1) (Occasional VNC Viewer connection problem "Too many security failures")
   - VNC parameter **BlacklistTimeout** set to **0**
   - VNC parameter **BlacklistThreshold** set to **20**
   - both VNC parameters configurable through the new build arguments and environment variables **BLACKLIST_TIMEOUT** and **BLACKLIST_THRESHOLD**
@@ -208,6 +219,9 @@ Created the following set of images:
 
 [accetto-github-ubuntu-vnc-xfce-firefox]: https://github.com/accetto/ubuntu-vnc-xfce-firefox
 [accetto-github-ubuntu-vnc-xfce-firefox-plus]: https://github.com/accetto/ubuntu-vnc-xfce-firefox-plus
+
+[accetto-docker-argbash-docker]: https://hub.docker.com/r/accetto/argbash-docker
+[accetto-github-argbash-docker]: https://github.com/accetto/argbash-docker
 
 [docker-ubuntu]: https://hub.docker.com/_/ubuntu/
 

@@ -147,11 +147,12 @@ COPY [ "./src/home/config/xfce4/xfconf/xfce-perchannel-xml", "./.config/xfce4/xf
 RUN echo 'source $STARTUPDIR/generate_container_user' >> ${HOME}/.bashrc
 
 RUN chmod +x ${STARTUPDIR}/set_user_permissions.sh \
-    && ${STARTUPDIR}/set_user_permissions.sh $STARTUPDIR $HOME
+    && ${STARTUPDIR}/set_user_permissions.sh $STARTUPDIR $HOME \
+    && gtk-update-icon-cache -f /usr/share/icons/hicolor
 
 EXPOSE ${VNC_PORT} ${NO_VNC_PORT}
 
-ENV REFRESHED_AT 2019-05-26
+ENV REFRESHED_AT 2019-06-09
 
 ### Issue #7: Mitigating problems with foreground mode
 WORKDIR ${STARTUPDIR}

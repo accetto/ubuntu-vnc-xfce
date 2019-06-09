@@ -6,6 +6,8 @@ set -e
 echo "Current user:"
 id
 
+_group=$(id -g)
+
 [[ -n $DEBUG ]] && _verbose="-v" || _verbose=""
 
 for i in "$@"
@@ -18,8 +20,8 @@ do
     ### all users are allowed to execute launchers in the folder (recursively)
     find "$i"/ -name '*.desktop' -exec chmod $_verbose a+x {} +
 
-    ### folder content belongs to the 'root' group (recursively)
-    chgrp -R 0 "$i"
+    ### folder content belongs to the current user group group (recursively)
+    chgrp -R $_group "$i"
 
     ### all users have write permissions to the folder content (recursively)
     chmod -R $_verbose a+rw "$i"

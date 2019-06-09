@@ -4,7 +4,7 @@
 # ARG_OPTIONAL_SINGLE([lines],[n],[Number of header lines to display],[10])
 # ARG_POSITIONAL_SINGLE([file],[File containing the commands])
 # ARG_POSITIONAL_SINGLE([line],[Number of the line to execute],[0])
-# ARG_VERSION([echo $0 v19.05.25])
+# ARG_VERSION([echo $0 v19.06.02])
 # ARG_HELP([Displays the file head and executes the chosen line, removing the first occurrence of '#' and trimming it from the left first.\nProviding the line number argument skips the interaction and executes the given line directly.])
 # ARG_OPTIONAL_BOOLEAN([echo],[],[Just print the command line to be executed])
 # ARGBASH_SET_INDENT([  ])
@@ -73,11 +73,11 @@ parse_commandline()
         _arg_lines="${_key##-n}"
         ;;
       -v|--version)
-        echo $0 v19.05.25
+        echo $0 v19.06.02
         exit 0
         ;;
       -v*)
-        echo $0 v19.05.25
+        echo $0 v19.06.02
         exit 0
         ;;
       -h|--help)
@@ -160,19 +160,18 @@ fi
 _cmd=$(sed "${_line}q;d" "$_arg_file")
 _cmd=$(echo $_cmd | sed -r -e 's/^\s*#\s*//g')
 
-### display the line to be executed
+### display the command to be executed
 echo $_cmd
 
 if [[ $_arg_line -eq 0 && "$_arg_echo" = "off" ]] ; then
-  ### get user confirmation
+  ### ask for user confirmation
   read -rp $'Execute the line above? (y) ' -n1 _key
   echo
   [[ "${_key,,}" != "y" ]] && die "INTERRUPTED"
 fi
 
-if [[ "$_arg_echo" = "off" ]] ; then
-  ### execute the chosen line
-  $_cmd
+if [[ "$_arg_echo" == "off" ]] ; then
+  eval "$_cmd"
 fi
 
 # ] <-- needed because of Argbash

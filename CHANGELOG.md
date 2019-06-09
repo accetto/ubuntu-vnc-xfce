@@ -8,6 +8,12 @@
 
 ***
 
+### Version 19.06
+
+- Script **set_user_permissions.sh** updated
+  - root group replaced by the current user group
+- **TigerVNC Viewer** desktop launcher icon fixed
+
 ### Version 19.05
 
 - Fixed [Issue #8](https://github.com/accetto/ubuntu-vnc-xfce/issues/8) (Error if changing default user)

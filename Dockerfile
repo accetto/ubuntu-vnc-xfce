@@ -152,7 +152,7 @@ RUN chmod +x ${STARTUPDIR}/set_user_permissions.sh \
 
 EXPOSE ${VNC_PORT} ${NO_VNC_PORT}
 
-ENV REFRESHED_AT 2019-06-09
+ENV REFRESHED_AT 2019-06-20
 
 ### Issue #7: Mitigating problems with foreground mode
 WORKDIR ${STARTUPDIR}

@@ -8,6 +8,14 @@
 
 ***
 
+### Version 19.06.1
+
+- File manager (Thunar) pre-configured
+  - *Owner*, *Permissions* and *Group* columns shown by default
+  - *Type* column suppressed
+- Script **set_user_permissions.sh** updated
+  - current user group replaced by group zero
+
 ### Version 19.06
 
 - Script **set_user_permissions.sh** updated

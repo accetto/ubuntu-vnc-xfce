@@ -4,9 +4,13 @@
 
 [Docker Hub][this-docker] - [Git Hub][this-github] - [Changelog][this-changelog] - [Wiki][this-wiki]
 
-**Attention:** Resources for building images with Firefox and configurable Firefox, previously contained in this repository, have been moved to their own GitHub repositories [ubuntu-vnc-xfce-firefox][accetto-github-ubuntu-vnc-xfce-firefox] and [ubuntu-vnc-xfce-firefox-plus][accetto-github-ubuntu-vnc-xfce-firefox-plus].
+***
+
+**TIP** Unless you need [noVNC][novnc] or [nss_wrapper][nsswrapper], you can use the newer image [accetto/xubuntu-vnc][accetto-docker-xubuntu-vnc] - a streamlined and simplified version of this image with a growing family of derived application images.
 
 ***
+
+**Attention:** Resources for building images with Firefox and configurable Firefox, previously contained in this repository, have been moved to their own GitHub repositories [ubuntu-vnc-xfce-firefox][accetto-github-ubuntu-vnc-xfce-firefox] and [ubuntu-vnc-xfce-firefox-plus][accetto-github-ubuntu-vnc-xfce-firefox-plus].
 
 **This repository** contains resources for building a Docker image based on [Ubuntu][docker-ubuntu] with [Xfce][xfce] desktop environment and **VNC**/[noVNC][novnc] servers for headless use.
 
@@ -207,6 +211,7 @@ Credit also goes to all the countless people and companies who contribute to ope
 
 [accetto-github-ubuntu-vnc-xfce-firefox]: https://github.com/accetto/ubuntu-vnc-xfce-firefox
 [accetto-github-ubuntu-vnc-xfce-firefox-plus]: https://github.com/accetto/ubuntu-vnc-xfce-firefox-plus
+[accetto-docker-xubuntu-vnc]: https://hub.docker.com/r/accetto/xubuntu-vnc
 
 [docker-ubuntu]: https://hub.docker.com/_/ubuntu/
 [docker-doc]: https://docs.docker.com/
@@ -227,6 +232,7 @@ Credit also goes to all the countless people and companies who contribute to ope
 [firefox]: https://www.mozilla.org
 [mousepad]: https://github.com/codebrainz/mousepad
 [novnc]: https://github.com/kanaka/noVNC
+[nsswrapper]: https://cwrap.org/nss_wrapper.html
 [tigervnc]: http://tigervnc.org
 [tightvnc]: http://www.tightvnc.com
 [vim]: https://www.vim.org/

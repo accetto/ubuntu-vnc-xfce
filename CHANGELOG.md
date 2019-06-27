@@ -8,6 +8,11 @@
 
 ***
 
+### Version 19.06.2
+
+- **README** updated
+  - reference to [accetto/xubuntu-vnc][accetto-docker-xubuntu-vnc] added - a streamlined and simplified version of this image, without [noVNC][novnc] and [nss_wrapper][nsswrapper], with a growing family of derived images with various applications
+
 ### Version 19.06.1
 
 - File manager (Thunar) pre-configured
@@ -227,6 +232,8 @@ Created the following set of images:
 - `accetto/ubuntu-vnc-xfce-firefox` adds Firefox
 - optional `accetto/ubuntu-vnc-xfce-firefox-profile` adds a pre-configured Firefox profile
 
+***
+
 [this-docker]: https://hub.docker.com/r/accetto/ubuntu-vnc-xfce/
 [this-github]: https://github.com/accetto/ubuntu-vnc-xfce
 [this-wiki]: https://github.com/accetto/ubuntu-vnc-xfce/wiki
@@ -237,6 +244,8 @@ Created the following set of images:
 [accetto-docker-argbash-docker]: https://hub.docker.com/r/accetto/argbash-docker
 [accetto-github-argbash-docker]: https://github.com/accetto/argbash-docker
 
+[accetto-docker-xubuntu-vnc]: https://hub.docker.com/r/accetto/xubuntu-vnc
+
 [docker-ubuntu]: https://hub.docker.com/_/ubuntu/
 
 [microbadger]: https://microbadger.com/
@@ -246,3 +255,5 @@ Created the following set of images:
 [consol-issue-50]: https://github.com/ConSol/docker-headless-vnc-container/issues/50
 
 [mousepad]: https://github.com/codebrainz/mousepad
+[novnc]: https://github.com/kanaka/noVNC
+[nsswrapper]: https://cwrap.org/nss_wrapper.html

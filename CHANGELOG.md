@@ -8,6 +8,10 @@
 
 ***
 
+### Version 19.08
+
+- just refreshed because of newer base image (Ubuntu)
+
 ### Version 19.06.2
 
 - **README** updated

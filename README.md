@@ -47,7 +47,7 @@ The image is regularly maintained and rebuilt. The history of notable changes is
 
   - `latest` based on `ubuntu:latest`
 
-    [![version badge](https://images.microbadger.com/badges/version/accetto/ubuntu-vnc-xfce.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce "Get your own version badge on microbadger.com") [![size badge](https://images.microbadger.com/badges/image/accetto/ubuntu-vnc-xfce.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce "Get your own image badge on microbadger.com")
+    [![version badge](https://images.microbadger.com/badges/version/accetto/ubuntu-vnc-xfce:latest.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce:latest "Get your own version badge on microbadger.com") [![size badge](https://images.microbadger.com/badges/image/accetto/ubuntu-vnc-xfce:latest.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce:latest "Get your own image badge on microbadger.com")
 
 ### Ports
 

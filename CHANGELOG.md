@@ -8,6 +8,13 @@
 
 ***
 
+### Version 19.08.1
+
+- newer base image (**Ubuntu 18.04.3 LTS**)
+- build argument **ARG_REFRESHED_AT** introduced
+  - environment variable **REFRESHED_AT** set to the actual build date
+  - utility **util-update-refreshed-at** removed
+
 ### Version 19.08
 
 - just refreshed because of newer base image (Ubuntu)

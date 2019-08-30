@@ -1,0 +1,18 @@
+#!/bin/bash -xe
+
+. ./hooks/env
+
+if [[ -n "$BASETAG" ]] ; then
+
+    docker push $DOCKER_REPO:$DOCKER_TAG
+
+    case "$DOCKER_TAG" in
+        latest)
+            docker tag $IMAGE_NAME $DOCKER_REPO:$ARCHIVE_TAG
+            docker push $DOCKER_REPO:$ARCHIVE_TAG
+            ;;
+    esac
+else
+    echo "Nothing to push!"
+    exit 1
+fi

@@ -6,7 +6,6 @@
 # docker build --target stage-novnc -t dev/ubuntu-vnc-xfce:stage-novnc .
 # docker build --target stage-wrapper -t dev/ubuntu-vnc-xfce:stage-wrapper .
 # docker build --target stage-final -t dev/ubuntu-vnc-xfce:stage-final .
-# docker build -t dev/ubuntu-vnc-xfce .
 # docker build --build-arg ARG_VNC_RESOLUTION=1360x768 -t accetto/ubuntu-vnc-xfce .
 # docker build --build-arg BASETAG=rolling -t accetto/ubuntu-vnc-xfce:rolling .
 
@@ -119,6 +118,7 @@ ARG ARG_VNC_BLACKLIST_THRESHOLD
 ARG ARG_VNC_BLACKLIST_TIMEOUT
 ARG ARG_VNC_PW
 ARG ARG_VNC_RESOLUTION
+ARG ARG_REFRESHED_AT
 
 ENV \
     DISPLAY=:1 \
@@ -131,7 +131,8 @@ ENV \
     VNC_PORT="5901" \
     VNC_PW=${ARG_VNC_PW:-headless} \
     VNC_RESOLUTION=${ARG_VNC_RESOLUTION:-1024x768} \
-    VNC_VIEW_ONLY=false
+    VNC_VIEW_ONLY=false \
+    REFRESHED_AT=${ARG_REFRESHED_AT}
 
 ### Creates home folder
 WORKDIR ${HOME}
@@ -151,8 +152,6 @@ RUN chmod +x ${STARTUPDIR}/set_user_permissions.sh \
     && gtk-update-icon-cache -f /usr/share/icons/hicolor
 
 EXPOSE ${VNC_PORT} ${NO_VNC_PORT}
-
-ENV REFRESHED_AT 2019-08-03
 
 ### Issue #7: Mitigating problems with foreground mode
 WORKDIR ${STARTUPDIR}

@@ -1,0 +1,16 @@
+### hooks/env
+
+ARCHIVE_TAG="ubuntu18.04.3"
+TODAY=$(date +%Y-%m-%d)
+BASETAG=""
+
+case "$DOCKER_TAG" in
+
+    latest | dev)
+        BASETAG="latest"
+        ;;
+
+    *)
+        BASETAG=""
+        ;;
+esac

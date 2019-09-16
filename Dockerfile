@@ -1,13 +1,5 @@
-# docker build -t accetto/ubuntu-vnc-xfce .
-# docker build -t accetto/ubuntu-vnc-xfce:dev .
-# docker build --target stage-ubuntu -t dev/ubuntu-vnc-xfce:stage-ubuntu .
-# docker build --target stage-xfce -t dev/ubuntu-vnc-xfce:stage-xfce .
-# docker build --target stage-vnc -t dev/ubuntu-vnc-xfce:stage-vnc .
-# docker build --target stage-novnc -t dev/ubuntu-vnc-xfce:stage-novnc .
-# docker build --target stage-wrapper -t dev/ubuntu-vnc-xfce:stage-wrapper .
-# docker build --target stage-final -t dev/ubuntu-vnc-xfce:stage-final .
-# docker build --build-arg ARG_VNC_RESOLUTION=1360x768 -t accetto/ubuntu-vnc-xfce .
-# docker build --build-arg BASETAG=rolling -t accetto/ubuntu-vnc-xfce:rolling .
+# ./hooks/build dev
+# ./hooks/build dfw
 
 ARG BASETAG=latest
 
@@ -114,25 +106,27 @@ LABEL \
 
 ### Arguments can be provided during build
 ARG ARG_HOME
+ARG ARG_REFRESHED_AT
+ARG ARG_VERSION_STICKER
 ARG ARG_VNC_BLACKLIST_THRESHOLD
 ARG ARG_VNC_BLACKLIST_TIMEOUT
 ARG ARG_VNC_PW
 ARG ARG_VNC_RESOLUTION
-ARG ARG_REFRESHED_AT
 
 ENV \
     DISPLAY=:1 \
     HOME=${ARG_HOME:-/home/headless} \
     NO_VNC_PORT="6901" \
+    REFRESHED_AT=${ARG_REFRESHED_AT} \
     STARTUPDIR=/dockerstartup \
+    VERSION_STICKER=${ARG_VERSION_STICKER} \
     VNC_BLACKLIST_THRESHOLD=${ARG_VNC_BLACKLIST_THRESHOLD:-20} \
     VNC_BLACKLIST_TIMEOUT=${ARG_VNC_BLACKLIST_TIMEOUT:-0} \
     VNC_COL_DEPTH=24 \
     VNC_PORT="5901" \
     VNC_PW=${ARG_VNC_PW:-headless} \
     VNC_RESOLUTION=${ARG_VNC_RESOLUTION:-1024x768} \
-    VNC_VIEW_ONLY=false \
-    REFRESHED_AT=${ARG_REFRESHED_AT}
+    VNC_VIEW_ONLY=false
 
 ### Creates home folder
 WORKDIR ${HOME}
@@ -147,9 +141,15 @@ COPY [ "./src/home/config/xfce4/xfconf/xfce-perchannel-xml", "./.config/xfce4/xf
 ### 'generate_container_user' has to be sourced to hold all env vars correctly
 RUN echo 'source $STARTUPDIR/generate_container_user' >> ${HOME}/.bashrc
 
-RUN chmod +x ${STARTUPDIR}/set_user_permissions.sh \
-    && ${STARTUPDIR}/set_user_permissions.sh $STARTUPDIR $HOME \
+RUN chmod +x \
+        "${STARTUPDIR}/set_user_permissions.sh" \
+        "${STARTUPDIR}/vnc_startup.sh" \
+        "${STARTUPDIR}/version_of.sh" \
+        "${STARTUPDIR}/version_sticker.sh" \
     && gtk-update-icon-cache -f /usr/share/icons/hicolor
+
+### Fix permissions
+RUN "${STARTUPDIR}"/set_user_permissions.sh "${STARTUPDIR}" "${HOME}"    
 
 EXPOSE ${VNC_PORT} ${NO_VNC_PORT}
 

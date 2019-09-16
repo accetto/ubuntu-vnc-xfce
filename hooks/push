@@ -8,8 +8,8 @@ if [[ -n "$BASETAG" ]] ; then
 
     case "$DOCKER_TAG" in
         latest)
-            docker tag $IMAGE_NAME $DOCKER_REPO:$ARCHIVE_TAG
-            docker push $DOCKER_REPO:$ARCHIVE_TAG
+            docker tag $IMAGE_NAME $DOCKER_REPO:$VERSION_STICKER
+            docker push $DOCKER_REPO:$VERSION_STICKER
             ;;
     esac
 else

@@ -8,6 +8,7 @@ if [[ -n "$BASETAG" ]] ; then
         -f $DOCKERFILE_PATH \
             --build-arg BASETAG="$BASETAG" \
             --build-arg ARG_REFRESHED_AT="$TODAY" \
+            --build-arg ARG_VERSION_STICKER="$VERSION_STICKER" \
         -t $DOCKER_REPO:$DOCKER_TAG .
 else
     echo "Build request not recognized: $SOURCE_BRANCH"

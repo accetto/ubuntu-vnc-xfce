@@ -46,7 +46,7 @@ case "$1" in
         ;;
     novnc | no-vnc)
         ### source example: 1.1.0
-        echo $(cat "${NO_VNC_HOME}"/VERSION | grep -Po '^[0-9.]+$')
+        echo $(cat "${NO_VNC_HOME}"/VERSION 2>/dev/null | grep -Po '^[0-9.]+$')
         ;;
     npm)
         ### source example: 6.9.0
@@ -74,6 +74,6 @@ case "$1" in
         ;;
     websockify)
         ### source example: 0.8.0
-        echo $(cat "${NO_VNC_HOME}"/utils/websockify/CHANGES.txt | grep -Po -m1 '^[0-9.]+')
+        echo $(cat "${NO_VNC_HOME}"/utils/websockify/CHANGES.txt 2>/dev/null | grep -Po -m1 '^[0-9.]+')
         ;;
 esac

@@ -8,6 +8,10 @@
 
 ***
 
+### Version 19.10
+
+- README updated
+
 ### Version 19.09
 
 - environment variable **VERSION_STICKER** and build argument **ARG_VERSION_STICKER** introduced

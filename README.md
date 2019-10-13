@@ -6,6 +6,11 @@
 
 ***
 
+![badge-docker-pulls][badge-docker-pulls]
+![badge-docker-stars][badge-docker-stars]
+![badge-github-release][badge-github-release]
+![badge-github-release-date][badge-github-release-date]
+
 **TIP** Unless you need [nss_wrapper][nsswrapper], you can also use my newer image [accetto/xubuntu-vnc-novnc][accetto-docker-xubuntu-vnc-novnc], which is a streamlined version of this image ([image hierarchy][accetto-xubuntu-vnc-novnc-wiki-image-hierarchy]). If you also don't need [noVNC][novnc], you can use even a slimmer image [accetto/xubuntu-vnc][accetto-docker-xubuntu-vnc], which is the base of another growing family of application images ([image hierarchy][accetto-xubuntu-vnc-wiki-image-hierarchy]). The newer images include also **sudo** command.
 
 ***
@@ -47,7 +52,8 @@ The image is regularly maintained and rebuilt. The history of notable changes is
 
   - `latest` based on `ubuntu:latest`
 
-    [![version badge](https://images.microbadger.com/badges/version/accetto/ubuntu-vnc-xfce:latest.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce:latest "Get your own version badge on microbadger.com") [![size badge](https://images.microbadger.com/badges/image/accetto/ubuntu-vnc-xfce:latest.svg)](https://microbadger.com/images/accetto/ubuntu-vnc-xfce:latest "Get your own image badge on microbadger.com")
+    ![badge-VERSION_STICKER_LATEST][badge-VERSION_STICKER_LATEST]
+    ![badge-github-commit-latest][badge-github-commit-latest]
 
 ### Ports
 
@@ -246,3 +252,21 @@ Credit also goes to all the countless people and companies who contribute to ope
 [xfce]: http://www.xfce.org
 
 [screenshot-container]: https://raw.githubusercontent.com/accetto/ubuntu-vnc-xfce/master/ubuntu-vnc-xfce.jpg
+
+<!-- docker badges -->
+
+[badge-docker-pulls]: https://badgen.net/docker/pulls/accetto/ubuntu-vnc-xfce?icon=docker&label=pulls
+
+[badge-docker-stars]: https://badgen.net/docker/stars/accetto/ubuntu-vnc-xfce?icon=docker&label=stars
+
+<!-- github badges -->
+
+[badge-github-release]: https://badgen.net/github/release/accetto/ubuntu-vnc-xfce?icon=github&label=release
+
+[badge-github-release-date]: https://img.shields.io/github/release-date/accetto/ubuntu-vnc-xfce?logo=github
+
+<!-- latest tag badges -->
+
+[badge-VERSION_STICKER_LATEST]: https://badgen.net/badge/version%20sticker/ubuntu18.04.3/blue
+
+[badge-github-commit-latest]: https://images.microbadger.com/badges/commit/accetto/ubuntu-vnc-xfce.svg

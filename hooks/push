@@ -2,14 +2,14 @@
 
 . ./hooks/env
 
-if [[ -n "$BASETAG" ]] ; then
+if [[ -n "${BASETAG}" ]] ; then
 
-    docker push $DOCKER_REPO:$DOCKER_TAG
+    docker push ${DOCKER_REPO}:${DOCKER_TAG}
 
-    case "$DOCKER_TAG" in
+    case "${DOCKER_TAG}" in
         latest)
-            docker tag $IMAGE_NAME $DOCKER_REPO:$VERSION_STICKER
-            docker push $DOCKER_REPO:$VERSION_STICKER
+            docker tag ${IMAGE_NAME} ${DOCKER_REPO}:${VERSION_STICKER}
+            docker push ${DOCKER_REPO}:${VERSION_STICKER}
             ;;
     esac
 else

@@ -1,13 +1,20 @@
 # ./hooks/build dev
 # ./hooks/build dfw
+# ./hooks/build nux
 
 ARG BASETAG=latest
 
 FROM ubuntu:${BASETAG} as stage-ubuntu
 
+ARG ARG_VERSION_STICKER
+ARG ARG_VCS_REF
+
 LABEL \
     maintainer="https://github.com/accetto" \
-    vendor="accetto"
+    vendor="accetto" \
+    version-sticker="${ARG_VERSION_STICKER}" \
+    org.label-schema.vcs-ref="${ARG_VCS_REF}" \
+    org.label-schema.vcs-url="https://github.com/accetto/ubuntu-vnc-xfce"
 
 ### 'apt-get clean' runs automatically
 RUN apt-get update && apt-get install -y \

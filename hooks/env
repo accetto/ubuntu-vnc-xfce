@@ -5,13 +5,18 @@ DOCKER_TAG=${DOCKER_TAG:-$1}
 DOCKERFILE_PATH=${DOCKERFILE_PATH:-./Dockerfile}
 DOCKER_REPO=${DOCKER_REPO:-accetto/ubuntu-vnc-xfce}
 
-TODAY=$(date +%Y-%m-%d)
 BASETAG=""
-VERSION_STICKER="ubuntu18.04.3"
+TODAY=$(date +%Y-%m-%d)
+VERSION_STICKER=""
 
-case "$DOCKER_TAG" in
+### Warning! The values must be explicit strings (used by utils).
+VERSION_STICKER_LATEST="ubuntu18.04.3"
 
-    latest | dev | dfw)
+VERSION_STICKER="${VERSION_STICKER_LATEST}"
+
+case "${DOCKER_TAG}" in
+
+    latest | dev | dfw | nux)
         BASETAG="latest"
         ;;
 

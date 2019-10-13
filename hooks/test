@@ -5,20 +5,22 @@
 it=$1
 it=${it:+-it}
 
-vars=($(docker run ${it} --rm $DOCKER_REPO:$DOCKER_TAG -s printenv VERSION_STICKER STARTUPDIR | tail -n2))
+vars=($(docker run ${it} --rm ${DOCKER_REPO}:${DOCKER_TAG} -s printenv VERSION_STICKER STARTUPDIR | tail -n2))
 
 expected="${vars[0]}"
 
 startup="${vars[1]}"
-[[ -n "$WINDIR" ]] && startup=/$startup
+startup="${startup%%[[:space:]]}"
 
-actual=$(docker run ${it} --rm $DOCKER_REPO:$DOCKER_TAG -s $startup/version_sticker.sh | tail -n1)
+[[ -n "${WINDIR}" ]] && startup=/${startup}
+
+actual=$(docker run ${it} --rm ${DOCKER_REPO}:${DOCKER_TAG} -s ${startup}/version_sticker.sh | tail -n1)
 
 expected=${expected%%[[:space:]]}
 actual=${actual%%[[:space:]]}
 
-if [[ -n "$it" ]] ; then
-    [[ "$actual" == "$expected" ]] && echo 0 || echo 1
+if [[ -n "${it}" ]] ; then
+    [[ "${actual}" == "${expected}" ]] && echo 0 || echo 1
 else
-    [[ "$actual" == "$expected" ]] && exit 0 || exit 1
+    [[ "${actual}" == "${expected}" ]] && exit 0 || exit 1
 fi

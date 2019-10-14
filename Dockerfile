@@ -6,8 +6,8 @@ ARG BASETAG=latest
 
 FROM ubuntu:${BASETAG} as stage-ubuntu
 
-ARG ARG_VERSION_STICKER
 ARG ARG_VCS_REF
+ARG ARG_VERSION_STICKER
 
 LABEL \
     maintainer="https://github.com/accetto" \

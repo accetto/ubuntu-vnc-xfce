@@ -95,9 +95,9 @@ The script is deployed into the startup folder, which is defined by the environm
 
 If the script is executed inside a container without an argument, then it returns the **current version sticker value** of the container. This value is newly calculated and it is based on the current versions of the essential applications in the container.
 
-The **current** version sticker value will differ from the **persisted** value, if any of the included application have been updated to another version.
+The **current** version sticker value will differ from the **persisted** value, if any of the included application has been updated to another version.
 
-If the script is called with the argument `-v` (lower case `v`), then it prints out verbose versions of the essential applications, that are included in the **version sticker value**.
+If the script is called with the argument `-v` (lower case `v`), then it prints out verbose versions of the essential applications that are included in the **version sticker value**.
 
 If it is called with the argument `-V` (upper case `v`), then it prints out verbose versions of some more applications.
 

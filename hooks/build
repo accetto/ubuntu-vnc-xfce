@@ -4,7 +4,7 @@
 
 if [[ -n "${BASETAG}" ]] ; then
 
-    docker build \
+    docker build $@ \
         -f ${DOCKERFILE_PATH} \
             --build-arg BASETAG="${BASETAG}" \
             --build-arg ARG_REFRESHED_AT="${TODAY}" \

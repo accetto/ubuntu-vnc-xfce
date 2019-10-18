@@ -10,6 +10,13 @@
 ![badge-docker-stars][badge-docker-stars]
 ![badge-github-release][badge-github-release]
 ![badge-github-release-date][badge-github-release-date]
+![badge-github-stars][badge-github-stars]
+![badge-github-forks][badge-github-forks]
+![badge-github-open-issues][badge-github-open-issues]
+![badge-github-closed-issues][badge-github-closed-issues]
+![badge-github-releases][badge-github-releases]
+![badge-github-commits][badge-github-commits]
+![badge-github-last-commit][badge-github-last-commit]
 
 **TIP** Unless you need [nss_wrapper][nsswrapper], you can also use my newer image [accetto/xubuntu-vnc-novnc][accetto-docker-xubuntu-vnc-novnc], which is a streamlined version of this image ([image hierarchy][accetto-xubuntu-vnc-novnc-wiki-image-hierarchy]). If you also don't need [noVNC][novnc], you can use even a slimmer image [accetto/xubuntu-vnc][accetto-docker-xubuntu-vnc], which is the base of another growing family of application images ([image hierarchy][accetto-xubuntu-vnc-wiki-image-hierarchy]). The newer images include also **sudo** command.
 
@@ -86,13 +93,13 @@ However, the script `version_sticker.sh` can be used anytime for convenient chec
 
 The script is deployed into the startup folder, which is defined by the environment variable `STARTUPDIR` with the default value of `/dockerstartup`.
 
-If the script is executed inside a container without an argument, then it returns the **current version sticker value** of the particular docker image. This value is newly calculated and it is based on the current versions of the essential applications.
+If the script is executed inside a container without an argument, then it returns the **current version sticker value** of the container. This value is newly calculated and it is based on the current versions of the essential applications in the container.
 
-The **current** version sticker value will differ from the **persisted** value if any of the included application have been updated to another version since the docker image has been built.
+The **current** version sticker value will differ from the **persisted** value, if any of the included application have been updated to another version.
 
 If the script is called with the argument `-v` (lower case `v`), then it prints out verbose versions of the essential applications, that are included in the **version sticker value**.
 
-If it is called with the argument `-V` (upper case `v`), then it prints out verbose versions of some more applications from the image.
+If it is called with the argument `-V` (upper case `v`), then it prints out verbose versions of some more applications.
 
 Examples can be found in [Wiki][this-wiki].
 
@@ -288,3 +295,23 @@ Credit also goes to all the countless people and companies who contribute to ope
 [badge-VERSION_STICKER_LATEST]: https://badgen.net/badge/version%20sticker/ubuntu18.04.3/blue
 
 [badge-github-commit-latest]: https://images.microbadger.com/badges/commit/accetto/ubuntu-vnc-xfce.svg
+
+<!-- github badges -->
+
+[badge-github-release]: https://badgen.net/github/release/accetto/ubuntu-vnc-xfce?icon=github&label=release
+
+[badge-github-release-date]: https://img.shields.io/github/release-date/accetto/ubuntu-vnc-xfce?logo=github
+
+[badge-github-stars]: https://badgen.net/github/stars/accetto/ubuntu-vnc-xfce?icon=github&label=stars
+
+[badge-github-forks]: https://badgen.net/github/forks/accetto/ubuntu-vnc-xfce?icon=github&label=forks
+
+[badge-github-releases]: https://badgen.net/github/releases/accetto/ubuntu-vnc-xfce?icon=github&label=releases
+
+[badge-github-commits]: https://badgen.net/github/commits/accetto/ubuntu-vnc-xfce?icon=github&label=commits
+
+[badge-github-last-commit]: https://badgen.net/github/last-commit/accetto/ubuntu-vnc-xfce?icon=github&label=last%20commit
+
+[badge-github-closed-issues]: https://badgen.net/github/closed-issues/accetto/ubuntu-vnc-xfce?icon=github&label=closed%20issues
+
+[badge-github-open-issues]: https://badgen.net/github/open-issues/accetto/ubuntu-vnc-xfce?icon=github&label=open%20issues

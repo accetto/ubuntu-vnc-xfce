@@ -10,7 +10,9 @@
 
 ### Version 19.10.2
 
-- **version sticker** described in README
+- README updated
+  - **version sticker** described
+  - new badges added
 - build hooks updated
   - command line arguments passed to `build` hook
 

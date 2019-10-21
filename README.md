@@ -295,18 +295,6 @@ Credit also goes to all the countless people and companies who contribute to ope
 
 [badge-github-release-date]: https://img.shields.io/github/release-date/accetto/ubuntu-vnc-xfce?logo=github
 
-<!-- latest tag badges -->
-
-[badge-VERSION_STICKER_LATEST]: https://badgen.net/badge/version%20sticker/ubuntu18.04.3/blue
-
-[badge-github-commit-latest]: https://images.microbadger.com/badges/commit/accetto/ubuntu-vnc-xfce.svg
-
-<!-- github badges -->
-
-[badge-github-release]: https://badgen.net/github/release/accetto/ubuntu-vnc-xfce?icon=github&label=release
-
-[badge-github-release-date]: https://img.shields.io/github/release-date/accetto/ubuntu-vnc-xfce?logo=github
-
 [badge-github-stars]: https://badgen.net/github/stars/accetto/ubuntu-vnc-xfce?icon=github&label=stars
 
 [badge-github-forks]: https://badgen.net/github/forks/accetto/ubuntu-vnc-xfce?icon=github&label=forks
@@ -320,3 +308,9 @@ Credit also goes to all the countless people and companies who contribute to ope
 [badge-github-closed-issues]: https://badgen.net/github/closed-issues/accetto/ubuntu-vnc-xfce?icon=github&label=closed%20issues
 
 [badge-github-open-issues]: https://badgen.net/github/open-issues/accetto/ubuntu-vnc-xfce?icon=github&label=open%20issues
+
+<!-- latest tag badges -->
+
+[badge-VERSION_STICKER_LATEST]: https://badgen.net/badge/version%20sticker/ubuntu18.04.3/blue
+
+[badge-github-commit-latest]: https://images.microbadger.com/badges/commit/accetto/ubuntu-vnc-xfce.svg

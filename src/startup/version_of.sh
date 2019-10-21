@@ -35,6 +35,10 @@ case "$1" in
         ### source sample: Inkscape 0.92.3 (2405546, 2018-03-11)
         echo $(inkscape --version 2>/dev/null | grep -Po '(?<=Inkscape\s)[0-9.]+')
         ;;
+    jq)
+        ### source sample: jq-1.5-1-a5b5cbe
+        echo $(jq --version 2>/dev/null | grep -Po '(?<=jq\-)[0-9.]+')
+        ;;
     mousepad)
         ### Mousepad requires display!
         ### source example: Mousepad 0.4.0

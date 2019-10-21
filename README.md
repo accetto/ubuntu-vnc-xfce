@@ -40,12 +40,14 @@ Running in background is the primary scenario for the containers, but using them
 
 The image contains the following components:
 
-- light-weight [Xfce][xfce] desktop environment
-- high-performance VNC server [TigerVNC][tigervnc] (TCP port **5901**)
-- [noVNC][novnc] HTML5 clients (full and lite) (TCP port **6901**)
-- popular text editor [vim][vim]
-- lite but advanced graphical editor [mousepad][mousepad]
-- **ping** utility
+- utilities **ping**, **wget**, **zip**, **unzip**, **sudo**, [curl][curl], [git][git] (Ubuntu distribution)
+- current version of JSON processor [jq][jq]
+- light-weight [Xfce][xfce] desktop environment (Ubuntu distribution)
+- current version of high-performance [TigerVNC][tigervnc] server and client
+- current version of [noVNC][novnc] HTML5 clients (full and lite) (TCP port **6901**)
+- popular text editor [vim][vim] (Ubuntu distribution)
+- lite but advanced graphical editor [mousepad][mousepad] (Ubuntu distribution)
+- support of **version sticker** (see below)
 
 The image is regularly maintained and rebuilt. The history of notable changes is documented in [CHANGELOG][this-changelog].
 
@@ -267,7 +269,10 @@ Credit also goes to all the countless people and companies who contribute to ope
 
 [ubuntu-flavours]: https://www.ubuntu.com/download/flavours
 
+[curl]: http://manpages.ubuntu.com/manpages/bionic/man1/curl.1.html
 [firefox]: https://www.mozilla.org
+[git]: https://git-scm.com/
+[jq]: https://stedolan.github.io/jq/
 [mousepad]: https://github.com/codebrainz/mousepad
 [novnc]: https://github.com/kanaka/noVNC
 [nsswrapper]: https://cwrap.org/nss_wrapper.html

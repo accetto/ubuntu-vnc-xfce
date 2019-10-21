@@ -13,12 +13,18 @@ case "$1" in
         tigervnc=$("${STARTUPDIR}/version_of.sh" tigervnc)
         novnc=$("${STARTUPDIR}/version_of.sh" novnc)
         websockify=$("${STARTUPDIR}/version_of.sh" websockify)
+        curl=$("${STARTUPDIR}/version_of.sh" curl)
+        git=$("${STARTUPDIR}/version_of.sh" git)
+        jq=$("${STARTUPDIR}/version_of.sh" jq)
         echo "Ubuntu $ubuntu"
         echo "Mousepad $mousepad"
         echo "VIM $vim"
         echo "TigerVNC $tigervnc"
         echo "noVNC $novnc"
         echo "websockify $websockify"
+        echo "curl $curl"
+        echo "Git $git"
+        echo "jq $jq"
         ;;
     *)
         ### example: ubuntu18.04.3

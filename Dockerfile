@@ -21,8 +21,35 @@ RUN apt-get update && apt-get install -y \
         inetutils-ping \
         lsb-release \
         net-tools \
+        unzip \
         vim \
+        zip \
+        curl \
+        git \
+        wget \
     && rm -rf /var/lib/apt/lists/*
+
+### install current 'jq' explicitly
+RUN \
+    { \
+    JQ_VERSION="1.6" ; \
+    JQ_DISTRO="jq-linux64" ; \
+    cd /tmp ; \
+    wget -q "https://github.com/stedolan/jq/releases/download/jq-${JQ_VERSION}/${JQ_DISTRO}" ; \
+    wget -q "https://raw.githubusercontent.com/stedolan/jq/master/sig/v${JQ_VERSION}/sha256sum.txt" ; \
+    test=$(grep "${JQ_DISTRO}" sha256sum.txt | sha256sum -c | grep -c "${JQ_DISTRO}: OK") ; \
+    if [[ $test -ne 1 ]] ; then \
+        echo "FAILURE: ${JQ_DISTRO} failed checksum test" ; \
+        exit 1 ; \
+    else \
+        rm sha256sum.txt ; \
+        chown root "${JQ_DISTRO}" ; \
+        chmod +x "${JQ_DISTRO}" ; \
+        # mv -f "${JQ_DISTRO}" $(which jq) ; \
+        mv -f "${JQ_DISTRO}" /usr/bin/jq ; \
+    fi ; \
+    cd - ; \
+    }
 
 ### next ENTRYPOINT command supports development and should be overriden or disabled
 ### it allows running detached containers created from intermediate images, for example:
@@ -56,10 +83,7 @@ FROM stage-xfce as stage-vnc
 
 ### 'apt-get clean' runs automatically
 ### installed into '/usr/share/usr/local/share/vnc'
-RUN apt-get update && apt-get install -y \
-        wget \
-    && wget -qO- https://dl.bintray.com/tigervnc/stable/tigervnc-1.9.0.x86_64.tar.gz | tar xz --strip 1 -C / \
-    && rm -rf /var/lib/apt/lists/*
+RUN wget -qO- https://dl.bintray.com/tigervnc/stable/tigervnc-1.9.0.x86_64.tar.gz | tar xz --strip 1 -C /
 
 FROM stage-vnc as stage-novnc
 

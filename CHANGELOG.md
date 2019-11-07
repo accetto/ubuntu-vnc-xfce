@@ -8,6 +8,10 @@
 
 ***
 
+### Version 19.11
+
+- **ubuntu** base image updated
+
 ### Version 19.10.3
 
 - **ubuntu** base image updated

@@ -8,6 +8,11 @@
 
 ***
 
+### Version 19.11.1
+
+- simplified output of `vnc_startup.sh` script
+- bottom panel's auto-hide behavior changed from `Intelligently` to `Always`
+
 ### Version 19.11
 
 - **ubuntu** base image updated

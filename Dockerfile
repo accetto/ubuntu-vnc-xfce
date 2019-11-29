@@ -84,7 +84,7 @@ FROM stage-xfce as stage-vnc
 
 ### 'apt-get clean' runs automatically
 ### installed into '/usr/share/usr/local/share/vnc'
-RUN wget -qO- https://dl.bintray.com/tigervnc/stable/tigervnc-1.9.0.x86_64.tar.gz | tar xz --strip 1 -C /
+RUN wget -qO- https://dl.bintray.com/tigervnc/stable/tigervnc-1.10.0.x86_64.tar.gz | tar xz --strip 1 -C /
 
 FROM stage-vnc as stage-novnc
 

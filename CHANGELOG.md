@@ -8,6 +8,10 @@
 
 ***
 
+### Version 19.11.2
+
+- **TigerVNC** server and client updated to version **1.10.0**
+
 ### Version 19.11.1
 
 - simplified output of `vnc_startup.sh` script

@@ -8,6 +8,10 @@
 
 ***
 
+### Release 19.12
+
+- **Ubuntu** base image has been updated
+
 ### Version 19.11.2
 
 - **TigerVNC** server and client updated to version **1.10.0**

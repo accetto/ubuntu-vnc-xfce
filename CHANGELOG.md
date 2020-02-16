@@ -8,7 +8,7 @@
 
 ***
 
-### Release 20.02.1
+### Release 20.02
 
 - desktop launcher for version sticker script (verbose) added
   - derived images inherit this change

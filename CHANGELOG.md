@@ -8,6 +8,13 @@
 
 ***
 
+### Release 20.02.1
+
+- desktop launcher for version sticker script (verbose) added
+  - derived images inherit this change
+- container screenshot updated
+- **README** updated
+
 ### Release 20.01
 
 - **Ubuntu** base image has been updated

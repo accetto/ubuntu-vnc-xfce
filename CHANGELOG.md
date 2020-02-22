@@ -8,6 +8,10 @@
 
 ***
 
+### Release 20.02.1
+
+- **Ubuntu** base image updated to version **18.04.4**
+
 ### Release 20.02
 
 - desktop launcher for version sticker script (verbose) added

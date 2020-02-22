@@ -12,7 +12,7 @@ TODAY=$(date +%Y-%m-%d)
 VERSION_STICKER=""
 
 ### Warning! The values must be explicit strings (used by utils).
-VERSION_STICKER_LATEST="ubuntu18.04.3"
+VERSION_STICKER_LATEST="ubuntu18.04.4"
 
 VERSION_STICKER="${VERSION_STICKER_LATEST}"
 

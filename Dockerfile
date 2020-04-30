@@ -3,7 +3,7 @@
 # ./hooks/build nux
 # ./hooks/build nux --no-cache
 
-ARG BASETAG=latest
+ARG BASETAG=18.04
 
 FROM ubuntu:${BASETAG} as stage-ubuntu
 
@@ -84,7 +84,7 @@ FROM stage-xfce as stage-vnc
 
 ### 'apt-get clean' runs automatically
 ### installed into '/usr/share/usr/local/share/vnc'
-RUN wget -qO- https://dl.bintray.com/tigervnc/stable/tigervnc-1.10.0.x86_64.tar.gz | tar xz --strip 1 -C /
+RUN wget -qO- https://dl.bintray.com/tigervnc/stable/tigervnc-1.10.1.x86_64.tar.gz | tar xz --strip 1 -C /
 
 FROM stage-vnc as stage-novnc
 
@@ -100,7 +100,7 @@ RUN apt-get update && apt-get install -y \
         python-numpy \
     && mkdir -p ${NO_VNC_HOME}/utils/websockify \
     && wget -qO- https://github.com/novnc/noVNC/archive/v1.1.0.tar.gz | tar xz --strip 1 -C ${NO_VNC_HOME} \
-    && wget -qO- https://github.com/novnc/websockify/archive/v0.8.0.tar.gz | tar xz --strip 1 -C ${NO_VNC_HOME}/utils/websockify \
+    && wget -qO- https://github.com/novnc/websockify/archive/v0.9.0.tar.gz | tar xz --strip 1 -C ${NO_VNC_HOME}/utils/websockify \
     && chmod +x -v ${NO_VNC_HOME}/utils/*.sh \
     && rm -rf /var/lib/apt/lists/*
 

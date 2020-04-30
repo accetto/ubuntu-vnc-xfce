@@ -19,7 +19,7 @@ VERSION_STICKER="${VERSION_STICKER_LATEST}"
 case "${DOCKER_TAG}" in
 
     latest | dev | dfw | nux)
-        BASETAG="latest"
+        BASETAG="18.04"
         ;;
 
     *)

@@ -8,6 +8,15 @@
 
 ***
 
+### Release 20.04
+
+- using base image tag **ubuntu:18.04** explicitly
+  - **env** hook script updated accordingly
+  - note that the tag **latest** now means **based on ubuntu:18.04**
+- **TigerVNC** version **1.10.1**
+- **websockify** updated to version **0.9.0**
+- all above changes inherited by all derived images
+
 ### Release 20.03
 
 - **Ubuntu** base image updated (inherited by all derived images)

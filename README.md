@@ -155,7 +155,7 @@ OPTIONS:
                 example: docker run -it -P --rm accetto/ubuntu-vnc-xfce bash
 
 -s, --skip      Skips the vnc startup and just executes the provided command.
-                example: docker run -it -P accetto/ubuntu-vnc-xfce --skip echo $BASH_VERSION
+                example: docker run -it -P --rm accetto/ubuntu-vnc-xfce --skip echo $BASH_VERSION
 
 -d, --debug     Executes the vnc startup and tails the vnc/noVNC logs.
                 Any parameters after '--debug' are ignored. CTRL-C stops the container.

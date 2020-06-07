@@ -8,6 +8,11 @@
 
 ***
 
+### Release 20.06
+
+- minor changes in **vnc_startup.sh** and **README**
+  - making it more similar to [accetto/xubuntu-vnc](https://hub.docker.com/r/accetto/xubuntu-vnc) and [accetto/xubuntu-vnc-novnc](https://hub.docker.com/r/accetto/xubuntu-vnc-novnc)
+
 ### Release 20.04
 
 - using base image tag **ubuntu:18.04** explicitly

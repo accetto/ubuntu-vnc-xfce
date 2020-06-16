@@ -1,7 +1,18 @@
-# ./hooks/build dev
-# ./hooks/build dfw
 # ./hooks/build nux
 # ./hooks/build nux --no-cache
+# ./hooks/build dfw
+# ./hooks/build dfw --no-cache
+# ./hooks/build dev
+# ./hooks/build dev --no-cache
+
+### Build it locally like, for example:
+### ./utils/util-hdx.sh Dockerfile 2
+### Test it locally like, for example:
+### ./hooks/test nux
+### Result last line should be:
+### + exit 0
+### If 'exit 1' then adjust the version sticker variables in
+### ./hooks/env
 
 ARG BASETAG=18.04
 
@@ -157,7 +168,7 @@ ENV \
     VNC_COL_DEPTH=24 \
     VNC_PORT="5901" \
     VNC_PW=${ARG_VNC_PW:-headless} \
-    VNC_RESOLUTION=${ARG_VNC_RESOLUTION:-1024x768} \
+    VNC_RESOLUTION=${ARG_VNC_RESOLUTION:-1360x768} \
     VNC_VIEW_ONLY=false
 
 ### Creates home folder

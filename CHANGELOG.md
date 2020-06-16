@@ -8,6 +8,12 @@
 
 ***
 
+### Release 20.06.01
+
+- default VNC resolution changed to 1360x768
+  - will be inherited by all derived images
+- added some help comments into Dockerfile
+
 ### Release 20.06
 
 - minor changes in **vnc_startup.sh** and **README**

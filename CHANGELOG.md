@@ -11,7 +11,8 @@
 ### Release 20.06.01
 
 - default VNC resolution changed to 1360x768
-  - will be inherited by all derived images
+- `version_of.sh` updated (Firefox version pattern)
+  - both changes be inherited by all derived images
 - added some help comments into Dockerfile
 
 ### Release 20.06

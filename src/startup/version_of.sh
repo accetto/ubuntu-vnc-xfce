@@ -20,7 +20,7 @@ case "$1" in
         ;;
     firefox | fox)
         ### source example: Mozilla Firefox 68.0.2
-        echo $(firefox -v 2>/dev/null | grep -Po '[0-9.]+$')
+        echo $(firefox -v 2>/dev/null | grep -Po '(?<=Firefox\s)[0-9a-zA-Z.-]+')
         ;;
     git)
         ### source example: git version 2.17.1

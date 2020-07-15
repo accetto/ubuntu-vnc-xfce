@@ -50,7 +50,8 @@ case "$1" in
         ;;
     novnc | no-vnc)
         ### source example: 1.1.0
-        echo $(cat "${NO_VNC_HOME}"/VERSION 2>/dev/null | grep -Po '^[0-9.]+$')
+        #echo $(cat "${NO_VNC_HOME}"/VERSION 2>/dev/null | grep -Po '^[0-9.]+$')
+        echo $(cat "${NO_VNC_HOME}"/package.json 2>/dev/null | grep -Po '(?<=\s"version":\s")[0-9.]+')
         ;;
     npm)
         ### source example: 6.9.0

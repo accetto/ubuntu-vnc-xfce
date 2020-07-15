@@ -8,6 +8,13 @@
 
 ***
 
+### Release 20.07
+
+- base **ubuntu:18.04** image has been updated
+- **noVNC** version **1.2.0**
+- **version_of.sh** updated (because of **noVNC**)
+- all above changes inherited by all derived images
+
 ### Release 20.06.1
 
 - default VNC resolution changed to 1360x768

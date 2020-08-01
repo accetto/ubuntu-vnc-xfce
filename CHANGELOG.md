@@ -8,6 +8,11 @@
 
 ***
 
+### Release 20.08
+
+- **Ubuntu** base image has been updated
+  - derived images inherit this change
+
 ### Release 20.06.1
 
 - default VNC resolution changed to 1360x768

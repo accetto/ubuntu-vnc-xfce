@@ -10,8 +10,15 @@
 
 ### Release 20.08
 
-- **Ubuntu** base image has been updated
+- base image **ubuntu:18.04** has been updated
   - derived images inherit this change
+
+### Release 20.07
+
+- base image **ubuntu:18.04** has been updated
+- **noVNC** version **1.2.0**
+- **version_of.sh** updated (because of **noVNC**)
+- all above changes inherited by all derived images
 
 ### Release 20.06.1
 

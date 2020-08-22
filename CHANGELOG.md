@@ -8,6 +8,11 @@
 
 ***
 
+### Release 20.08.1
+
+- base image **ubuntu:18.04** has been updated to version **18.04.5**
+  - derived images inherit this change
+
 ### Release 20.08
 
 - base image **ubuntu:18.04** has been updated

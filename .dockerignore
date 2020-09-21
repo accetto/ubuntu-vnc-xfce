@@ -1,8 +1,9 @@
 *
 !src
+*.log
 *.md
 *.sh
+.developer*
 debug*
-developer*
 scrap*
 TODO*

@@ -12,7 +12,8 @@
 # recommended files on 'https://github.com/github/gitignore'
 
 .vscode
-developer*
+.developer*
+*.log
 debug*
 scrap*
 TODO*

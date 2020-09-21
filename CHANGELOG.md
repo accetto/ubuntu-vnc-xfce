@@ -8,6 +8,10 @@
 
 ***
 
+### Release 20.09
+
+**nano** editor added
+
 ### Release 20.08.1
 
 - base image **ubuntu:18.04** has been updated to version **18.04.5**

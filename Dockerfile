@@ -39,6 +39,7 @@ RUN apt-get update && apt-get install -y \
         curl \
         git \
         wget \
+        nano \
     && rm -rf /var/lib/apt/lists/*
 
 ### install current 'jq' explicitly

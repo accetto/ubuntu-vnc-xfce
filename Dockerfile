@@ -1,14 +1,13 @@
 # ./hooks/build nux
-# ./hooks/build nux --no-cache
 # ./hooks/build dfw
-# ./hooks/build dfw --no-cache
 # ./hooks/build dev
-# ./hooks/build dev --no-cache
 
 ### Build it locally like, for example:
 ### ./utils/util-hdx.sh Dockerfile 2
+### or for example
+### ./utils/util-hdx.sh Dockerfile 2 --no-cache
 ### Test it locally like, for example:
-### ./hooks/test nux
+### ./hooks/test dfw
 ### Result last line should be:
 ### + exit 0
 ### If 'exit 1' then adjust the version sticker variables in

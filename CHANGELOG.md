@@ -8,6 +8,13 @@
 
 ***
 
+### Release 20.10
+
+- updated scripts (all images):
+  - version_of.sh
+  - version_sticker.sh
+  - util-hdx.sh
+
 ### Release 20.09
 
 **nano** editor added

@@ -11,6 +11,7 @@ case "$1" in
         mousepad=$("${STARTUPDIR}/version_of.sh" mousepad)
         vim=$("${STARTUPDIR}/version_of.sh" vim)
         tigervnc=$("${STARTUPDIR}/version_of.sh" tigervnc)
+        nano=$("${STARTUPDIR}/version_of.sh" nano)
         novnc=$("${STARTUPDIR}/version_of.sh" novnc)
         websockify=$("${STARTUPDIR}/version_of.sh" websockify)
         curl=$("${STARTUPDIR}/version_of.sh" curl)
@@ -19,6 +20,7 @@ case "$1" in
         echo "Ubuntu $ubuntu"
         echo "Mousepad $mousepad"
         echo "VIM $vim"
+        echo "GNU nano $nano"
         echo "TigerVNC $tigervnc"
         echo "noVNC $novnc"
         echo "websockify $websockify"

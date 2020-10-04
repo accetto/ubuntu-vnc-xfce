@@ -44,6 +44,10 @@ case "$1" in
         ### source example: Mousepad 0.4.0
         echo $(mousepad --version 2>/dev/null | grep -Po '(?<=Mousepad\s)[0-9.]+')
         ;;
+    nano)
+        ### source example: GNU nano, version 4.8
+        echo $(nano --version 2>/dev/null | grep -Po '(?<=version\s)[0-9.]+')
+        ;;
     node | nodejs | node-js)
         ### source example: v10.16.3
         echo $(node --version 2>/dev/null | grep -Po '[0-9.]+$')

@@ -8,6 +8,11 @@
 
 ***
 
+### Release 20.10.1
+
+- hook scripts updated
+  - automatic archiving of previous image versions removed
+
 ### Release 20.10
 
 - updated scripts (all images):

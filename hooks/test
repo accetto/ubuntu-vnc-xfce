@@ -12,6 +12,7 @@ expected="${vars[0]}"
 startup="${vars[1]}"
 startup="${startup%%[[:space:]]}"
 
+### Windows only: VSC with GitBash requires the first slash doubled
 [[ -n "${WINDIR}" ]] && startup=/${startup}
 
 actual=$(docker run ${it} --rm ${DOCKER_REPO}:${DOCKER_TAG} ${startup}/version_sticker.sh | tail -n1)

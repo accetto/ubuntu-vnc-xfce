@@ -8,6 +8,10 @@
 
 ***
 
+### Release 20.10.2
+
+- just refreshed as a base for derived images
+
 ### Release 20.10.1
 
 - hook scripts updated

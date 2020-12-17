@@ -8,6 +8,10 @@
 
 ***
 
+### Release 20.12
+
+- README got links to the third generation (G3) of images
+
 ### Release 20.10.2
 
 - just refreshed as a base for derived images

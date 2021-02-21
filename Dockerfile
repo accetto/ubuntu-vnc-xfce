@@ -29,7 +29,8 @@ LABEL \
     org.label-schema.vcs-url="https://github.com/accetto/ubuntu-vnc-xfce"
 
 ### 'apt-get clean' runs automatically
-RUN apt-get update && apt-get install -y \
+RUN apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y \
         inetutils-ping \
         lsb-release \
         net-tools \
@@ -74,13 +75,13 @@ RUN \
 FROM stage-ubuntu as stage-xfce
 
 ENV \
-    DEBIAN_FRONTEND=noninteractive \
     LANG='en_US.UTF-8' \
     LANGUAGE='en_US:en' \
     LC_ALL='en_US.UTF-8'
 
 ### 'apt-get clean' runs automatically
-RUN apt-get update && apt-get install -y \
+RUN apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y \
         mousepad \
         locales \
         supervisor \
@@ -108,7 +109,8 @@ ENV NO_VNC_HOME=/usr/share/usr/local/share/noVNCdim
 ### ## Use the older version of websockify to prevent hanging connections on offline containers, 
 ### see https://github.com/ConSol/docker-headless-vnc-container/issues/50
 ### installed into '/usr/share/usr/local/share/noVNCdim'
-RUN apt-get update && apt-get install -y \
+RUN apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y \
         python-numpy \
     && mkdir -p ${NO_VNC_HOME}/utils/websockify \
     && wget -qO- https://github.com/novnc/noVNC/archive/v1.2.0.tar.gz | tar xz --strip 1 -C ${NO_VNC_HOME} \
@@ -135,7 +137,8 @@ FROM stage-novnc as stage-wrapper
 
 ### 'apt-get clean' runs automatically
 ### Install nss-wrapper to be able to execute image as non-root user
-RUN apt-get update && apt-get install -y \
+RUN apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y \
         gettext \
         libnss-wrapper \
     && rm -rf /var/lib/apt/lists/*
@@ -185,15 +188,14 @@ COPY [ "./src/home/config/xfce4/xfconf/xfce-perchannel-xml", "./.config/xfce4/xf
 ### 'generate_container_user' has to be sourced to hold all env vars correctly
 RUN echo 'source $STARTUPDIR/generate_container_user' >> ${HOME}/.bashrc
 
+### Fix permissions
 RUN chmod +x \
         "${STARTUPDIR}/set_user_permissions.sh" \
         "${STARTUPDIR}/vnc_startup.sh" \
         "${STARTUPDIR}/version_of.sh" \
         "${STARTUPDIR}/version_sticker.sh" \
-    && gtk-update-icon-cache -f /usr/share/icons/hicolor
-
-### Fix permissions
-RUN "${STARTUPDIR}"/set_user_permissions.sh "${STARTUPDIR}" "${HOME}"    
+    && gtk-update-icon-cache -f /usr/share/icons/hicolor \
+    && "${STARTUPDIR}"/set_user_permissions.sh "${STARTUPDIR}" "${HOME}"    
 
 EXPOSE ${VNC_PORT} ${NO_VNC_PORT}
 

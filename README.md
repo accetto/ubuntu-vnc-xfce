@@ -42,7 +42,7 @@ Running in background is the primary scenario for the containers, but using them
 
 The image contains the following components:
 
-- utilities **ping**, **wget**, **zip**, **unzip**, **sudo**, [curl][curl], [git][git] (Ubuntu distribution)
+- utilities **ping**, **wget**, **zip**, **unzip**, [curl][curl], [git][git] (Ubuntu distribution)
 - current version of JSON processor [jq][jq]
 - light-weight [Xfce][xfce] desktop environment (Ubuntu distribution)
 - current version of high-performance [TigerVNC][tigervnc] server and client

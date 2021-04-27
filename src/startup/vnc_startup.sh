@@ -104,7 +104,7 @@ vncserver -kill ${DISPLAY} &> "${STARTUPDIR}"/vnc_startup.log \
 
 echo "... VNC params: VNC_COL_DEPTH=${VNC_COL_DEPTH}, VNC_RESOLUTION=${VNC_RESOLUTION}"
 echo "... VNC params: VNC_BLACKLIST_TIMEOUT=${VNC_BLACKLIST_TIMEOUT}, VNC_BLACKLIST_THRESHOLD=${VNC_BLACKLIST_THRESHOLD}"
-vncserver ${DISPLAY} -depth ${VNC_COL_DEPTH} -geometry ${VNC_RESOLUTION} \
+vncserver ${DISPLAY} -localhost no -depth ${VNC_COL_DEPTH} -geometry ${VNC_RESOLUTION} \
     -BlacklistTimeout ${VNC_BLACKLIST_TIMEOUT} \
     -BlacklistThreshold ${VNC_BLACKLIST_THRESHOLD} &> "${STARTUPDIR}"/no_vnc_startup.log
 

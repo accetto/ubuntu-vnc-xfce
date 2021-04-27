@@ -97,7 +97,14 @@ FROM stage-xfce as stage-vnc
 
 ### 'apt-get clean' runs automatically
 ### installed into '/usr/share/usr/local/share/vnc'
-RUN wget -qO- https://dl.bintray.com/tigervnc/stable/tigervnc-1.10.1.x86_64.tar.gz | tar xz --strip 1 -C /
+# RUN wget -qO- https://dl.bintray.com/tigervnc/stable/tigervnc-1.10.1.x86_64.tar.gz | tar xz --strip 1 -C /
+RUN apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y \
+        tigervnc-standalone-server \
+        tigervnc-viewer \
+    && rm -rf /var/lib/apt/lists/*
+        # tigervnc-xorg-extension \
+        # tigervnc-common \
 
 FROM stage-vnc as stage-novnc
 

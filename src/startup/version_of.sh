@@ -67,7 +67,7 @@ case "$1" in
         ;;
     tigervnc | tiger-vnc | vncserver | vnc-server | vnc)
         ### source example: Xvnc TigerVNC 1.9.0 - built Jul 16 2018 14:18:04
-        echo $(vncserver -version 2>/dev/null | grep -Po -m1 '(?<=Xvnc TigerVNC\s)[0-9.]+')
+        echo $(Xtigervnc -version 2>&1 | grep -Po -m1 '(?<=Xvnc TigerVNC\s)[0-9.]+')
         ;;
     tsc | typescript | type-script)
         ### source example: Version 3.6.2

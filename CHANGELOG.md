@@ -8,6 +8,10 @@
 
 ***
 
+### Release 21.04
+
+- TigerVNC from [Release Mirror on accetto/tigervnc][accetto-tigervnc-release-mirror] because **Bintray** is closing on 2021-05-01
+
 ### Release 20.12
 
 - README got links to the third generation (G3) of images
@@ -391,6 +395,8 @@ Created the following set of images:
 [accetto-github-argbash-docker]: https://github.com/accetto/argbash-docker
 
 [accetto-docker-xubuntu-vnc]: https://hub.docker.com/r/accetto/xubuntu-vnc
+
+[accetto-tigervnc-release-mirror]: https://github.com/accetto/tigervnc/releases
 
 [docker-ubuntu]: https://hub.docker.com/_/ubuntu/
 

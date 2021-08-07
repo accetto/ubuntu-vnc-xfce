@@ -13,7 +13,10 @@
 
 .vscode
 .developer*
+.secret*
 *.log
+avanti*
 debug*
 scrap*
+secret*
 TODO*

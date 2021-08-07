@@ -1,5 +1,5 @@
-# ./hooks/build dev
-# ./hooks/test dev
+# ./hooks/build latest
+# ./hooks/test latest
 
 ### Example: Build and test 'dev' tag locally like
 ### ./hooks/build dev

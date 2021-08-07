@@ -64,7 +64,6 @@ The image is regularly maintained and rebuilt. The history of notable changes is
   - `latest` based on `ubuntu:latest`
 
     ![badge-VERSION_STICKER_LATEST][badge-VERSION_STICKER_LATEST]
-    ![badge-github-commit-latest][badge-github-commit-latest]
 
 ### Ports
 
@@ -321,5 +320,3 @@ Credit also goes to all the countless people and companies who contribute to ope
 <!-- latest tag badges -->
 
 [badge-VERSION_STICKER_LATEST]: https://badgen.net/badge/version%20sticker/ubuntu18.04.5/blue
-
-[badge-github-commit-latest]: https://images.microbadger.com/badges/commit/accetto/ubuntu-vnc-xfce.svg

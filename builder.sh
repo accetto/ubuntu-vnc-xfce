@@ -62,48 +62,51 @@ main() {
 
             ./hooks/build "${tag}"
 
-            echo
-            echo "---------------------------"
-            echo "--> Testing version sticker"
-            echo "---------------------------"
-            echo
+            if [ $? -eq 0 ] ; then
 
-            ### test version sticker
-            test_result=$( hooks/test "${tag}" 2>&1 | tail -n5  )
+                echo
+                echo "---------------------------"
+                echo "--> Testing version sticker"
+                echo "---------------------------"
+                echo
 
-            echo "${test_result}"
-            echo
+                ### test version sticker
+                test_result=$( hooks/test "${tag}" 2>&1 | tail -n5  )
 
-            last_line=$(echo "${test_result}" | tail -n1)
+                echo "${test_result}"
+                echo
 
-            if [ "${last_line}" == '+ exit 0' ] ; then
+                last_line=$(echo "${test_result}" | tail -n1)
 
-                docker_hub_connect
+                if [ "${last_line}" == '+ exit 0' ] ; then
 
-                if [ $? -eq 0 ] ; then
+                    docker_hub_connect
 
-                    echo
-                    echo "-------------------------"
-                    echo "--> Pushing to Docker Hub"
-                    echo "-------------------------"
-                    echo
+                    if [ $? -eq 0 ] ; then
 
-                    hooks/push "${tag}"
+                        echo
+                        echo "-------------------------"
+                        echo "--> Pushing to Docker Hub"
+                        echo "-------------------------"
+                        echo
 
-                    docker logout
+                        hooks/push "${tag}"
 
-                    echo
-                    echo "Refreshing README..."
+                        docker logout
 
-                    ./utils/util-refresh-readme.sh
+                        echo
+                        echo "Refreshing README..."
+
+                        ./utils/util-refresh-readme.sh
+
+                    else
+
+                        echo "Unable to connect to Docker hub!"
+                    fi
 
                 else
-
-                    echo "Unable to connect to Docker hub!"
+                    echo "Version sticker has changed. Adjust 'env' hook and refresh README using 'util-refresh-readme.sh'. Use 'test' command for details."
                 fi
-
-            else
-                echo "Version sticker has changed. Adjust 'env' hook and refresh README using 'util-refresh-readme.sh'. Use 'test' command for details."
             fi
             ;;
 

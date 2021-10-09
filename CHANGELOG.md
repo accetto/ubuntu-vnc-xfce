@@ -8,6 +8,11 @@
 
 ***
 
+### Release 21.10
+
+- base image **ubuntu:18.04** has been updated to version **18.04.6**
+  - derived images inherit this change
+
 ### Release 21.09
 
 - utility `builder.sh` improved

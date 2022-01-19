@@ -8,6 +8,10 @@
 
 ***
 
+### Release 22.01
+
+- `Dockerfile` uses **TigerVNC** releases from **SourceForge** website
+
 ### Release 21.10
 
 - base image **ubuntu:18.04** has been updated to version **18.04.6**

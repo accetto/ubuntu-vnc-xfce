@@ -99,7 +99,8 @@ FROM stage-xfce as stage-vnc
 ### installed into '/usr/share/usr/local/share/vnc'
 ### Bintray has been deprecated and disabled since 2021-05-01 
 # RUN wget -qO- https://dl.bintray.com/tigervnc/stable/tigervnc-1.10.1.x86_64.tar.gz | tar xz --strip 1 -C /
-RUN wget -qO- https://github.com/accetto/tigervnc/releases/download/v1.10.1-mirror/tigervnc-1.10.1.x86_64.tar.gz | tar xz --strip 1 -C /
+# RUN wget -qO- https://github.com/accetto/tigervnc/releases/download/v1.10.1-mirror/tigervnc-1.10.1.x86_64.tar.gz | tar xz --strip 1 -C /
+RUN wget -qO- https://sourceforge.net/projects/tigervnc/files/stable/1.10.1/tigervnc-1.10.1.x86_64.tar.gz | tar xz --strip 1 -C /
 
 FROM stage-vnc as stage-novnc
 

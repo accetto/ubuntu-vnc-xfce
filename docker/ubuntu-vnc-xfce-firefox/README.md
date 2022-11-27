@@ -295,8 +295,8 @@ Credit goes to all the countless people and companies who contribute to open sou
 [this-docker]: https://hub.docker.com/r/accetto/ubuntu-vnc-xfce-firefox-default/
 [this-github]: https://github.com/accetto/ubuntu-vnc-xfce
 
-[this-changelog]: https://github.com/accetto/ubuntu-vnc-xfce-firefox/blob/master/CHANGELOG.md
-[this-issues]: https://github.com/accetto/ubuntu-vnc-xfce-firefox/issues
+[this-changelog]: https://github.com/accetto/ubuntu-vnc-xfce/blob/master/CHANGELOG.md
+[this-issues]: https://github.com/accetto/ubuntu-vnc-xfce/issues
 
 [this-wiki]: https://github.com/accetto/ubuntu-vnc-xfce-firefox/wiki
 [this-wiki-howto]: https://github.com/accetto/ubuntu-vnc-xfce-firefox/wiki/How-to
@@ -355,7 +355,7 @@ Credit goes to all the countless people and companies who contribute to open sou
 [vim]: https://www.vim.org/
 [xfce]: http://www.xfce.org
 
-[screenshot-container]: https://raw.githubusercontent.com/accetto/ubuntu-vnc-xfce-firefox/master/ubuntu-vnc-xfce-firefox.jpg
+[screenshot-container]: https://raw.githubusercontent.com/accetto/ubuntu-vnc-xfce/master/docker/ubuntu-vnc-xfce-firefox/ubuntu-vnc-xfce-firefox.jpg
 
 <!-- docker badges -->
 

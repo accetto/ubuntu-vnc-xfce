@@ -319,7 +319,7 @@ Credit also goes to all the countless people and companies who contribute to ope
 [vim]: https://www.vim.org/
 [xfce]: http://www.xfce.org
 
-[screenshot-container]: https://raw.githubusercontent.com/accetto/ubuntu-vnc-xfce/master/ubuntu-vnc-xfce.jpg
+[screenshot-container]: https://raw.githubusercontent.com/accetto/ubuntu-vnc-xfce/master/docker/ubuntu-vnc-xfce/ubuntu-vnc-xfce.jpg
 
 <!-- docker badges -->
 

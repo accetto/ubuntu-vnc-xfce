@@ -5,21 +5,20 @@ DOCKER_TAG=${DOCKER_TAG:-$1}
 if [[ -n "$1" ]] ; then shift ; fi
 
 DOCKERFILE_PATH=${DOCKERFILE_PATH:-./Dockerfile}
-DOCKER_REPO=${DOCKER_REPO:-accetto/ubuntu-vnc-xfce}
+DOCKER_REPO=${DOCKER_REPO:-accetto/ubuntu-vnc-xfce-firefox-default}
 
 BASETAG=""
 TODAY=$(date +%Y-%m-%d)
-VERSION_STICKER=""
 
-### Warning! The values must be explicit strings (used by utils).
-VERSION_STICKER_LATEST="ubuntu18.04.6"
+### Warning! The value is initialized from the related environment variable.
+VERSION_STICKER_LATEST="${G1_STICKER_BASE:-ubuntu18.04.6}-${G1_STICKER_FIREFOX:-firefox}"
 
 VERSION_STICKER="${VERSION_STICKER_LATEST}"
 
 case "${DOCKER_TAG}" in
 
     latest | dev )
-        BASETAG="18.04"
+        BASETAG="${DOCKER_TAG}"
         ;;
 
     *)

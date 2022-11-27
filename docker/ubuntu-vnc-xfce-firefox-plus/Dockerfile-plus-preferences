@@ -1,0 +1,63 @@
+# ./hooks/build dev-preferences
+# ./hooks/test dev-preferences
+
+### Example: Build and test 'dev' tag locally like
+### ./hooks/build dev-preferences
+### ./hooks/test dev-preferences
+### or with additional arguments
+### ./hooks/build dev-preferences --no-cache
+### ./hooks/test dev-preferences
+### or using the utility
+### ./utils/util-hdx.sh Dockerfile 3
+### ./utils/util-hdx.sh Dockerfile 4
+### The last output line should be '+ exit 0'
+### If '+ exit 1' then adjust the version sticker
+### variables in script './hooks/env'
+
+ARG BASETAG=latest
+
+FROM accetto/ubuntu-vnc-xfce-firefox-plus:${BASETAG}
+
+### Arguments can be provided during build
+ARG ARG_MOZ_FORCE_DISABLE_E10S
+ARG ARG_REFRESHED_AT
+ARG ARG_VCS_REF
+ARG ARG_VERSION_STICKER
+ARG ARG_VNC_BLACKLIST_THRESHOLD
+ARG ARG_VNC_BLACKLIST_TIMEOUT
+ARG ARG_VNC_RESOLUTION
+
+LABEL \
+  any.accetto.description="Headless Ubuntu VNC/noVNC container with Xfce desktop and Firefox with preferences" \
+  any.accetto.display-name="Headless Ubuntu/Xfce VNC/noVNC container with Firefox preferences" \
+  version-sticker="${ARG_VERSION_STICKER}" \
+  org.label-schema.vcs-ref="${ARG_VCS_REF}" \
+  org.label-schema.vcs-url="https://github.com/accetto/ubuntu-vnc-xfce-firefox-plus"
+
+ENV \
+  MOZ_FORCE_DISABLE_E10S=${ARG_MOZ_FORCE_DISABLE_E10S:+1} \
+  REFRESHED_AT=${ARG_REFRESHED_AT} \
+  VERSION_STICKER=${ARG_VERSION_STICKER} \
+  VNC_BLACKLIST_THRESHOLD=${ARG_VNC_BLACKLIST_THRESHOLD:-20} \
+  VNC_BLACKLIST_TIMEOUT=${ARG_VNC_BLACKLIST_TIMEOUT:-0} \
+  VNC_RESOLUTION=${ARG_VNC_RESOLUTION:-1024x768}
+
+### Be sure to use root user
+USER 0
+
+WORKDIR ${HOME}
+
+### Copy the file with default user preferences.
+### The preferences will be forced for each session, but only in the profile containing the file.
+### Make also a backup copy of the file 'user.js'.
+### The VNC user ('headles:headless' by default) will get permissions to modify or delete the file.
+COPY [ "./src/firefox.plus/user.js", "./.mozilla/firefox/profile0.default/" ]
+COPY [ "./src/firefox.plus/user.js", "./firefox.plus/user.js" ]
+
+RUN "${STARTUPDIR}"/set_user_permissions.sh "$STARTUPDIR" "$HOME"
+
+### Switch to non-root user
+USER ${VNC_USER}
+
+### Issue #7 (base): Mitigating problems with foreground mode
+WORKDIR ${STARTUPDIR}

@@ -1,0 +1,31 @@
+### hooks/env
+
+SOURCE_BRANCH=${SOURCE_BRANCH:-$1}
+DOCKER_TAG=${DOCKER_TAG:-$1}
+if [[ -n "$1" ]] ; then shift ; fi
+
+DOCKERFILE_PATH=${DOCKERFILE_PATH:-./Dockerfile}
+DOCKER_REPO=${DOCKER_REPO:-accetto/ubuntu-vnc-xfce-firefox-plus}
+
+BASETAG=""
+TODAY=$(date +%Y-%m-%d)
+
+### Warning! The value is initialized from the related environment variable.
+VERSION_STICKER_LATEST="${G1_STICKER_BASE:-ubuntu18.04.6}-${G1_STICKER_FIREFOX:-firefox}"
+
+VERSION_STICKER="${VERSION_STICKER_LATEST}"
+
+case "${DOCKER_TAG}" in
+
+    latest)
+        BASETAG="latest"
+        ;;
+
+    dev | dev-preferences | dev-profile)
+        BASETAG="dev"
+        ;;
+
+    *)
+        BASETAG=""
+        ;;
+esac

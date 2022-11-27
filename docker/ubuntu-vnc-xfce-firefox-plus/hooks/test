@@ -1,0 +1,27 @@
+#!/bin/bash -xe
+
+. ./hooks/env
+
+it=$1
+it=${it:+-it}
+
+vars=($(docker run ${it} --rm ${DOCKER_REPO}:${DOCKER_TAG} printenv VERSION_STICKER STARTUPDIR | tail -n2))
+
+expected="${vars[0]}"
+
+startup="${vars[1]}"
+startup="${startup%%[[:space:]]}"
+
+### Windows only: VSC with GitBash requires the first slash doubled
+[[ -n "${WINDIR}" ]] && startup=/${startup}
+
+actual=$(docker run ${it} --rm ${DOCKER_REPO}:${DOCKER_TAG} ${startup}/version_sticker.sh | tail -n1)
+
+expected=${expected%%[[:space:]]}
+actual=${actual%%[[:space:]]}
+
+if [[ -n "${it}" ]] ; then
+    [[ "${actual}" == "${expected}" ]] && echo 0 || echo 1
+else
+    [[ "${actual}" == "${expected}" ]] && exit 0 || exit 1
+fi

@@ -8,7 +8,28 @@
 
 ***
 
-### Final release 22.03
+### Release 22.11
+
+The repository has been revived, because I've noticed, that the images are still being pulled.
+
+This is the first release of the **second version** (G1v2) of the project, which brings improvements mostly in the building pipeline and helper utilities.
+
+It also merges the previously separated **GitHub** projects [ubuntu-vnc-xfce-firefox][accetto-github-ubuntu-vnc-xfce-firefox], [ubuntu-vnc-xfce-firefox-plus][accetto-github-ubuntu-vnc-xfce-firefox-plus] and [ubuntu-vnc-xfce-chromium][accetto-github-ubuntu-vnc-xfce-chromium] into this single one.
+
+The **first version** (G1v1, or simply G1) will still be available in this **GitHub** repository as the archived branch `archived-generation-g1v1`.
+
+The most significant changes in this release are:
+
+- The values of the **version sticker** variables (`VERSION_STICKER_*`) in the `env` hook scripts are not hardcoded, but initialized from the related environment variables.
+- The helper utility `util-refresh-readme.sh` does not update the original `README.md` files, but their clones named `scrap_readme.md`. The content of this temporary file is intended to be copy-and-pasted to the **Docker Hub**.
+
+Current versions:
+
+- Ubuntu **18.04.6**
+- Chromium **107.0.5304.87**
+- Firefox **107.0**
+
+### Final G1v1 release 22.03
 
 The repository is **retired** and **archived**. It will not be developed any further and the related images on Docker Hub will not be rebuilt any more. They will phase out and they will be deleted after becoming too old.
 
@@ -423,6 +444,7 @@ Created the following set of images:
 [this-github]: https://github.com/accetto/ubuntu-vnc-xfce
 [this-wiki]: https://github.com/accetto/ubuntu-vnc-xfce/wiki
 
+[accetto-github-ubuntu-vnc-xfce-chromium]: https://github.com/accetto/ubuntu-vnc-xfce-chromium
 [accetto-github-ubuntu-vnc-xfce-firefox]: https://github.com/accetto/ubuntu-vnc-xfce-firefox
 [accetto-github-ubuntu-vnc-xfce-firefox-plus]: https://github.com/accetto/ubuntu-vnc-xfce-firefox-plus
 

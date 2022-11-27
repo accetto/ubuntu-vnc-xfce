@@ -1,45 +1,70 @@
 #!/bin/bash
-### @accetto, October 2019
+### @accetto, November 2022
 
 ### This script updates version sticker badges in README files.
 ### The script is intended for local use before publishing the repository.
 
-### where to start processing
-searchdir=$1
-searchdir=${searchdir:-..}
+main() {
+    local searchdir="${1:-../docker}"
 
-if [[ ! -d ${searchdir} ]] ; then
-    echo "Folder '${searchdir}' not found!"
-    exit 1
-fi
+    local readme_path
+    local env_file 
+    local sticker_lines
+    local sticker_label
+    local sticker_value
 
-cd ${searchdir}
-searchdir=$(pwd)
+    local -a folder_list
+    local -a arr
 
-### process only folders containing 'README.md' and 'hooks/env' files
-find "${searchdir}" -type f -name "README.md" | while read readme_file ; do \
+    ### name of the updated result file
+    local scrap_readme="scrap_readme.md"
+    local updated_readme
 
-    dir="$(dirname ${readme_file})"
-    env_file="${dir}/hooks/env"
-
-    if [[ -f "${env_file}" ]] ; then
-
-        echo "${dir}"
-
-        sticker_lines=$(grep -E '^\s*VERSION_STICKER_[A-Z]+="[^$]+' "${env_file}")
-        echo "${sticker_lines}"
-
-        for sticker_line in ${sticker_lines} ; do
-
-            arr=(${sticker_line//'='/' '})
-            sticker_label=${arr[0]}
-            sticker_value=${arr[1]}
-            sticker_value=${sticker_value//'"'/}
-
-            ### if using 'shields.io' static badges
-            # sed -i "s/^\s*\(\[badge\-$sticker_label\][^&]*\&[^=]*=\)\([^&]*\)/\1$sticker_value/" "$readme_file"
-            ### if using 'badgen.net' static badges
-            sed -i "s/^\s*\(\[badge\-${sticker_label}\]:\s*https:\/\/[^/]*\/badge\/[^/]*\/\)\([^/]*\)/\1${sticker_value}/" "${readme_file}"
-        done
+    if [[ ! -d "${searchdir}" ]] ; then
+        echo "Folder '${searchdir}' not found!"
+        exit 1
     fi
-done
+
+    cd "${searchdir}"
+    searchdir="$(pwd)"
+
+    ### process only folders containing 'README.md'
+    folder_list=$(find "${searchdir}" -type f -name "README.md")
+
+    for readme_file in ${folder_list[@]} ; do
+
+        readme_path="$(dirname ${readme_file})"
+        env_file="${readme_path}/hooks/env"
+
+        if [[ -f "${env_file}" ]] ; then
+
+            echo -e "==> ${readme_path}\n"
+
+            sticker_lines=$(grep -E '^\s*VERSION_STICKER_[A-Z]+=.+' "${env_file}")
+
+            updated_readme="${readme_path}/${scrap_readme}"
+            cp "${readme_file}" "${updated_readme}"
+
+            for sticker_line in ${sticker_lines} ; do
+
+                arr=(${sticker_line//'='/' '})
+
+                sticker_label=${arr[0]}
+
+                sticker_value=${arr[1]}
+                sticker_value=${sticker_value//'"'/}
+                eval sticker_value=${sticker_value}
+
+                echo -e "${sticker_label}=${sticker_value}"
+
+                ### if using 'shields.io' static badges
+                # sed -i "s/^\s*\(\[badge\-${sticker_label}\][^&]*\&[^=]*=\)\([^&]*\)/\1${sticker_value}/" "${updated_readme}"
+                ### if using 'badgen.net' static badges
+                sed -i "s/^\s*\(\[badge\-${sticker_label}\]:\s*https:\/\/[^/]*\/badge\/[^/]*\/\)\([^/]*\)/\1${sticker_value}/" "${updated_readme}"
+            done
+            echo
+        fi
+    done
+}
+
+main $@

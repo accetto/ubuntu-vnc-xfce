@@ -1,0 +1,2 @@
+Copy your Firefox profile content into the folder './src/firefox/profile' before building the image.
+You have to modify the 'Dockerfile-plus-profile' if you use another source folder.

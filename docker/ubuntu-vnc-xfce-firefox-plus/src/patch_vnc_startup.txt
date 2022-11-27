@@ -1,0 +1,8 @@
+### Patch #1
+### Issue #3: Default Firefox profile not initialized on external volumes (bind mounts)
+if [[ -d "$HOME/.mozilla" ]] ; then
+    if [[ ! -d "$HOME/.mozilla/firefox" ]] ; then
+        cp -r $HOME/firefox.plus $HOME/.mozilla/firefox
+    fi
+fi
+### End-of-patch #1

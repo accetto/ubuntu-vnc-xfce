@@ -1,9 +1,0 @@
-*
-!src
-*.log
-*.md
-*.sh
-.developer*
-debug*
-scrap*
-TODO*

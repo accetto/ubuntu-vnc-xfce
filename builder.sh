@@ -22,27 +22,58 @@ docker_hub_connect() {
 
 main() {
 
-    local tag=${1?Need tag}
-    local cmd=${2?Need command}
+    local repo=${1?Need repo}
+    local tag=${2?Need tag}
+    local cmd=${3?Need command}
 
+    local backup_pwd
+    local context
     local last_line
     local test_result
+
+    case "${repo}" in
+
+        base )
+            context="docker/ubuntu-vnc-xfce"
+            ;;
+
+        chromium )
+            context="docker/ubuntu-vnc-xfce-chromium"
+            ;;
+
+        firefox )
+            context="docker/ubuntu-vnc-xfce-firefox"
+            ;;
+
+        firefox-plus )
+            context="docker/ubuntu-vnc-xfce-firefox-plus"
+            ;;
+
+        * )
+            echo "Supported 'repo' values: base, chromium, firefox, firefox-plus"
+            ;;
+    esac
+
+    backup_pwd=${PWD}
 
     case "${cmd}" in
 
         build | test )
 
-            ./hooks/"${cmd}" "${tag}"
+            cd "${context}"
+            hooks/"${cmd}" "${tag}"
             ;;
 
         push )
             
+            cd "${context}"
+
             docker_hub_connect
 
             if [ $? -eq 0 ] ; then
 
                 ### push to Docker Hub
-                ./hooks/"${cmd}" "${tag}"
+                hooks/"${cmd}" "${tag}"
 
                 docker logout
 
@@ -60,7 +91,8 @@ main() {
             echo "------------------"
             echo
 
-            ./hooks/build "${tag}"
+            cd "${context}"
+            hooks/build "${tag}"
 
             if [ $? -eq 0 ] ; then
 
@@ -97,7 +129,8 @@ main() {
                         echo
                         echo "Refreshing README..."
 
-                        ./utils/util-refresh-readme.sh
+                        cd ../../utils
+                        ./util-refresh-readme.sh
 
                     else
 
@@ -114,6 +147,8 @@ main() {
             echo "Unknown command: ${cmd}"
             ;;
     esac
+
+    cd "${backup_pwd}"
 }
 
 main $@

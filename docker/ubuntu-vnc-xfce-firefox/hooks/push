@@ -1,0 +1,9 @@
+#!/bin/bash -xe
+
+. ./hooks/env
+
+if [[ -n "${BASETAG}" ]] ; then docker push ${DOCKER_REPO}:${DOCKER_TAG}
+else
+    echo "Nothing to push!"
+    exit 1
+fi

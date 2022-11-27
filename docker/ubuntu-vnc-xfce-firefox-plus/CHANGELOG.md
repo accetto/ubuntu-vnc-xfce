@@ -10,7 +10,7 @@
 
 The repository has been revived and merged into the repository [ubuntu-vnc-xfce][accetto-github-ubuntu-vnc-xfce], because I've noticed, that the images are still being pulled.
 
-This original repository [ubuntu-vnc-xfce-firefox][this-github] stays retired.
+This original repository [ubuntu-vnc-xfce-firefox-plus][this-github] stays retired.
 
 ### Final G1v1 release 22.03.1
 

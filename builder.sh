@@ -31,6 +31,8 @@ main() {
     local last_line
     local test_result
 
+    local -i exit_code=0
+
     case "${repo}" in
 
         base )
@@ -62,6 +64,7 @@ main() {
 
             cd "${context}"
             hooks/"${cmd}" "${tag}"
+            exit_code=$?
             ;;
 
         push )
@@ -74,12 +77,13 @@ main() {
 
                 ### push to Docker Hub
                 hooks/"${cmd}" "${tag}"
+                exit_code=$?
 
                 docker logout
 
             else
-
                 echo "Unable to connect to Docker hub!"
+                exit_code=1
             fi
             ;;
 
@@ -123,6 +127,7 @@ main() {
                         echo
 
                         hooks/push "${tag}"
+                        exit_code=$?
 
                         docker logout
 
@@ -133,22 +138,26 @@ main() {
                         ./util-refresh-readme.sh
 
                     else
-
                         echo "Unable to connect to Docker hub!"
+                        exit_code=1
                     fi
 
                 else
                     echo "Version sticker has changed. Adjust 'env' hook and refresh README using 'util-refresh-readme.sh'. Use 'test' command for details."
+                    exit_code=1
                 fi
             fi
             ;;
 
         *)
             echo "Unknown command: ${cmd}"
+            exit_code=1
             ;;
     esac
 
     cd "${backup_pwd}"
+
+    return ${exit_code}
 }
 
 main $@

@@ -1,3 +1,5 @@
+# syntax=docker/dockerfile:experimental
+
 # ./hooks/build latest
 # ./hooks/test latest
 

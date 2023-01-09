@@ -1,5 +1,7 @@
 ### hooks/env
 
+export DOCKER_BUILDKIT=1
+
 SOURCE_BRANCH=${SOURCE_BRANCH:-$1}
 DOCKER_TAG=${DOCKER_TAG:-$1}
 if [[ -n "$1" ]] ; then shift ; fi

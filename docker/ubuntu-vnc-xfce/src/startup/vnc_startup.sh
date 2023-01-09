@@ -93,7 +93,7 @@ chmod 600 "${PASSWD_PATH}"
 
 ### start vncserver and noVNC webclient in the background
 echo "Starting noVNC"
-"${NO_VNC_HOME}"/utils/launch.sh --vnc localhost:${VNC_PORT} --listen ${NO_VNC_PORT} &> "${STARTUPDIR}"/no_vnc_startup.log &
+"${NO_VNC_HOME}"/utils/novnc_proxy --vnc localhost:${VNC_PORT} --listen ${NO_VNC_PORT} &> "${STARTUPDIR}"/no_vnc_startup.log &
 PID_SUB=$!
 
 echo "Starting VNC server ..."

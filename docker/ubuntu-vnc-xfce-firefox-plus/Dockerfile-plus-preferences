@@ -1,3 +1,5 @@
+# syntax=docker/dockerfile:experimental
+
 # ./hooks/build dev-preferences
 # ./hooks/test dev-preferences
 

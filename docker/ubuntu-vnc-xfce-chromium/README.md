@@ -342,4 +342,4 @@ Credit goes to all the countless people and companies who contribute to open sou
 
 <!-- latest tag badges -->
 
-[badge-VERSION_STICKER_LATEST]: https://badgen.net/badge/version%20sticker/ubuntu18.04.6-chromium99.0.4844.51/blue
+[badge-VERSION_STICKER_LATEST]: https://badgen.net/badge/version%20sticker/ubuntu18.04.6-chromium108.0.5359.71/blue

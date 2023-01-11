@@ -8,6 +8,21 @@
 
 ***
 
+### Release 23.01
+
+- `builder.sh` returns an exit code now
+- `noVNC` and `websockify` versions updated
+- `Chromium` and `Firefox` versions updated
+- explicit support for the `BuildKit` added, even if it's not strictly required
+- following this release, images with the updated `Ubuntu`, `Chromium` and `Firefox` versions will be published on the `Docker Hub` without creating parallel new releases on the `Git Hub`
+
+Updated versions:
+
+- noVNC **1.3.0**
+- websockify **0.11.0**
+- Chromium **108.0.5359.71**
+- Firefox **108.0.2**
+
 ### Release 22.11
 
 The repository has been revived, because I've noticed, that the images are still being pulled.
